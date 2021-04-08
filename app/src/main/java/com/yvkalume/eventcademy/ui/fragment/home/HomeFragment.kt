@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.viewbinding.library.fragment.viewBinding
+import androidx.navigation.fragment.findNavController
 import com.yvkalume.eventcademy.EventBindingModel_
 import com.yvkalume.eventcademy.R
 import com.yvkalume.eventcademy.databinding.FragmentHomeBinding
@@ -26,6 +27,10 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         binding.rV.withModels {
             featuredEvent {
                 id("featured")
+                clickListener { _ ->
+                    val directions = HomeFragmentDirections.toEventFragment()
+                    findNavController().navigate(directions)
+                }
             }
 
             header {
@@ -38,6 +43,10 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                 withModelsFrom(listOf(1,2,3,4,5)) {
                     EventBindingModel_()
                         .id(it)
+                        .clickListener { _ ->
+                            val directions = HomeFragmentDirections.toEventFragment()
+                            findNavController().navigate(directions)
+                        }
                 }
             }
 
