@@ -60,4 +60,5 @@ dependencies {
     kapt Deps.Epoxy.processor
 
     implementation Deps.viewBinding
+    implementation Deps.circleImageView
 }
