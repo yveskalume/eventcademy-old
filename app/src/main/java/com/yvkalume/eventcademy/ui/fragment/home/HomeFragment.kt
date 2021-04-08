@@ -14,7 +14,9 @@ import com.yvkalume.eventcademy.featuredEvent
 import com.yvkalume.eventcademy.header
 import com.yvkalume.eventcademy.util.carousel
 import com.yvkalume.eventcademy.util.withModelsFrom
+import dagger.hilt.EntryPoint
 
+@EntryPoint
 class HomeFragment : Fragment(R.layout.fragment_home) {
     private val binding by viewBinding<FragmentHomeBinding>()
 

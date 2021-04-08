@@ -4,6 +4,7 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
     id 'androidx.navigation.safeargs.kotlin'
 }
 
@@ -61,4 +62,7 @@ dependencies {
 
     implementation Deps.viewBinding
     implementation Deps.circleImageView
+
+    implementation(Deps.Hilt.hilt)
+    kapt(Deps.Hilt.processor)
 }

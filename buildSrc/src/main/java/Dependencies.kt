@@ -16,6 +16,7 @@ object Plugin {
 
 object Version {
     const val kotlin = "1.4.20"
+    const val hilt = "2.33-beta"
 }
 
 object Module {
@@ -42,6 +43,13 @@ object Deps {
 
     object Kotlin {
         const val stdlib = "org.jetbrains.kotlin:kotlin-stdlib:${Version.kotlin}"
+    }
+
+    object Hilt {
+        const val classPath = "com.google.dagger:hilt-android-gradle-plugin:${Version.hilt}"
+        const val hilt = "com.google.dagger:hilt-android:${Version.hilt}"
+        const val processor = "com.google.dagger:hilt-compiler:${Version.hilt}"
+
     }
 
     object Groupie {

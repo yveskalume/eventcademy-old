@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.airbnb.epoxy.Carousel
 import com.yvkalume.eventcademy.R
+import dagger.hilt.EntryPoint
 
+@EntryPoint
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

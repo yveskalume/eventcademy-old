@@ -9,7 +9,9 @@ import android.viewbinding.library.fragment.viewBinding
 import androidx.navigation.fragment.findNavController
 import com.yvkalume.eventcademy.R
 import com.yvkalume.eventcademy.databinding.FragmentEventBinding
+import dagger.hilt.EntryPoint
 
+@EntryPoint
 class EventFragment : Fragment(R.layout.fragment_event) {
     private val binding by viewBinding<FragmentEventBinding>()
 
