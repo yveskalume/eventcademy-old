@@ -20,7 +20,7 @@ object Version {
 }
 
 object Module {
-    const val date = ":data"
+    const val data = ":data"
     const val util = ":util"
     const val domain = ":domain"
 }
