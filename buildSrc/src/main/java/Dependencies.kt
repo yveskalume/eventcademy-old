@@ -20,9 +20,9 @@ object Version {
 }
 
 object Module {
-    const val model = ":model"
+    const val date = ":data"
     const val util = ":util"
-    const val interactor = ":interactors"
+    const val domain = ":domain"
 }
 
 object Deps {
