@@ -52,6 +52,10 @@ dependencies {
     implementation(Deps.Coroutines.android)
     implementation(Deps.Coroutines.playService)
 
+    implementation platform(Deps.Firebase.bom)
+    implementation(Deps.Firebase.firestore)
+    implementation(Deps.Firebase.storage)
+
     implementation(Deps.Hilt.hilt)
     kapt(Deps.Hilt.processor)
 }
