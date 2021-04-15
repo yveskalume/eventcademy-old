@@ -1,4 +1,6 @@
 package com.yvkalume.data.repository
 
-class UserRepositoryImpl() {
+import javax.inject.Inject
+
+class UserRepositoryImpl @Inject constructor() {
 }
