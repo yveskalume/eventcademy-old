@@ -8,9 +8,7 @@ import android.view.ViewGroup
 import android.viewbinding.library.fragment.viewBinding
 import androidx.navigation.fragment.findNavController
 import com.airbnb.epoxy.EpoxyController
-import com.airbnb.mvrx.MavericksView
-import com.airbnb.mvrx.fragmentViewModel
-import com.airbnb.mvrx.withState
+import com.airbnb.mvrx.*
 import com.yvkalume.data.mapper.EventUiMapper
 import com.yvkalume.data.model.EventUiModel
 import com.yvkalume.data.model.presentation.HomeData
@@ -26,8 +24,10 @@ import com.yvkalume.util.Result
 import com.yvkalume.util.data
 import com.yvkalume.util.succeeded
 import dagger.hilt.EntryPoint
+import dagger.hilt.InstallIn
+import dagger.hilt.android.AndroidEntryPoint
 
-@EntryPoint
+@AndroidEntryPoint
 class HomeFragment : Fragment(R.layout.fragment_home), MavericksView {
     private val binding by viewBinding<FragmentHomeBinding>()
     private val viewModel: HomeViewModel by fragmentViewModel()
@@ -46,9 +46,9 @@ class HomeFragment : Fragment(R.layout.fragment_home), MavericksView {
     }
 
     private fun EpoxyController.getFeaturedEvent(event: EventUiModel?) {
-        if (event == null) return
         featuredEvent {
             id("featured")
+            event(event)
             clickListener { _ ->
                 val directions = HomeFragmentDirections.toEventFragment()
                 findNavController().navigate(directions)
@@ -57,44 +57,57 @@ class HomeFragment : Fragment(R.layout.fragment_home), MavericksView {
     }
 
     private fun EpoxyController.onlineEvents(events: List<EventUiModel>?) {
-        if (events == null) return
+        if (events != null) {
+            header {
+                id("online")
+                text("En Ligne")
+            }
 
-        header {
-            id("online")
-            text("En Ligne")
-        }
-
-        carousel {
-            id("carousel")
-            withModelsFrom(events) {
-                EventBindingModel_()
-                    .id(it.uid)
-                    .clickListener { _ ->
-                        val directions = HomeFragmentDirections.toEventFragment()
-                        findNavController().navigate(directions)
-                    }
+            carousel {
+                id("carousel")
+                withModelsFrom(events) {
+                    EventBindingModel_()
+                            .id(it.uid)
+                            .event(it)
+                            .clickListener { _ ->
+                                val directions = HomeFragmentDirections.toEventFragment()
+                                findNavController().navigate(directions)
+                            }
+                }
             }
         }
     }
 
     private fun EpoxyController.offlineEvents(events: List<EventUiModel>?) {
-        if (events == null) return
+        if (events != null) {
+            header {
+                id("presentiel")
+                text("En Presentiel")
+            }
 
-        header {
-            id("presentiel")
-            text("En Presentiel")
-        }
-
-        carousel {
-            id("carousel")
-            withModelsFrom(events) {
-                EventBindingModel_()
-                    .id(it.uid)
+            carousel {
+                id("carousel")
+                withModelsFrom(events) {
+                    EventBindingModel_()
+                            .id(it.uid)
+                            .event(it)
+                }
             }
         }
     }
 
     override fun invalidate() = withState(viewModel) {
+        when(it.data) {
+            is Loading -> {
 
+            }
+            is Success -> {
+                populateData(it.data.invoke())
+            }
+
+            is Fail -> {
+
+            }
+        }
     }
 }
