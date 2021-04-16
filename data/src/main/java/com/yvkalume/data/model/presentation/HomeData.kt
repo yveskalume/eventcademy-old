@@ -3,6 +3,7 @@ package com.yvkalume.data.model.presentation
 import com.yvkalume.data.model.EventUiModel
 
 data class HomeData (
-    val onlineEvent: List<EventUiModel>?,
-    val presentielEvent: List<EventUiModel>?
+    val featuredEvent: EventUiModel?,
+    val onlineEvents: List<EventUiModel>?,
+    val offlineEvents: List<EventUiModel>?
 )
