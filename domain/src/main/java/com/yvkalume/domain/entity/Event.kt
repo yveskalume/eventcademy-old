@@ -10,6 +10,7 @@ data class Event(
     val title: String = "",
     val description: String = "",
     val imageUrl: String = "",
+    val offline: Boolean,
     val date: Date? = null,
     val createdAt: Date? = null
 ) : Parcelable
