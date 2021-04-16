@@ -8,7 +8,7 @@ import com.yvkalume.util.annotation.IoDispatcher
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
 
-class GetOneEventByUidUseCase(private val repository: EventRepository, @IoDispatcher dispatcher: CoroutineDispatcher ) : FlowUseCase<String, Event>(dispatcher) {
+class GetOneEventByUidUseCase(private val repository: EventRepository, @IoDispatcher private val dispatcher: CoroutineDispatcher ) : FlowUseCase<String, Event>(dispatcher) {
     override fun execute(parameters: String): Flow<Result<Event>> {
         return repository.getOneByUid(parameters)
     }

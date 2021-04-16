@@ -9,7 +9,7 @@ import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
-class GetOfflineEvents @Inject constructor (private val repository: EventRepository, @IoDispatcher dispatcher: CoroutineDispatcher,) : FlowUseCase<Unit, List<Event>>(dispatcher) {
+class GetOfflineEventsUseCase @Inject constructor (private val repository: EventRepository, @IoDispatcher private val dispatcher: CoroutineDispatcher,) : FlowUseCase<Unit, List<Event>>(dispatcher) {
     override fun execute(parameters: Unit): Flow<Result<List<Event>>> {
         return repository.getOffline()
     }
