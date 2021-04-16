@@ -12,6 +12,7 @@ class EventUiMapper() : Mapper<Event,EventUiModel> {
             uid = t.uid,
             title = t.title,
             description = t.description,
+            lieu = t.lieu,
             imageUrl = t.imageUrl,
             date = t.date,
             createdAt = t.createdAt
