@@ -1,7 +1,5 @@
 package com.yvkalume.domain.entity
 
-import android.os.Parcelable
-import kotlinx.android.parcel.Parcelize
 import java.util.*
 
 data class Event(
