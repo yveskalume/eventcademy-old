@@ -8,6 +8,7 @@ data class Event(
     val uid: String = "",
     val title: String = "",
     val description: String = "",
+    val lieu: String = "",
     val imageUrl: String = "",
     val offline: Boolean = true,
     val date: Date? = null,
