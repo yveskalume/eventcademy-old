@@ -7,6 +7,9 @@
         <variable
             name="clickListener"
             type="android.view.View.OnClickListener" />
+        <variable
+            name="event"
+            type="com.yvkalume.data.model.EventUiModel" />
     </data>
 
     <com.google.android.material.card.MaterialCardView
@@ -35,7 +38,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="4dp"
                 android:layout_marginEnd="8dp"
-                android:text="MLH"
+                android:text="@{event.title}"
                 android:textSize="16sp"
                 android:textColor="@color/black"
                 android:textStyle="bold"
@@ -51,7 +54,7 @@
                 android:layout_marginTop="4dp"
                 android:layout_marginEnd="8dp"
                 android:drawableStart="@drawable/ic_calendar"
-                android:text="10 Decembre à 10:09"
+                android:text="@{event.date.toLocaleString()}"
                 android:drawablePadding="4dp"
                 android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -66,7 +69,7 @@
                 android:layout_marginTop="4dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginBottom="8dp"
-                android:text="Esisalama A6"
+                android:text="@{event.lieu}"
                 android:drawablePadding="4dp"
                 android:drawableStart="@drawable/ic_location"
                 android:textSize="14sp"
