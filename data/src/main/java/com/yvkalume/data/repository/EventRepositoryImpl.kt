@@ -1,5 +1,6 @@
 package com.yvkalume.data.repository
 
+import android.util.Log
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 import com.yvkalume.data.util.FireBasePath
@@ -26,6 +27,7 @@ class EventRepositoryImpl @Inject constructor(private val firestore: FirebaseFir
 
                 value?.toObjects(Event::class.java)?.also {
                     offer(Result.Success(it))
+                    Log.d("EventRepository",it.toString())
                 }
             }
         awaitClose()
@@ -37,7 +39,7 @@ class EventRepositoryImpl @Inject constructor(private val firestore: FirebaseFir
 
     @ExperimentalCoroutinesApi
     override fun getOnline() = callbackFlow {
-        firestore.collection(FireBasePath.events)
+        firestore.collection("/${FireBasePath.events}")
             .whereEqualTo(Event::offline.name,false)
             .orderBy(Event::date.name,Query.Direction.ASCENDING)
             .addSnapshotListener { value, error ->
@@ -49,7 +51,9 @@ class EventRepositoryImpl @Inject constructor(private val firestore: FirebaseFir
                 }
 
                 value?.toObjects(Event::class.java)?.also {
-                    offer(Result.Success(it))
+                    if (!isClosedForSend)
+                        offer(Result.Success(it))
+                    Log.d("EventRepository",it.toString())
                 }
             }
         awaitClose()
@@ -69,7 +73,9 @@ class EventRepositoryImpl @Inject constructor(private val firestore: FirebaseFir
                 }
 
                 value?.toObjects(Event::class.java)?.also {
-                    offer(Result.Success(it))
+                    if (!isClosedForSend)
+                        offer(Result.Success(it))
+                    Log.d("EventRepository",it.toString())
                 }
             }
         awaitClose()
@@ -78,7 +84,6 @@ class EventRepositoryImpl @Inject constructor(private val firestore: FirebaseFir
     @ExperimentalCoroutinesApi
     override fun getNext() = callbackFlow {
         firestore.collection(FireBasePath.events)
-            .whereEqualTo(Event::offline.name,true)
             .orderBy(Event::date.name,Query.Direction.ASCENDING)
             .addSnapshotListener { value, error ->
                 if (error != null && value == null) {
@@ -89,6 +94,7 @@ class EventRepositoryImpl @Inject constructor(private val firestore: FirebaseFir
                 }
 
                 value?.toObjects(Event::class.java)?.also {
+                    if (!isClosedForSend)
                     offer(Result.Success(it.first()))
                 }
             }
