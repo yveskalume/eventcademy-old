@@ -8,4 +8,5 @@ interface EventRepository {
     fun getAll() : Flow<Result<List<Event>>>
     fun getOneByUid(uid: String) : Flow<Result<Event>>
     fun getOnline() : Flow<Result<List<Event>>>
+    fun getOffline() : Flow<Result<List<Event>>>
 }
