@@ -71,6 +71,10 @@ dependencies {
     implementation Deps.viewBinding
     implementation Deps.circleImageView
 
+    implementation platform(Deps.Firebase.bom)
+    implementation(Deps.Firebase.firestore)
+    implementation(Deps.Firebase.storage)
+
     implementation(Deps.Hilt.hilt)
     kapt(Deps.Hilt.processor)
 }
