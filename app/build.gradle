@@ -70,6 +70,7 @@ dependencies {
 
     implementation Deps.viewBinding
     implementation Deps.circleImageView
+    implementation Deps.glide
 
     implementation platform(Deps.Firebase.bom)
     implementation(Deps.Firebase.firestore)
