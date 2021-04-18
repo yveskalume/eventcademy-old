@@ -46,12 +46,14 @@ class HomeFragment : Fragment(R.layout.fragment_home), MavericksView {
     }
 
     private fun EpoxyController.getFeaturedEvent(event: EventUiModel?) {
-        featuredEvent {
-            id("featured")
-            event(event)
-            clickListener { _ ->
-                val directions = HomeFragmentDirections.toEventFragment()
-                findNavController().navigate(directions)
+        if (event != null) {
+            featuredEvent {
+                id("featured")
+                event(event)
+                clickListener { _ ->
+                    val directions = HomeFragmentDirections.toEventFragment(event)
+                    findNavController().navigate(directions)
+                }
             }
         }
     }
@@ -70,7 +72,7 @@ class HomeFragment : Fragment(R.layout.fragment_home), MavericksView {
                             .id(it.uid)
                             .event(it)
                             .clickListener { _ ->
-                                val directions = HomeFragmentDirections.toEventFragment()
+                                val directions = HomeFragmentDirections.toEventFragment(it)
                                 findNavController().navigate(directions)
                             }
                 }

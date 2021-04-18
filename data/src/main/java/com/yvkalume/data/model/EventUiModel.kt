@@ -1,7 +1,10 @@
 package com.yvkalume.data.model
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
 import java.util.*
 
+@Parcelize
 data class EventUiModel (
     val uid: String = "",
     val title: String = "",
@@ -10,4 +13,4 @@ data class EventUiModel (
     val imageUrl: String = "",
     val date: Date? = null,
     val createdAt: Date? = null
-)
+) : Parcelable

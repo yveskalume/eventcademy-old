@@ -14,5 +14,9 @@
     <fragment
         android:id="@+id/eventFragment"
         android:name="com.yvkalume.eventcademy.ui.fragment.event.EventFragment"
-        android:label="EventFragment" />
+        android:label="EventFragment" >
+        <argument
+            android:name="event"
+            app:argType="com.yvkalume.data.model.EventUiModel" />
+    </fragment>
 </navigation>

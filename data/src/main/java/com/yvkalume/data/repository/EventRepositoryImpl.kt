@@ -41,7 +41,7 @@ class EventRepositoryImpl @Inject constructor(private val firestore: FirebaseFir
     override fun getOnline() = callbackFlow {
         firestore.collection("/${FireBasePath.events}")
             .whereEqualTo(Event::offline.name,false)
-            .orderBy(Event::date.name,Query.Direction.ASCENDING)
+//            .orderBy(Event::date.name,Query.Direction.ASCENDING)
             .addSnapshotListener { value, error ->
                 if (error != null && value == null) {
                     if (!isClosedForSend) {
@@ -52,7 +52,7 @@ class EventRepositoryImpl @Inject constructor(private val firestore: FirebaseFir
 
                 value?.toObjects(Event::class.java)?.also {
                     if (!isClosedForSend)
-                        offer(Result.Success(it))
+                    offer(Result.Success(it))
                     Log.d("EventRepository",it.toString())
                 }
             }
@@ -63,7 +63,7 @@ class EventRepositoryImpl @Inject constructor(private val firestore: FirebaseFir
     override fun getOffline() = callbackFlow {
         firestore.collection(FireBasePath.events)
             .whereEqualTo(Event::offline.name,true)
-            .orderBy(Event::date.name,Query.Direction.ASCENDING)
+//            .orderBy(Event::date.name,Query.Direction.ASCENDING)
             .addSnapshotListener { value, error ->
                 if (error != null && value == null) {
                     if (!isClosedForSend) {
@@ -74,7 +74,7 @@ class EventRepositoryImpl @Inject constructor(private val firestore: FirebaseFir
 
                 value?.toObjects(Event::class.java)?.also {
                     if (!isClosedForSend)
-                        offer(Result.Success(it))
+                    offer(Result.Success(it))
                     Log.d("EventRepository",it.toString())
                 }
             }
