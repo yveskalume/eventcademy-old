@@ -8,8 +8,8 @@ import com.yvkalume.util.annotation.IoDispatcher
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
 
-class AddUserUseCase(private val repository: UserRepository, @IoDispatcher dispatcher: CoroutineDispatcher) : FlowUseCase<User, Boolean>(dispatcher) {
-    override fun execute(parameters: User): Flow<Result<Boolean>> {
+class AddUserUseCase(private val repository: UserRepository, @IoDispatcher dispatcher: CoroutineDispatcher) : FlowUseCase<User, Pair<Boolean,String>>(dispatcher) {
+    override fun execute(parameters: User): Flow<Result<Pair<Boolean,String>>> {
         return repository.add(parameters)
     }
 }
