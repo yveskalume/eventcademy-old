@@ -104,20 +104,6 @@ class SplashScreen : AppCompatActivity() {
     }
 
     private fun firebaseAuthWithGoogle(idToken: String) {
-        val credential = GoogleAuthProvider.getCredential(idToken, null)
-        auth.signInWithCredential(credential)
-            .addOnCompleteListener(this) { task ->
-                if (task.isSuccessful) {
-                    // Sign in success, update UI with the signed-in user's information
-                    Log.d(this.toString(), "signInWithCredential:success")
-                    val authUser = auth.currentUser
-                    if (authUser != null) {
-                        val user = User(auth.uid!!,authUser.displayName!!,authUser.email!!,Timestamp.now().toDate())
-                        viewModel.addUser(user)
-                    }
-                } else {
-                    Log.w(this.toString(), "signInWithCredential:failure", task.exception)
-                }
-            }
+
     }
 }

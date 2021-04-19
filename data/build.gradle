@@ -58,6 +58,8 @@ dependencies {
     implementation platform(Deps.Firebase.bom)
     implementation(Deps.Firebase.firestore)
     implementation(Deps.Firebase.storage)
+    implementation(Deps.Firebase.auth)
+    implementation(Deps.Firebase.googlePlayServiceAuth)
 
     implementation(Deps.Hilt.hilt)
     kapt(Deps.Hilt.processor)
