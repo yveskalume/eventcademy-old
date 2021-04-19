@@ -5,5 +5,6 @@ import com.yvkalume.util.Result
 import kotlinx.coroutines.flow.Flow
 
 interface UserRepository {
+    fun signIn(idToken: String) : Flow<Result<User>>
     fun add(user: User) : Flow<Result<Pair<Boolean,String>>>
 }
