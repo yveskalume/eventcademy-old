@@ -35,7 +35,7 @@ class SplashViewModel @Inject constructor (private val signInWithGoogleUseCase: 
         }
     }
 
-    private suspend fun addUser(user: User) = withContext(Dispatchers.IO){
+    private fun addUser(user: User) = viewModelScope.launch {
         addUserUseCase(user).collect {
             _userAdded.value = SingleLiveEvent(it.data!!)
         }

@@ -54,7 +54,9 @@ class SplashScreen : AppCompatActivity() {
             if (result != null) {
                 Toast.makeText(baseContext,result.second,Toast.LENGTH_LONG).show()
                 if (result.first) {
-                    MainActivity().show(baseContext)
+                    val intent = Intent(baseContext,MainActivity::class.java)
+                    startActivity(intent)
+                    finish()
                 }
                 else {
                     if (auth.currentUser != null) {
