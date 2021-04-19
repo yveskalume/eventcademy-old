@@ -3,7 +3,7 @@ package com.yvkalume.domain.di
 import com.yvkalume.domain.repository.EventRepository
 import com.yvkalume.domain.repository.UserRepository
 import com.yvkalume.domain.usecase.event.*
-import com.yvkalume.domain.usecase.user.UserSignInUseCase
+import com.yvkalume.domain.usecase.user.AddUserUseCase
 import com.yvkalume.util.annotation.IoDispatcher
 import dagger.Module
 import dagger.Provides
@@ -41,7 +41,7 @@ object UseCaseModule {
     }
 
     @Provides
-    fun provideUserSignInUseCase(repository: UserRepository,@IoDispatcher dispatcher: CoroutineDispatcher) : UserSignInUseCase {
-        return UserSignInUseCase(repository,dispatcher)
+    fun provideUserSignInUseCase(repository: UserRepository,@IoDispatcher dispatcher: CoroutineDispatcher) : AddUserUseCase {
+        return AddUserUseCase(repository,dispatcher)
     }
 }
