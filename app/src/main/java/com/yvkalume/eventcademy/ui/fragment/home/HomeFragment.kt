@@ -9,6 +9,7 @@ import android.viewbinding.library.fragment.viewBinding
 import androidx.navigation.fragment.findNavController
 import com.airbnb.epoxy.EpoxyController
 import com.airbnb.mvrx.*
+import com.google.firebase.auth.FirebaseAuth
 import com.yvkalume.data.mapper.EventUiMapper
 import com.yvkalume.data.model.EventUiModel
 import com.yvkalume.data.model.presentation.HomeData
@@ -19,6 +20,7 @@ import com.yvkalume.eventcademy.databinding.FragmentHomeBinding
 import com.yvkalume.eventcademy.featuredEvent
 import com.yvkalume.eventcademy.header
 import com.yvkalume.eventcademy.util.carousel
+import com.yvkalume.eventcademy.util.setImageUrl
 import com.yvkalume.eventcademy.util.withModelsFrom
 import com.yvkalume.util.Result
 import com.yvkalume.util.data
@@ -26,15 +28,19 @@ import com.yvkalume.util.succeeded
 import dagger.hilt.EntryPoint
 import dagger.hilt.InstallIn
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class HomeFragment : Fragment(R.layout.fragment_home), MavericksView {
     private val binding by viewBinding<FragmentHomeBinding>()
     private val viewModel: HomeViewModel by fragmentViewModel()
-    private val eventUiMapper by lazy { EventUiMapper() }
+    private val auth by lazy {
+        FirebaseAuth.getInstance()
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.userImage.setImageUrl(auth.currentUser?.photoUrl.toString())
     }
 
     private fun populateData(data: HomeData) {
