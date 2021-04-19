@@ -10,6 +10,6 @@ import kotlinx.coroutines.flow.Flow
 
 class AddUserUseCase(private val repository: UserRepository, @IoDispatcher dispatcher: CoroutineDispatcher) : FlowUseCase<User, Boolean>(dispatcher) {
     override fun execute(parameters: User): Flow<Result<Boolean>> {
-        return repository.signIn()
+        return repository.add(parameters)
     }
 }
