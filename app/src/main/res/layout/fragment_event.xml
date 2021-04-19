@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             app:navigationIcon="@drawable/ic_round_arrow_back"
             app:menu="@menu/event_menu"
-            android:background="@color/primaryColor"
+            android:background="?attr/colorPrimary"
             app:navigationIconTint="@color/white"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"

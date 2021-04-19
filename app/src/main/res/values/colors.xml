@@ -8,8 +8,8 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="primaryColor">#000047</color>
-    <color name="primaryVariantColor">#121973</color>
+    <color name="blue700">#000047</color>
+    <color name="blue500">#121973</color>
     <color name="primaryTextColor">#ffffff</color>
 
     <color name="secondaryColor">#0b222c</color>

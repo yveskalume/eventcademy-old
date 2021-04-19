@@ -10,7 +10,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/primaryColor"
+        android:fitsSystemWindows="true"
         tools:context=".ui.activity.SplashScreen">
 
         <androidx.constraintlayout.widget.Guideline
@@ -36,9 +36,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="16dp"
+            app:cornerRadius="16dp"
             android:text="Se Connecter avec google"
             android:visibility="invisible"
-            app:backgroundTint="@color/primaryVariantColor"
+            app:backgroundTint="@android:color/white"
+            app:icon="@drawable/ic_google"
+            app:iconTint="@null"
+            app:iconGravity="textStart"
+            app:iconPadding="16dp"
+            android:textColor="#4285F5"
+            android:textAllCaps="false"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
