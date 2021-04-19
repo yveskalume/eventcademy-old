@@ -88,6 +88,10 @@ class SplashScreen : AppCompatActivity() {
         startActivityForResult(googleSignInClient.signInIntent, IDs.Google_SignIn)
     }
 
+    private fun firebaseAuthWithGoogle(idToken: String) {
+        viewModel.signIn(idToken)
+    }
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
@@ -103,7 +107,5 @@ class SplashScreen : AppCompatActivity() {
         }
     }
 
-    private fun firebaseAuthWithGoogle(idToken: String) {
 
-    }
 }
