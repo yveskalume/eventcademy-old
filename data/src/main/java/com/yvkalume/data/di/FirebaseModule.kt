@@ -1,5 +1,6 @@
 package com.yvkalume.data.di
 
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import dagger.Module
@@ -19,5 +20,10 @@ object FirebaseModule {
     @Provides
     fun provideFirebaseStorage() : FirebaseStorage {
         return FirebaseStorage.getInstance()
+    }
+
+    @Provides
+    fun provideFirebaseAuth() : FirebaseAuth {
+        return FirebaseAuth.getInstance()
     }
 }
