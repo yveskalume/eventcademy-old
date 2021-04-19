@@ -15,9 +15,9 @@
             android:id="@+id/materialToolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/primaryColor"
+            android:background="@color/white"
+            android:backgroundTint="@color/primaryColor"
             app:titleTextColor="@color/white"
-            app:title="EventCademy"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -25,6 +25,14 @@
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="EventCademy"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:layout_gravity="center"
+                    />
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:layout_width="30dp"
