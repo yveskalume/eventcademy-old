@@ -4,8 +4,10 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.core.view.isVisible
+import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -40,6 +42,27 @@ class SplashScreen : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         setUpSplash()
+        observeUserAddedResult()
+        binding.btnLogin.setOnClickListener {
+            signIn()
+        }
+    }
+
+    private fun observeUserAddedResult() {
+        viewModel.userAdded.observe(this, Observer {
+            val result = it.getContentIfNotHandled()
+            if (result != null) {
+                Toast.makeText(baseContext,result.second,Toast.LENGTH_LONG).show()
+                if (result.first) {
+                    MainActivity().show(baseContext)
+                }
+                else {
+                    if (auth.currentUser != null) {
+                        auth.currentUser!!.delete()
+                    }
+                }
+            }
+        })
     }
 
     private fun setUpSplash() {
@@ -68,16 +91,13 @@ class SplashScreen : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-        // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
         if (requestCode == IDs.Google_SignIn) {
             val task = GoogleSignIn.getSignedInAccountFromIntent(data)
             try {
-                // Google Sign In was successful, authenticate with Firebase
                 val account = task.getResult(ApiException::class.java)!!
                 Log.d(this.toString(), "firebaseAuthWithGoogle:" + account.id)
                 firebaseAuthWithGoogle(account.idToken!!)
             } catch (e: ApiException) {
-                // Google Sign In failed, update UI appropriately
                 Log.w(this.toString(), "Google sign in failed", e)
             }
         }
@@ -93,12 +113,10 @@ class SplashScreen : AppCompatActivity() {
                     val authUser = auth.currentUser
                     if (authUser != null) {
                         val user = User(auth.uid!!,authUser.displayName!!,authUser.email!!,Timestamp.now().toDate())
+                        viewModel.addUser(user)
                     }
-//                    updateUI(user)
                 } else {
-                    // If sign in fails, display a message to the user.
                     Log.w(this.toString(), "signInWithCredential:failure", task.exception)
-//                    updateUI(null)
                 }
             }
     }
