@@ -7,8 +7,9 @@ import com.yvkalume.util.Result
 import com.yvkalume.util.annotation.IoDispatcher
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
+import javax.inject.Inject
 
-class SignInWithGoogleUseCase(private val repository: UserRepository, @IoDispatcher dispatcher: CoroutineDispatcher) : FlowUseCase<String,User>(dispatcher) {
+class SignInWithGoogleUseCase @Inject constructor(private val repository: UserRepository, @IoDispatcher dispatcher: CoroutineDispatcher) : FlowUseCase<String,User>(dispatcher) {
     override fun execute(parameters: String): Flow<Result<User>> {
         return repository.signIn(parameters)
     }
