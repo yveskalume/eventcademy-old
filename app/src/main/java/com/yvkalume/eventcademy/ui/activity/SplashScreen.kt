@@ -98,6 +98,7 @@ class SplashScreen : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
 
         if (requestCode == IDs.Google_SignIn) {
+            binding.progress.isVisible = true
             val task = GoogleSignIn.getSignedInAccountFromIntent(data)
             try {
                 val account = task.getResult(ApiException::class.java)!!
