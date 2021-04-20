@@ -4,6 +4,7 @@ import com.yvkalume.domain.repository.EventRepository
 import com.yvkalume.domain.repository.UserRepository
 import com.yvkalume.domain.usecase.event.*
 import com.yvkalume.domain.usecase.user.AddUserUseCase
+import com.yvkalume.domain.usecase.user.GetUserByUidUseCase
 import com.yvkalume.domain.usecase.user.SetHasGoingToAnEventUseCase
 import com.yvkalume.domain.usecase.user.SignInWithGoogleUseCase
 import com.yvkalume.util.annotation.IoDispatcher
@@ -60,6 +61,11 @@ object UseCaseModule {
     @Provides
     fun provideGetAttendeesUseCase(repository: EventRepository, @IoDispatcher dispatcher: CoroutineDispatcher) : GetAttendeesUseCase {
         return GetAttendeesUseCase(repository,dispatcher)
+    }
+
+    @Provides
+    fun provideGetUserByUseCase(repository: UserRepository, @IoDispatcher dispatcher: CoroutineDispatcher) : GetUserByUidUseCase {
+        return GetUserByUidUseCase(repository,dispatcher)
     }
 
 
