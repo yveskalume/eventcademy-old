@@ -60,6 +60,23 @@ class UserRepositoryImpl @Inject constructor(private val firestore: FirebaseFire
     }
 
     @ExperimentalCoroutinesApi
+    override fun getUserByUid(uid: String) = callbackFlow {
+        firestore.document("${FireBasePath.users}/$uid")
+                .get()
+                .addOnFailureListener {
+                    if (!isClosedForSend)
+                        offer(Result.Error(it))
+                }
+                .addOnSuccessListener { doc ->
+                    doc.toObject(User::class.java).also {
+                        if (!isClosedForSend)
+                            offer(Result.Success(it!!))
+                    }
+                }
+        awaitClose()
+    }
+
+    @ExperimentalCoroutinesApi
     override fun setHasGoingToAnEvent(user: User, eventUid: String) = callbackFlow {
         firestore.collection("${FireBasePath.events}/$eventUid/attendees")
                 .document(user.uid)
