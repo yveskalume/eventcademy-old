@@ -120,4 +120,19 @@ class EventRepositoryImpl @Inject constructor(private val firestore: FirebaseFir
                 }
         awaitClose()
     }
+
+    @ExperimentalCoroutinesApi
+    override fun checkIfUserIsAttending(userUid: String, eventUid: String) = callbackFlow {
+        firestore.document("${FireBasePath.getAttendeesCollection(eventUid)}/$userUid")
+                .get()
+                .addOnFailureListener {
+                    if (!isClosedForSend)
+                        offer(Result.Error(it))
+                }
+                .addOnSuccessListener {
+                    if (!isClosedForSend)
+                        offer(Result.Success(it.exists()))
+                }
+        awaitClose()
+    }
 }
