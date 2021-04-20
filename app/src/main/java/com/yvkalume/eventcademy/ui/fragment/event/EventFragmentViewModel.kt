@@ -3,22 +3,36 @@ package com.yvkalume.eventcademy.ui.fragment.event
 import com.airbnb.mvrx.MavericksViewModel
 import com.airbnb.mvrx.MavericksViewModelFactory
 import com.yvkalume.domain.entity.User
+import com.yvkalume.domain.usecase.event.GetAttendeesUseCase
 import com.yvkalume.domain.usecase.user.SetHasGoingToAnEventUseCase
 import com.yvkalume.eventcademy.di.mavericks.AssistedViewModelFactory
 import com.yvkalume.eventcademy.di.mavericks.hiltMavericksViewModelFactory
+import com.yvkalume.util.data
+import com.yvkalume.util.succeeded
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 
 class EventFragmentViewModel @AssistedInject constructor(
         @Assisted state: EventViewState,
+        private val getAttendeesUseCase: GetAttendeesUseCase,
         private val setHasGoingToAnEventUseCase: SetHasGoingToAnEventUseCase
 ) : MavericksViewModel<EventViewState>(state) {
 
 
     fun attend(user: User, eventUid: String) = viewModelScope.launch {
         setHasGoingToAnEventUseCase(Pair(user,eventUid))
+    }
+
+    fun getAttendees(eventUid: String) = viewModelScope.launch {
+        getAttendeesUseCase(eventUid).map {
+            it.data!!
+        }.execute {
+            copy(attendees = it)
+        }
     }
 
 
