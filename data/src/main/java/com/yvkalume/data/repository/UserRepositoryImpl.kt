@@ -26,7 +26,7 @@ class UserRepositoryImpl @Inject constructor(private val firestore: FirebaseFire
                     Log.d("UserRepository", "signInWithCredential:success")
                     val authUser = auth.currentUser
                     if (authUser != null) {
-                        val user = User(auth.uid!!,authUser.displayName!!,authUser.email!!, Timestamp.now().toDate())
+                        val user = User(auth.uid!!,authUser.displayName!!,authUser.email!!, authUser.photoUrl?.toString() ?: "", Timestamp.now().toDate())
                         if(!isClosedForSend) {
                             offer(Result.Success(user))
                         }
