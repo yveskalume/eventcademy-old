@@ -59,7 +59,19 @@ class UserRepositoryImpl @Inject constructor(private val firestore: FirebaseFire
         awaitClose()
     }
 
-    override fun setHasGoingToAnEvent(): Flow<Result<Unit>> {
-        TODO("Not yet implemented")
+    @ExperimentalCoroutinesApi
+    override fun setHasGoingToAnEvent(user: User, eventUid: String) = callbackFlow {
+        firestore.collection("${FireBasePath.events}/$eventUid/attendees")
+                .document(user.uid)
+                .set(user)
+                .addOnFailureListener {
+                    if(!isClosedForSend)
+                        offer(Result.Error(it))
+                }
+                .addOnSuccessListener {
+                    if (!isClosedForSend)
+                        offer(Result.Success(Unit))
+                }
+        awaitClose()
     }
 }
