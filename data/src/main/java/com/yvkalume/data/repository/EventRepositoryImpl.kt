@@ -5,6 +5,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 import com.yvkalume.data.util.FireBasePath
 import com.yvkalume.domain.entity.Event
+import com.yvkalume.domain.entity.User
 import com.yvkalume.domain.repository.EventRepository
 import com.yvkalume.util.Result
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -52,7 +53,7 @@ class EventRepositoryImpl @Inject constructor(private val firestore: FirebaseFir
 
                 value?.toObjects(Event::class.java)?.also {
                     if (!isClosedForSend)
-                    offer(Result.Success(it))
+                        offer(Result.Success(it))
                     Log.d("EventRepository",it.toString())
                 }
             }
@@ -95,9 +96,28 @@ class EventRepositoryImpl @Inject constructor(private val firestore: FirebaseFir
 
                 value?.toObjects(Event::class.java)?.also {
                     if (!isClosedForSend)
-                    offer(Result.Success(it.first()))
+                        offer(Result.Success(it.first()))
                 }
             }
+        awaitClose()
+    }
+
+    @ExperimentalCoroutinesApi
+    override fun getAttendees(eventUid: String) = callbackFlow {
+        firestore.collection(FireBasePath.getAttendeesCollection(eventUid))
+                .addSnapshotListener { value, error ->
+                    if (error != null && value == null) {
+                        if (!isClosedForSend) {
+                            offer(Result.Error(Exception("Une Erreur s'est produite")))
+                        }
+                        return@addSnapshotListener
+                    }
+
+                    value?.toObjects(User::class.java)?.also {
+                        if (!isClosedForSend)
+                            offer(Result.Success(it))
+                    }
+                }
         awaitClose()
     }
 }
