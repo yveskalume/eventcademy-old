@@ -6,5 +6,5 @@ import com.airbnb.mvrx.Uninitialized
 import com.google.firebase.firestore.auth.User
 
 data class EventViewState (
-    var attendees: Async<List<User>> = Uninitialized
+    val attendees: Async<List<User>> = Uninitialized
 ) : MavericksState
