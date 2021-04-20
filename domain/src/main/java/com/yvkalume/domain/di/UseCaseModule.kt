@@ -56,4 +56,11 @@ object UseCaseModule {
     fun provideSetHasGoingToAnEventUseCase(repository: UserRepository, @IoDispatcher dispatcher: CoroutineDispatcher) : SetHasGoingToAnEventUseCase {
         return SetHasGoingToAnEventUseCase(repository,dispatcher)
     }
+
+    @Provides
+    fun provideGetAttendeesUseCase(repository: EventRepository, @IoDispatcher dispatcher: CoroutineDispatcher) : GetAttendeesUseCase {
+        return GetAttendeesUseCase(repository,dispatcher)
+    }
+
+
 }
