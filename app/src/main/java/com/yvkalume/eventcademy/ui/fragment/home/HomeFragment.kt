@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.viewbinding.library.fragment.viewBinding
+import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.airbnb.epoxy.EpoxyController
 import com.airbnb.mvrx.*
@@ -65,7 +66,7 @@ class HomeFragment : Fragment(R.layout.fragment_home), MavericksView {
     }
 
     private fun EpoxyController.onlineEvents(events: List<EventUiModel>?) {
-        if (events != null) {
+        if (events != null && events.isNotEmpty()) {
             header {
                 id("online")
                 text("En Ligne")
@@ -87,7 +88,7 @@ class HomeFragment : Fragment(R.layout.fragment_home), MavericksView {
     }
 
     private fun EpoxyController.offlineEvents(events: List<EventUiModel>?) {
-        if (events != null) {
+        if (events != null && events.isNotEmpty()) {
             header {
                 id("presentiel")
                 text("En Presentiel")
@@ -114,7 +115,7 @@ class HomeFragment : Fragment(R.layout.fragment_home), MavericksView {
             }
 
             is Fail -> {
-
+                Toast.makeText(requireContext(),"Une erreur s'est produite",Toast.LENGTH_SHORT).show()
             }
         }
     }
