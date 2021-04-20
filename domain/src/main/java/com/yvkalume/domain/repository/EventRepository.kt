@@ -12,4 +12,5 @@ interface EventRepository {
     fun getOffline() : Flow<Result<List<Event>>>
     fun getNext() : Flow<Result<Event>>
     fun getAttendees(eventUid: String) : Flow<Result<List<User>>>
+    fun checkIfUserIsAttending(userUid: String,eventUid: String) : Flow<Result<Boolean>>
 }

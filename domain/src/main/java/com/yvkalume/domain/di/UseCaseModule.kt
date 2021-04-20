@@ -68,5 +68,9 @@ object UseCaseModule {
         return GetUserByUidUseCase(repository,dispatcher)
     }
 
+    @Provides
+    fun provideCheckIfUserIsAttendingUseCase(repository: EventRepository, @IoDispatcher dispatcher: CoroutineDispatcher) : CheckIfUserIsAttendingUseCase {
+        return CheckIfUserIsAttendingUseCase(repository,dispatcher)
+    }
 
 }
