@@ -4,6 +4,7 @@ import com.yvkalume.domain.repository.EventRepository
 import com.yvkalume.domain.repository.UserRepository
 import com.yvkalume.domain.usecase.event.*
 import com.yvkalume.domain.usecase.user.AddUserUseCase
+import com.yvkalume.domain.usecase.user.SetHasGoingToAnEventUseCase
 import com.yvkalume.domain.usecase.user.SignInWithGoogleUseCase
 import com.yvkalume.util.annotation.IoDispatcher
 import dagger.Module
@@ -47,7 +48,12 @@ object UseCaseModule {
     }
 
     @Provides
-    fun provideSignInWithGoogle(repository: UserRepository, @IoDispatcher dispatcher: CoroutineDispatcher) : SignInWithGoogleUseCase {
+    fun provideSignInWithGoogleUseCase(repository: UserRepository, @IoDispatcher dispatcher: CoroutineDispatcher) : SignInWithGoogleUseCase {
         return SignInWithGoogleUseCase(repository,dispatcher)
+    }
+
+    @Provides
+    fun provideSetHasGoingToAnEventUseCase(repository: UserRepository, @IoDispatcher dispatcher: CoroutineDispatcher) : SetHasGoingToAnEventUseCase {
+        return SetHasGoingToAnEventUseCase(repository,dispatcher)
     }
 }

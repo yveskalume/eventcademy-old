@@ -7,4 +7,5 @@ import kotlinx.coroutines.flow.Flow
 interface UserRepository {
     fun signIn(idToken: String) : Flow<Result<User>>
     fun add(user: User) : Flow<Result<Pair<Boolean,String>>>
+    fun setHasGoingToAnEvent(user: User,eventUid: String) : Flow<Result<Unit>>
 }

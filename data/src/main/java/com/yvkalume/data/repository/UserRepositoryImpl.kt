@@ -58,4 +58,8 @@ class UserRepositoryImpl @Inject constructor(private val firestore: FirebaseFire
                 }
         awaitClose()
     }
+
+    override fun setHasGoingToAnEvent(): Flow<Result<Unit>> {
+        TODO("Not yet implemented")
+    }
 }
