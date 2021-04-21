@@ -30,10 +30,11 @@ class EventFragment : Fragment(R.layout.fragment_event), MavericksView {
 
     private val user = User(currentUser.uid,currentUser.displayName!!,currentUser.email!!,currentUser.photoUrl?.toString() ?: "", null)
 
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewModel.getAttendees(args.event.uid)
-        checkIfIsAttending()
     }
 
     private fun checkIfIsAttending() {
@@ -42,6 +43,7 @@ class EventFragment : Fragment(R.layout.fragment_event), MavericksView {
                 asyncProp = EventViewState::isAttending,
                 onSuccess = {
                     setAttendeeBtn(it ?: false)
+                    Toast.makeText(requireContext(),it.toString(),Toast.LENGTH_SHORT).show()
                 },
                 onFail = {
                     Timber.e("Erreur")
@@ -52,6 +54,7 @@ class EventFragment : Fragment(R.layout.fragment_event), MavericksView {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setUpNavigation()
+        checkIfIsAttending()
         binding.event = args.event
     }
 
@@ -61,29 +64,37 @@ class EventFragment : Fragment(R.layout.fragment_event), MavericksView {
         }
     }
 
-    // FIXME: 20/04/21 checkuserattendingcase 
     private fun setAttendeeBtn(isAttendee: Boolean) {
-        if (isAttendee) {
-            binding.attendBtn.run {
-                setBackgroundColor(Color.GRAY)
-                setTextColor(resources.getColor(R.color.blue700))
-                text = getString(R.string.txt_you_are_going)
+        when(isAttendee) {
+            true -> {
+                binding.attendBtn.text = getString(R.string.txt_you_are_going)
+                binding.attendBtn.apply {
+                    setBackgroundColor(Color.GRAY)
+                    setTextColor(resources.getColor(R.color.blue700))
+                }
             }
-        }
-            else {
-                binding.attendBtn.run {
+            else -> {
+                binding.attendBtn.text = getString(R.string.txt_going)
+                binding.attendBtn.apply {
                     setBackgroundColor(resources.getColor(R.color.blue700))
                     setTextColor(resources.getColor(R.color.white))
-                    text = getString(R.string.txt_going)
                     setUpListener()
                 }
             }
+        }
     }
 
     private fun setUpListener() {
         binding.attendBtn.setOnClickListener {
             viewModel.attend(user,args.event.uid)
             Toast.makeText(requireContext(),"Ok",Toast.LENGTH_SHORT).show()
+        }
+        Toast.makeText(requireContext(),"Ok2",Toast.LENGTH_SHORT).show()
+    }
+
+    private fun populateData(users: List<User>) {
+        if (users.isNotEmpty()) {
+            Timber.d(users.toString())
         }
     }
 
@@ -94,7 +105,7 @@ class EventFragment : Fragment(R.layout.fragment_event), MavericksView {
             }
 
             is Success -> {
-//                setAttendeeBtn(it.attendees.invoke().contains(user))
+                populateData(it.attendees.invoke())
             }
 
             is Fail -> {
