@@ -10,11 +10,16 @@ import android.viewbinding.library.fragment.viewBinding
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.afollestad.materialdialogs.MaterialDialog
+import com.afollestad.materialdialogs.list.customListAdapter
 import com.airbnb.mvrx.*
 import com.google.firebase.auth.FirebaseAuth
+import com.xwray.groupie.GroupAdapter
+import com.xwray.groupie.GroupieViewHolder
 import com.yvkalume.domain.entity.User
 import com.yvkalume.eventcademy.R
 import com.yvkalume.eventcademy.databinding.FragmentEventBinding
+import com.yvkalume.eventcademy.util.groupie.AttendeeItem
 import dagger.hilt.EntryPoint
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
@@ -27,6 +32,8 @@ class EventFragment : Fragment(R.layout.fragment_event), MavericksView {
     private val currentUser by lazy {
         FirebaseAuth.getInstance().currentUser
     }
+
+    private val attendeeAdapter = GroupAdapter<GroupieViewHolder>()
 
     private val user = User(currentUser.uid,currentUser.displayName!!,currentUser.email!!,currentUser.photoUrl?.toString() ?: "", null)
 
@@ -57,6 +64,9 @@ class EventFragment : Fragment(R.layout.fragment_event), MavericksView {
         setUpNavigation()
         checkIfIsAttending()
         binding.event = args.event
+        binding.participants.setOnClickListener {
+            showAttendeesDialog()
+        }
     }
 
     private fun setUpNavigation() {
@@ -98,6 +108,20 @@ class EventFragment : Fragment(R.layout.fragment_event), MavericksView {
         binding.attendeesPictures = users.map {
             it.profilUrl
         }.shuffled()
+
+        val items = users.map {
+            AttendeeItem(it)
+        }
+        attendeeAdapter.updateAsync(items)
+    }
+
+    private fun showAttendeesDialog() {
+        if (attendeeAdapter.itemCount > 0) {
+            MaterialDialog(requireContext()).show {
+                title(text = "Participants")
+                customListAdapter(attendeeAdapter)
+            }
+        }
     }
 
     override fun invalidate() = withState(viewModel) {

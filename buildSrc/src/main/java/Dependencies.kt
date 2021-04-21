@@ -40,6 +40,7 @@ object Deps {
     const val imageSlider = "com.github.smarteist:autoimageslider:1.4.0"
     const val lottie = "com.airbnb.android:lottie:3.5.0"
     const val circleImageView = "de.hdodenhof:circleimageview:3.1.0"
+    const val materialDialog = "com.afollestad.material-dialogs:core:3.2.1"
 
     object Kotlin {
         const val stdlib = "org.jetbrains.kotlin:kotlin-stdlib:${Version.kotlin}"
@@ -53,7 +54,7 @@ object Deps {
     }
 
     object Groupie {
-        private const val version = "2.8.0"
+        private const val version = "2.9.0"
         const val core = "com.xwray:groupie:$version"
         const val viewBinding = "com.xwray:groupie-viewbinding:$version"
     }
