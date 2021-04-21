@@ -41,11 +41,12 @@ class EventFragment : Fragment(R.layout.fragment_event), MavericksView {
         viewModel.checkIfUserIsAttending(currentUser.uid,args.event.uid)
         viewModel.onAsync(
                 asyncProp = EventViewState::isAttending,
+                deliveryMode = UniqueOnly("isAttending"),
                 onSuccess = {
                     setAttendeeBtn(it ?: false)
-                    Toast.makeText(requireContext(),it.toString(),Toast.LENGTH_SHORT).show()
                 },
                 onFail = {
+                    Toast.makeText(requireContext(),"Une erreur s'est produite",Toast.LENGTH_SHORT).show()
                     Timber.e("Erreur")
                 }
         )
@@ -89,7 +90,7 @@ class EventFragment : Fragment(R.layout.fragment_event), MavericksView {
     private fun setUpListener() {
         binding.attendBtn.setOnClickListener {
             viewModel.attend(user,args.event.uid)
-            Toast.makeText(requireContext(),"Vous y allez",Toast.LENGTH_SHORT).show()
+            viewModel.checkIfUserIsAttending(currentUser.uid,args.event.uid)
         }
     }
 
@@ -110,6 +111,7 @@ class EventFragment : Fragment(R.layout.fragment_event), MavericksView {
             }
 
             is Fail -> {
+                Toast.makeText(requireContext(),"Une erreur s'est produite",Toast.LENGTH_SHORT).show()
                 Timber.e("Erreur")
             }
         }
