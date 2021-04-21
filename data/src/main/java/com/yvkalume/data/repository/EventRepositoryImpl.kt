@@ -97,7 +97,7 @@ class EventRepositoryImpl @Inject constructor(private val firestore: FirebaseFir
 
                 value?.toObjects(Event::class.java)?.also {
                     if (!isClosedForSend)
-                        offer(Result.Success(it.getOnlyFuture().first()))
+                        offer(Result.Success(it.getOnlyFuture().firstOrNull()))
                 }
             }
         awaitClose()
