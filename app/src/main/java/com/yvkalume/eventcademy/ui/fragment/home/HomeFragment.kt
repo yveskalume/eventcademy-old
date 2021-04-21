@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.viewbinding.library.fragment.viewBinding
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
 import com.airbnb.epoxy.EpoxyController
 import com.airbnb.mvrx.*
@@ -106,10 +107,8 @@ class HomeFragment : Fragment(R.layout.fragment_home), MavericksView {
     }
 
     override fun invalidate() = withState(viewModel) {
+        binding.progress.isVisible = it.data is Loading
         when(it.data) {
-            is Loading -> {
-
-            }
             is Success -> {
                 populateData(it.data.invoke())
             }

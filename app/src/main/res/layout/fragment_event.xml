@@ -183,6 +183,19 @@
                         app:layout_constraintTop_toTopOf="@+id/circleImageView3" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
+                <ProgressBar
+                    android:id="@+id/progress"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:indeterminate="true"
+                    android:indeterminateTint="@color/blue700"
+                    android:progressTint="@color/blue700"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.7" />
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </ScrollView>

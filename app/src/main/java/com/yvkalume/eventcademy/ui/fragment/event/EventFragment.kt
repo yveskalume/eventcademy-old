@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.viewbinding.library.fragment.viewBinding
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.afollestad.materialdialogs.MaterialDialog
@@ -125,10 +126,9 @@ class EventFragment : Fragment(R.layout.fragment_event), MavericksView {
     }
 
     override fun invalidate() = withState(viewModel) {
-        when(it.attendees) {
-            is Loading -> {
+        binding.progress.isVisible = it.isAttending is Loading
 
-            }
+        when(it.attendees) {
 
             is Success -> {
                 populateData(it.attendees.invoke())
