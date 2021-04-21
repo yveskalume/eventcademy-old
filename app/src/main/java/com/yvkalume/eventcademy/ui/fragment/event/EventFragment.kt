@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.viewbinding.library.fragment.viewBinding
+import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.airbnb.mvrx.*
@@ -16,6 +17,7 @@ import com.yvkalume.eventcademy.R
 import com.yvkalume.eventcademy.databinding.FragmentEventBinding
 import dagger.hilt.EntryPoint
 import dagger.hilt.android.AndroidEntryPoint
+import timber.log.Timber
 
 @AndroidEntryPoint
 class EventFragment : Fragment(R.layout.fragment_event), MavericksView {
@@ -39,7 +41,10 @@ class EventFragment : Fragment(R.layout.fragment_event), MavericksView {
         viewModel.onAsync(
                 asyncProp = EventViewState::isAttending,
                 onSuccess = {
-                    setAttendeeBtn(it)
+                    setAttendeeBtn(it ?: false)
+                },
+                onFail = {
+                    Timber.e("Erreur")
                 }
         )
     }
@@ -58,28 +63,27 @@ class EventFragment : Fragment(R.layout.fragment_event), MavericksView {
 
     // FIXME: 20/04/21 checkuserattendingcase 
     private fun setAttendeeBtn(isAttendee: Boolean) {
-        when {
-            isAttendee -> {
-                binding.attendBtn.run {
-                    setBackgroundColor(Color.GRAY)
-                    setTextColor(resources.getColor(R.color.blue700))
-                    text = getString(R.string.txt_you_are_going)
-                }
+        if (isAttendee) {
+            binding.attendBtn.run {
+                setBackgroundColor(Color.GRAY)
+                setTextColor(resources.getColor(R.color.blue700))
+                text = getString(R.string.txt_you_are_going)
             }
-            else -> {
+        }
+            else {
                 binding.attendBtn.run {
                     setBackgroundColor(resources.getColor(R.color.blue700))
                     setTextColor(resources.getColor(R.color.white))
                     text = getString(R.string.txt_going)
-                    setUpListner()
+                    setUpListener()
                 }
             }
-        }
     }
 
-    private fun setUpListner() {
+    private fun setUpListener() {
         binding.attendBtn.setOnClickListener {
             viewModel.attend(user,args.event.uid)
+            Toast.makeText(requireContext(),"Ok",Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -90,11 +94,11 @@ class EventFragment : Fragment(R.layout.fragment_event), MavericksView {
             }
 
             is Success -> {
-                setAttendeeBtn(it.attendees.invoke().contains(user))
+//                setAttendeeBtn(it.attendees.invoke().contains(user))
             }
 
             is Fail -> {
-
+                Timber.e("Erreur")
             }
         }
     }

@@ -13,6 +13,8 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
+import kotlinx.coroutines.tasks.await
+import timber.log.Timber
 import javax.inject.Inject
 
 class UserRepositoryImpl @Inject constructor(private val firestore: FirebaseFirestore,private val auth: FirebaseAuth) : UserRepository {
@@ -23,11 +25,17 @@ class UserRepositoryImpl @Inject constructor(private val firestore: FirebaseFire
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information
-                    Log.d("UserRepository", "signInWithCredential:success")
+                    Timber.d("signInWithCredential:success")
                     val authUser = auth.currentUser
                     if (authUser != null) {
-                        val user = User(auth.uid!!,authUser.displayName!!,authUser.email!!, authUser.photoUrl?.toString() ?: "", Timestamp.now().toDate())
-                        if(!isClosedForSend) {
+                        val user = User(
+                            auth.uid!!,
+                            authUser.displayName!!,
+                            authUser.email!!,
+                            authUser.photoUrl?.toString() ?: "",
+                            Timestamp.now().toDate()
+                        )
+                        if (!isClosedForSend) {
                             offer(Result.Success(user))
                         }
                     }
@@ -35,7 +43,7 @@ class UserRepositoryImpl @Inject constructor(private val firestore: FirebaseFire
                     if(!isClosedForSend) {
                         offer(Result.Error(Exception("Erreur")))
                     }
-                    Log.w(this.toString(), "signInWithCredential:failure", task.exception)
+                    Timber.e("signInWithCredential:failure")
                 }
             }
         awaitClose()
@@ -76,19 +84,11 @@ class UserRepositoryImpl @Inject constructor(private val firestore: FirebaseFire
         awaitClose()
     }
 
-    @ExperimentalCoroutinesApi
-    override fun setHasGoingToAnEvent(user: User, eventUid: String) = callbackFlow {
-        firestore.collection("${FireBasePath.events}/$eventUid/attendees")
-                .document(user.uid)
-                .set(user)
-                .addOnFailureListener {
-                    if(!isClosedForSend)
-                        offer(Result.Error(it))
-                }
-                .addOnSuccessListener {
-                    if (!isClosedForSend)
-                        offer(Result.Success(Unit))
-                }
-        awaitClose()
+    override suspend fun setHasGoingToAnEvent(user: User, eventUid: String) {
+        firestore.document("${FireBasePath.events}/$eventUid/attendees/${user.uid}")
+            .set(user).await()
+        Timber.d("attended successfully")
     }
+
+
 }

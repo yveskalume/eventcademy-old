@@ -8,5 +8,5 @@ interface UserRepository {
     fun signIn(idToken: String) : Flow<Result<User>>
     fun add(user: User) : Flow<Result<Pair<Boolean,String>>>
     fun getUserByUid(uid: String) : Flow<Result<User>>
-    fun setHasGoingToAnEvent(user: User,eventUid: String) : Flow<Result<Unit>>
+    suspend fun setHasGoingToAnEvent(user: User,eventUid: String)
 }

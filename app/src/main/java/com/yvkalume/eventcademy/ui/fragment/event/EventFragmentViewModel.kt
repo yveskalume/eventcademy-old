@@ -1,5 +1,6 @@
 package com.yvkalume.eventcademy.ui.fragment.event
 
+import com.airbnb.mvrx.Async
 import com.airbnb.mvrx.MavericksViewModel
 import com.airbnb.mvrx.MavericksViewModelFactory
 import com.yvkalume.domain.entity.User
@@ -16,6 +17,7 @@ import dagger.assisted.AssistedInject
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
+import timber.log.Timber
 
 class EventFragmentViewModel @AssistedInject constructor(
         @Assisted state: EventViewState,
@@ -25,12 +27,13 @@ class EventFragmentViewModel @AssistedInject constructor(
 ) : MavericksViewModel<EventViewState>(state) {
 
     fun attend(user: User, eventUid: String) = viewModelScope.launch {
+        Timber.d("attend")
         setHasGoingToAnEventUseCase(Pair(user,eventUid))
     }
 
     fun checkIfUserIsAttending(userUid: String,eventUid: String) = viewModelScope.launch {
         checkIfUserIsAttendingUseCase(Pair(userUid,eventUid)).map {
-            it.data!!
+            it.data
         }.execute {
             copy(isAttending = it)
         }
