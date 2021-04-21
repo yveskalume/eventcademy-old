@@ -4,6 +4,7 @@ import android.util.Log
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 import com.yvkalume.data.util.FireBasePath
+import com.yvkalume.data.util.getOnlyFuture
 import com.yvkalume.domain.entity.Event
 import com.yvkalume.domain.entity.User
 import com.yvkalume.domain.repository.EventRepository
@@ -27,7 +28,7 @@ class EventRepositoryImpl @Inject constructor(private val firestore: FirebaseFir
                 }
 
                 value?.toObjects(Event::class.java)?.also {
-                    offer(Result.Success(it))
+                    offer(Result.Success(it.getOnlyFuture()))
                     Log.d("EventRepository",it.toString())
                 }
             }
@@ -53,7 +54,7 @@ class EventRepositoryImpl @Inject constructor(private val firestore: FirebaseFir
 
                 value?.toObjects(Event::class.java)?.also {
                     if (!isClosedForSend)
-                        offer(Result.Success(it))
+                        offer(Result.Success(it.getOnlyFuture()))
                     Log.d("EventRepository",it.toString())
                 }
             }
@@ -75,7 +76,7 @@ class EventRepositoryImpl @Inject constructor(private val firestore: FirebaseFir
 
                 value?.toObjects(Event::class.java)?.also {
                     if (!isClosedForSend)
-                    offer(Result.Success(it))
+                    offer(Result.Success(it.getOnlyFuture()))
                     Log.d("EventRepository",it.toString())
                 }
             }
@@ -96,7 +97,7 @@ class EventRepositoryImpl @Inject constructor(private val firestore: FirebaseFir
 
                 value?.toObjects(Event::class.java)?.also {
                     if (!isClosedForSend)
-                        offer(Result.Success(it.first()))
+                        offer(Result.Success(it.getOnlyFuture().first()))
                 }
             }
         awaitClose()
