@@ -69,6 +69,7 @@ dependencies {
     implementation Deps.Epoxy.dataBinding
     kapt Deps.Epoxy.processor
 
+    implementation Deps.timber
     implementation Deps.viewBinding
     implementation Deps.circleImageView
     implementation Deps.glide
