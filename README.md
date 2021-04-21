@@ -4,7 +4,8 @@
 Une application qui référence les événements liés aux communautés techs : Espacesis, GDG Lubumbashi, WTM Lubumbashi,DSC,MLSA,etc
 
 ## Installation
-Create a Firebase project (https://console.firebase.google.com/) and import the google-service.json file into your project as described in the instructions
+
+Créez un projet Firebase (https://console.firebase.google.com/) et importez le fichier google-service.json dans votre projet comme décrit dans la documentation officielle
 
 ## Comment contribuer
 
