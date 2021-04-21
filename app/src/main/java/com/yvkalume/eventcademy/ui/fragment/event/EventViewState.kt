@@ -6,5 +6,6 @@ import com.airbnb.mvrx.Uninitialized
 import com.yvkalume.domain.entity.User
 
 data class EventViewState (
-    val attendees: Async<List<User>> = Uninitialized
+    val attendees: Async<List<User>> = Uninitialized,
+    val isAttending: Async<Boolean> = Uninitialized
 ) : MavericksState
