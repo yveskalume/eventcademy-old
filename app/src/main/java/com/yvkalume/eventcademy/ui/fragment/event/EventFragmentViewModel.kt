@@ -28,7 +28,7 @@ class EventFragmentViewModel @AssistedInject constructor(
         setHasGoingToAnEventUseCase(Pair(user,eventUid))
     }
 
-    fun checkIfUserIsAttending(userUid: String,eventUid: String) {
+    fun checkIfUserIsAttending(userUid: String,eventUid: String) = viewModelScope.launch {
         checkIfUserIsAttendingUseCase(Pair(userUid,eventUid)).map {
             it.data!!
         }.execute {
