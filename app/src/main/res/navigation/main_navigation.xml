@@ -9,7 +9,9 @@
         android:label="HomeFragment" >
         <action
             android:id="@+id/to_eventFragment"
-            app:destination="@id/eventFragment" />
+            app:destination="@id/eventFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/eventFragment"
