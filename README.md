@@ -1,7 +1,7 @@
 # EventCademy
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
-Une application qui référence les événements lies aux communautés techs : Espacesis, GDG Lubumbashi, WTM Lubumbashi,DSC,MLSA,etc
+Une application qui référence les événements liés aux communautés techs : Espacesis, GDG Lubumbashi, WTM Lubumbashi,DSC,MLSA,etc
 
 ## Installation
 Create a Firebase project (https://console.firebase.google.com/) and import the google-service.json file into your project as described in the instructions
