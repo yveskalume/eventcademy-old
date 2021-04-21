@@ -69,8 +69,10 @@ class EventFragment : Fragment(R.layout.fragment_event), MavericksView {
             true -> {
                 binding.attendBtn.text = getString(R.string.txt_you_are_going)
                 binding.attendBtn.apply {
-                    setBackgroundColor(Color.GRAY)
-                    setTextColor(resources.getColor(R.color.blue700))
+                    setBackgroundColor(resources.getColor(R.color.gray))
+                    strokeWidth = 2
+                    elevation = 0F
+                    setTextColor(Color.GRAY)
                 }
             }
             else -> {
@@ -87,15 +89,14 @@ class EventFragment : Fragment(R.layout.fragment_event), MavericksView {
     private fun setUpListener() {
         binding.attendBtn.setOnClickListener {
             viewModel.attend(user,args.event.uid)
-            Toast.makeText(requireContext(),"Ok",Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(),"Vous y allez",Toast.LENGTH_SHORT).show()
         }
-        Toast.makeText(requireContext(),"Ok2",Toast.LENGTH_SHORT).show()
     }
 
     private fun populateData(users: List<User>) {
-        if (users.isNotEmpty()) {
-            Timber.d(users.toString())
-        }
+        binding.attendeesPictures = users.map {
+            it.profilUrl
+        }.shuffled()
     }
 
     override fun invalidate() = withState(viewModel) {

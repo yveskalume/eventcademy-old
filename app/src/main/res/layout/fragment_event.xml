@@ -7,6 +7,9 @@
         <variable
             name="event"
             type="com.yvkalume.data.model.EventUiModel" />
+        <variable
+            name="attendeesPictures"
+            type="java.util.List&lt;String&gt;" />
 
     </data>
 
@@ -101,25 +104,10 @@
                     android:text="@string/txt_going"
                     android:textAllCaps="false"
                     app:cornerRadius="16dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/txtPrice"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/materialTextView2" />
 
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/txtPrice"
-                    android:layout_width="0dp"
-                    android:layout_height="26dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="8dp"
-                    android:drawableStart="@drawable/ic__wallet"
-                    android:drawablePadding="8dp"
-                    app:drawableTint="@color/blue700"
-                    android:text="5$"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
-                    app:layout_constraintEnd_toStartOf="@id/attendBtn"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/materialTextView2" />
+
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/materialTextView5"
@@ -141,15 +129,17 @@
                     android:id="@+id/participants"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/txtPrice">
+                    app:layout_constraintTop_toBottomOf="@id/materialTextView2">
 
                     <de.hdodenhof.circleimageview.CircleImageView
                         android:id="@+id/circleImageView"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
                         android:layout_marginEnd="8dp"
+                        app:setImageUrl="@{attendeesPictures[3]}"
                         android:layout_marginBottom="6dp"
                         android:src="@drawable/img"
                         app:civ_border_color="@color/white"
@@ -163,6 +153,7 @@
                         android:layout_height="30dp"
                         android:layout_marginStart="16dp"
                         android:src="@drawable/img"
+                        app:setImageUrl="@{attendeesPictures[2]}"
                         app:civ_border_color="@color/white"
                         app:civ_border_width="2dp"
                         app:layout_constraintBottom_toBottomOf="@id/circleImageView"
@@ -175,6 +166,7 @@
                         android:layout_height="30dp"
                         android:layout_marginStart="16dp"
                         android:src="@drawable/img"
+                        app:setImageUrl="@{attendeesPictures[1]}"
                         app:civ_border_color="@color/white"
                         app:civ_border_width="2dp"
                         app:layout_constraintBottom_toBottomOf="@id/circleImageView2"
@@ -187,6 +179,7 @@
                         android:layout_height="30dp"
                         android:layout_marginStart="16dp"
                         android:src="@drawable/img"
+                        app:setImageUrl="@{attendeesPictures[0]}"
                         app:civ_border_color="@color/white"
                         app:civ_border_width="2dp"
                         app:layout_constraintBottom_toBottomOf="@id/circleImageView3"
