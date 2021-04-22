@@ -97,6 +97,22 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/chip4" />
 
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/materialTextView6"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16sp"
+                    android:drawableStart="@drawable/ic_link"
+                    android:drawablePadding="8dp"
+                    app:urlText="@{event.link}"
+                    android:textColor="@color/blue500"
+                    android:textSize="16sp"
+                    app:drawableTint="@color/blue700"
+                    app:layout_constraintEnd_toStartOf="@+id/attendBtn"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/materialTextView2"
+                    tools:text="www.espacesis.org" />
+
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/attendBtn"
                     android:layout_width="wrap_content"
@@ -131,57 +147,57 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="4dp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/materialTextView2">
+                    app:layout_constraintTop_toBottomOf="@+id/materialTextView6">
 
                     <de.hdodenhof.circleimageview.CircleImageView
                         android:id="@+id/circleImageView"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
                         android:layout_marginEnd="8dp"
-                        app:setImageUrl="@{attendeesPictures[3]}"
                         android:layout_marginBottom="6dp"
                         app:civ_border_color="@color/white"
                         app:civ_border_width="2dp"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent" />
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:setImageUrl="@{attendeesPictures[3]}" />
 
                     <de.hdodenhof.circleimageview.CircleImageView
                         android:id="@+id/circleImageView2"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
                         android:layout_marginStart="16dp"
-                        app:setImageUrl="@{attendeesPictures[2]}"
                         app:civ_border_color="@color/white"
                         app:civ_border_width="2dp"
                         app:layout_constraintBottom_toBottomOf="@id/circleImageView"
                         app:layout_constraintStart_toStartOf="@+id/circleImageView"
-                        app:layout_constraintTop_toTopOf="@+id/circleImageView" />
+                        app:layout_constraintTop_toTopOf="@+id/circleImageView"
+                        app:setImageUrl="@{attendeesPictures[2]}" />
 
                     <de.hdodenhof.circleimageview.CircleImageView
                         android:id="@+id/circleImageView3"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
                         android:layout_marginStart="16dp"
-                        app:setImageUrl="@{attendeesPictures[1]}"
                         app:civ_border_color="@color/white"
                         app:civ_border_width="2dp"
                         app:layout_constraintBottom_toBottomOf="@id/circleImageView2"
                         app:layout_constraintStart_toStartOf="@+id/circleImageView2"
-                        app:layout_constraintTop_toTopOf="@+id/circleImageView2" />
+                        app:layout_constraintTop_toTopOf="@+id/circleImageView2"
+                        app:setImageUrl="@{attendeesPictures[1]}" />
 
                     <de.hdodenhof.circleimageview.CircleImageView
                         android:id="@+id/circleImageView4"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
                         android:layout_marginStart="16dp"
-                        app:setImageUrl="@{attendeesPictures[0]}"
                         app:civ_border_color="@color/white"
                         app:civ_border_width="2dp"
                         app:layout_constraintBottom_toBottomOf="@id/circleImageView3"
                         app:layout_constraintStart_toStartOf="@+id/circleImageView3"
-                        app:layout_constraintTop_toTopOf="@+id/circleImageView3" />
+                        app:layout_constraintTop_toTopOf="@+id/circleImageView3"
+                        app:setImageUrl="@{attendeesPictures[0]}" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <ProgressBar
