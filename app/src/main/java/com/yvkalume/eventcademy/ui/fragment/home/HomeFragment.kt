@@ -74,7 +74,7 @@ class HomeFragment : Fragment(R.layout.fragment_home), MavericksView {
             }
 
             carousel {
-                id("carousel")
+                id("online-events")
                 withModelsFrom(events) {
                     EventBindingModel_()
                             .id(it.uid)
@@ -96,7 +96,7 @@ class HomeFragment : Fragment(R.layout.fragment_home), MavericksView {
             }
 
             carousel {
-                id("carousel")
+                id("offline-events")
                 withModelsFrom(events) {
                     EventBindingModel_()
                             .id(it.uid)
