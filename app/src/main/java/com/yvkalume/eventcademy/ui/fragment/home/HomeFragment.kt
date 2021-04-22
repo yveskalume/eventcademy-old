@@ -101,6 +101,10 @@ class HomeFragment : Fragment(R.layout.fragment_home), MavericksView {
                     EventBindingModel_()
                             .id(it.uid)
                             .event(it)
+                            .clickListener { _ ->
+                                val directions = HomeFragmentDirections.toEventFragment(it)
+                                findNavController().navigate(directions)
+                            }
                 }
             }
         }
