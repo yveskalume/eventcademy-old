@@ -20,6 +20,7 @@ import com.xwray.groupie.GroupieViewHolder
 import com.yvkalume.domain.entity.User
 import com.yvkalume.eventcademy.R
 import com.yvkalume.eventcademy.databinding.FragmentEventBinding
+import com.yvkalume.eventcademy.util.addToGoogleAgendaIntent
 import com.yvkalume.eventcademy.util.groupie.AttendeeItem
 import dagger.hilt.EntryPoint
 import dagger.hilt.android.AndroidEntryPoint
@@ -38,11 +39,19 @@ class EventFragment : Fragment(R.layout.fragment_event), MavericksView {
 
     private val user = User(currentUser.uid,currentUser.displayName!!,currentUser.email!!,currentUser.photoUrl?.toString() ?: "", null)
 
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewModel.getAttendees(args.event.uid)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setUpNavigation()
+        checkIfIsAttending()
+        binding.event = args.event
+        binding.participants.setOnClickListener {
+            showAttendeesDialog()
+        }
     }
 
     private fun checkIfIsAttending() {
@@ -60,16 +69,6 @@ class EventFragment : Fragment(R.layout.fragment_event), MavericksView {
         )
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        setUpNavigation()
-        checkIfIsAttending()
-        binding.event = args.event
-        binding.participants.setOnClickListener {
-            showAttendeesDialog()
-        }
-    }
-
     private fun setUpNavigation() {
         binding.toolbar.setNavigationOnClickListener {
             findNavController().navigateUp()
@@ -79,12 +78,13 @@ class EventFragment : Fragment(R.layout.fragment_event), MavericksView {
     private fun setAttendeeBtn(isAttendee: Boolean) {
         when(isAttendee) {
             true -> {
-                binding.attendBtn.text = getString(R.string.txt_you_are_going)
+                binding.attendBtn.text = getString(R.string.txt_add_to_agenda)
                 binding.attendBtn.apply {
                     setBackgroundColor(resources.getColor(R.color.gray))
                     strokeWidth = 2
                     elevation = 0F
                     setTextColor(Color.GRAY)
+                    addToAgenda()
                 }
             }
             else -> {
@@ -95,6 +95,12 @@ class EventFragment : Fragment(R.layout.fragment_event), MavericksView {
                     setUpListener()
                 }
             }
+        }
+    }
+
+    private fun addToAgenda() {
+        binding.attendBtn.setOnClickListener {
+            startActivity(args.event.addToGoogleAgendaIntent())
         }
     }
 
