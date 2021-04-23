@@ -1,7 +1,7 @@
 # EventCademy
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
-Une application qui référence les événements liés aux communautés techs : Espacesis, GDG Lubumbashi, WTM Lubumbashi,DSC,MLSA,etc
+Une application qui référence les événements liés aux communautés techs : Espacesis, GDG, WTM,DSC,MLSA,etc
 
 ## Installation
 
