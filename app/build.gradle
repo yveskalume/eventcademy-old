@@ -9,6 +9,7 @@ plugins {
     id 'androidx.navigation.safeargs.kotlin'
     id 'com.google.gms.google-services'
     id 'kotlin-parcelize'
+    id 'com.google.firebase.crashlytics'
 }
 
 android {
@@ -85,6 +86,9 @@ dependencies {
     implementation(Deps.Firebase.storage)
     implementation(Deps.Firebase.auth)
     implementation(Deps.Firebase.googlePlayServiceAuth)
+    implementation 'com.google.firebase:firebase-crashlytics-ktx'
+    implementation 'com.google.firebase:firebase-analytics-ktx'
+
 
     implementation(Deps.Hilt.hilt)
     kapt(Deps.Hilt.processor)
