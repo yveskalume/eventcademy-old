@@ -20,6 +20,8 @@ Créez un projet Firebase (https://console.firebase.google.com/) et importez le 
 - Faites un merge request vers le repo original
 - Si un conflit survient lorsque vous demandez à Git de fusionner votre code, essayez de le résoudre avec un nouveau commit, si le conflit persiste, veuillez contacter [@YvesKalume](https://github.com/YvesKalume/)
 
+## Licence
+
        Copyright 2021 EventCademy
     
        Licensed under the Apache License, Version 2.0 (the "License");
