@@ -9,7 +9,6 @@ Créez un projet Firebase (https://console.firebase.google.com/) et importez le 
 
 ## Comment contribuer
 
-Une application qui référence les événements lies aux communautés techs : Espacesis, GDG Lubumbashi, WTM Lubumbashi,DSC,MLSA,etc
 - Forkez le repo sur votre github
 - Clonez votre repo forké
 - Ajoutez ou choisissez un "Issue" à [https://github.com/YvesKalume/eventcademy/issues](https://github.com/YvesKalume/eventcademy/issues)
