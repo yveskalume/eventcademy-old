@@ -16,11 +16,9 @@ import com.yvkalume.data.mapper.EventUiMapper
 import com.yvkalume.data.model.EventUiModel
 import com.yvkalume.data.model.presentation.HomeData
 import com.yvkalume.domain.entity.Event
-import com.yvkalume.eventcademy.EventBindingModel_
+import com.yvkalume.eventcademy.*
 import com.yvkalume.eventcademy.R
 import com.yvkalume.eventcademy.databinding.FragmentHomeBinding
-import com.yvkalume.eventcademy.featuredEvent
-import com.yvkalume.eventcademy.header
 import com.yvkalume.eventcademy.util.carousel
 import com.yvkalume.eventcademy.util.setImageUrl
 import com.yvkalume.eventcademy.util.withModelsFrom
@@ -47,6 +45,11 @@ class HomeFragment : Fragment(R.layout.fragment_home), MavericksView {
 
     private fun populateData(data: HomeData) {
         binding.rV.withModels {
+            if (data.onlineEvents.isNullOrEmpty() && data.offlineEvents.isNullOrEmpty()) {
+                emptyList {
+                    id("empty-list")
+                }
+            }
             getFeaturedEvent(data.featuredEvent)
             onlineEvents(data.onlineEvents)
             offlineEvents(data.offlineEvents)
