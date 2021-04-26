@@ -3,6 +3,8 @@
 
 Une application qui référence les événements liés aux communautés techs : Espacesis, GDG, WTM,DSC,MLSA,etc
 
+<a href="https://play.google.com/store/apps/details?id=com.yvkalume.eventcademy"><img src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png" height="75">
+
 ## Installation
 
 Créez un projet Firebase (https://console.firebase.google.com/) et importez le fichier google-service.json dans votre projet comme décrit dans la documentation officielle
