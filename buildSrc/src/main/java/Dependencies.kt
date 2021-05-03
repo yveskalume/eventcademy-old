@@ -53,6 +53,11 @@ object Deps {
 
     }
 
+    object GooglePlayService {
+        private const val version = "1.8.1"
+        const val core = "com.google.android.play:core-ktx:$version"
+    }
+
     object Groupie {
         private const val version = "2.9.0"
         const val core = "com.xwray:groupie:$version"
