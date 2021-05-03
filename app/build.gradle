@@ -93,6 +93,8 @@ dependencies {
 
     implementation Deps.Mavericks.mvrx
 
+    implementation Deps.GooglePlayService.core
+
     implementation Deps.Epoxy.epoxy
     implementation Deps.Epoxy.dataBinding
     kapt Deps.Epoxy.processor
