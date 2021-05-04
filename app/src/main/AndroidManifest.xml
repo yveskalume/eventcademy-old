@@ -10,6 +10,15 @@
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.EventCademy">
+
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@drawable/logo" />
+
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_color"
+            android:resource="@color/blue700" />
+
         <activity android:name=".ui.activity.SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -17,6 +26,14 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.activity.MainActivity"/>
+
+        <service android:name=".service.NotificationService"
+            android:enabled="true"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>

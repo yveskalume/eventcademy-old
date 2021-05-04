@@ -103,6 +103,7 @@ object Deps {
         const val storage = "com.google.firebase:firebase-storage"
         const val auth = "com.google.firebase:firebase-auth-ktx"
         const val ui = "com.firebaseui:firebase-ui-auth:6.4.0"
+        const val fcm = "com.google.firebase:firebase-messaging-ktx"
         const val googlePlayServiceAuth = "com.google.android.gms:play-services-auth:19.0.0"
     }
 

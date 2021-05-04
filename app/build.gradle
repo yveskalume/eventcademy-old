@@ -112,6 +112,7 @@ dependencies {
     implementation(Deps.Firebase.firestore)
     implementation(Deps.Firebase.storage)
     implementation(Deps.Firebase.auth)
+    implementation(Deps.Firebase.fcm)
     implementation(Deps.Firebase.googlePlayServiceAuth)
     implementation 'com.google.firebase:firebase-crashlytics-ktx'
     implementation 'com.google.firebase:firebase-analytics-ktx'
