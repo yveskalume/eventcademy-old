@@ -21,4 +21,12 @@
             android:name="event"
             app:argType="com.yvkalume.data.model.EventUiModel" />
     </fragment>
+    <fragment
+        android:id="@+id/groupesFragment"
+        android:name="com.yvkalume.eventcademy.ui.fragment.groupes.GroupesFragment"
+        android:label="GroupesFragment" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.yvkalume.eventcademy.ui.fragment.profile.ProfileFragment"
+        android:label="ProfileFragment" />
 </navigation>
