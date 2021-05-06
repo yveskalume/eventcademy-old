@@ -24,9 +24,17 @@
     <fragment
         android:id="@+id/groupesFragment"
         android:name="com.yvkalume.eventcademy.ui.fragment.groupes.GroupesFragment"
-        android:label="GroupesFragment" />
+        android:label="GroupesFragment" >
+        <action
+            android:id="@+id/action_groupesFragment_to_groupeDetailsFragment"
+            app:destination="@id/groupeDetailsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.yvkalume.eventcademy.ui.fragment.profile.ProfileFragment"
         android:label="ProfileFragment" />
+    <fragment
+        android:id="@+id/groupeDetailsFragment"
+        android:name="com.yvkalume.eventcademy.ui.fragment.groupedetails.GroupeDetailsFragment"
+        android:label="GroupeDetailsFragment" />
 </navigation>
