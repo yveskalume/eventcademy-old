@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.viewbinding.library.fragment.viewBinding
+import androidx.navigation.fragment.findNavController
 import com.yvkalume.eventcademy.R
 import com.yvkalume.eventcademy.databinding.FragmentGroupesBinding
 import com.yvkalume.eventcademy.groupe
@@ -23,6 +24,10 @@ class GroupesFragment : Fragment(R.layout.fragment_groupes) {
             for (i in 1..6) {
                 groupe {
                     id(i)
+                    clickListener { _ ->
+                        val direction = GroupesFragmentDirections.actionGroupesFragmentToGroupeDetailsFragment()
+                        findNavController().navigate(direction)
+                    }
                 }
             }
         }
