@@ -38,6 +38,7 @@ class AllClubsFragment : Fragment(R.layout.fragment_all_clubs), MavericksView {
             for (club in clubs) {
                 club {
                     id(club.uid)
+                    club(club)
                     clickListener { _ ->
                         val direction = AllClubsFragmentDirections.toClubDetailsFragment(club = club)
                         findNavController().navigate(direction)
