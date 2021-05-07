@@ -7,8 +7,9 @@ import com.yvkalume.util.Result
 import com.yvkalume.util.annotation.IoDispatcher
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
+import javax.inject.Inject
 
-class GetOneClubByUidUseCase(private val repository: ClubRepository, @IoDispatcher private val dispatcher: CoroutineDispatcher) : FlowUseCase<String,Club>(dispatcher) {
+class GetOneClubByUidUseCase @Inject constructor (private val repository: ClubRepository, @IoDispatcher private val dispatcher: CoroutineDispatcher) : FlowUseCase<String,Club>(dispatcher) {
     override fun execute(parameters: String): Flow<Result<Club>> {
         return repository.getOneByUid(parameters)
     }
