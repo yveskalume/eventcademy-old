@@ -8,7 +8,7 @@ import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
 import com.airbnb.mvrx.*
-import com.yvkalume.domain.entity.Club
+import com.yvkalume.data.model.ClubUiModel
 import com.yvkalume.eventcademy.R
 import com.yvkalume.eventcademy.club
 import com.yvkalume.eventcademy.databinding.FragmentAllClubsBinding
@@ -16,10 +16,6 @@ import com.yvkalume.eventcademy.databinding.FragmentAllClubsBinding
 class AllClubsFragment : Fragment(R.layout.fragment_all_clubs), MavericksView {
     private val binding by viewBinding<FragmentAllClubsBinding>()
     private val viewModel: AllClubsViewModel by fragmentViewModel()
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-    }
 
     override fun invalidate() = withState(viewModel) {
         binding.progress.isVisible = it.clubs is Loading
@@ -35,13 +31,13 @@ class AllClubsFragment : Fragment(R.layout.fragment_all_clubs), MavericksView {
         }
     }
 
-    private fun populateData(clubs: List<Club>) {
+    private fun populateData(clubs: List<ClubUiModel>) {
         binding.rV.withModels {
             for (club in clubs) {
                 club {
                     id(club.uid)
                     clickListener { _ ->
-                        val direction = AllClubsFragmentDirections.toClubDetailsFragment()
+                        val direction = AllClubsFragmentDirections.toClubDetailsFragment(club = club)
                         findNavController().navigate(direction)
                     }
                 }
