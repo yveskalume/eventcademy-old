@@ -1,7 +1,9 @@
 package com.yvkalume.domain.di
 
+import com.yvkalume.domain.repository.ClubRepository
 import com.yvkalume.domain.repository.EventRepository
 import com.yvkalume.domain.repository.UserRepository
+import com.yvkalume.domain.usecase.club.GetAllClubUseCase
 import com.yvkalume.domain.usecase.event.*
 import com.yvkalume.domain.usecase.user.AddUserUseCase
 import com.yvkalume.domain.usecase.user.GetUserByUidUseCase
@@ -71,6 +73,11 @@ object UseCaseModule {
     @Provides
     fun provideCheckIfUserIsAttendingUseCase(repository: EventRepository, @IoDispatcher dispatcher: CoroutineDispatcher) : CheckIfUserIsAttendingUseCase {
         return CheckIfUserIsAttendingUseCase(repository,dispatcher)
+    }
+
+    @Provides
+    fun provideGetAllClubUseCase(repository: ClubRepository, @IoDispatcher dispatcher: CoroutineDispatcher) : GetAllClubUseCase {
+        return GetAllClubUseCase(repository,dispatcher)
     }
 
 }
