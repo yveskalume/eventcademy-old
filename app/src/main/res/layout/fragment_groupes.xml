@@ -24,36 +24,16 @@
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-                <LinearLayout
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:orientation="horizontal">
-                    <ImageView
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:scaleType="fitCenter"
-                        android:src="@drawable/logo"
-                        android:layout_gravity="start"
-                        />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="EventCademy"
-                        android:textSize="18sp"
-                        android:layout_marginStart="8dp"
-                        android:textColor="@color/blue700"
-                        android:gravity="center"
-                        android:layout_gravity="start"/>
-                </LinearLayout>
-
-                <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/userImage"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_gravity="center|end"
-                    android:layout_marginEnd="16dp"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/img" />
+                    android:text="Clubs"
+                    android:textSize="18sp"
+                    android:layout_marginStart="8dp"
+                    android:textColor="@color/blue700"
+                    android:gravity="center"
+                    android:layout_marginEnd="20dp"
+                    android:layout_gravity="center"/>
             </FrameLayout>
         </com.google.android.material.appbar.MaterialToolbar>
 
