@@ -7,6 +7,9 @@
         <variable
             name="clickListener"
             type="android.view.View.OnClickListener"/>
+        <variable
+            name="event"
+            type="com.yvkalume.data.model.EventUiModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

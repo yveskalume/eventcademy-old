@@ -6,7 +6,7 @@
     <data>
         <variable
             name="club"
-            type="com.yvkalume.domain.entity.Club" />
+            type="com.yvkalume.data.model.ClubUiModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

@@ -5,7 +5,7 @@
     <data>
         <variable
             name="club"
-            type="com.yvkalume.domain.entity.Club" />
+            type="com.yvkalume.data.model.ClubUiModel" />
     </data>
 
     <com.google.android.material.card.MaterialCardView
