@@ -2,8 +2,10 @@ package com.yvkalume.data.di
 
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.yvkalume.data.repository.ClubRepositoryImpl
 import com.yvkalume.data.repository.EventRepositoryImpl
 import com.yvkalume.data.repository.UserRepositoryImpl
+import com.yvkalume.domain.repository.ClubRepository
 import com.yvkalume.domain.repository.EventRepository
 import com.yvkalume.domain.repository.UserRepository
 import dagger.Module
@@ -24,5 +26,10 @@ object RepositoryModule {
     @Provides
     fun provideUserRepository(firestore: FirebaseFirestore,firebaseAuth: FirebaseAuth) : UserRepository {
         return UserRepositoryImpl(firestore,firebaseAuth)
+    }
+
+    @Provides
+    fun provideClubRepository(firestore: FirebaseFirestore) : ClubRepository {
+        return ClubRepositoryImpl(firestore)
     }
 }
