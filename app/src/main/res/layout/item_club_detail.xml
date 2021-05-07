@@ -4,7 +4,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
+        <variable
+            name="club"
+            type="com.yvkalume.domain.entity.Club" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -17,6 +19,7 @@
             android:layout_height="240dp"
             android:scaleType="centerCrop"
             tools:src="@drawable/img"
+            app:setImageUrl="@{club.imageUrl}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -31,7 +34,8 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
             android:gravity="center_vertical"
-            android:text="Google Developer Group"
+            tools:text="Google Developer Group"
+            android:text="@{club.title}"
             android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold"
@@ -49,6 +53,7 @@
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"
             android:textSize="14sp"
+            android:text="@{club.description}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

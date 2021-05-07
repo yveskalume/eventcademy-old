@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
         <variable
             name="clickListener"
             type="android.view.View.OnClickListener"/>
+        <variable
+            name="club"
+            type="com.yvkalume.domain.entity.Club" />
     </data>
 
     <com.google.android.material.card.MaterialCardView
@@ -24,7 +28,8 @@
                 android:layout_height="match_parent"
                 android:foreground="#77000000"
                 android:scaleType="centerCrop"
-                android:src="@drawable/img"
+                tools:src="@drawable/img"
+                app:setImageUrl="@{club.imageUrl}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -34,7 +39,8 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:gravity="center"
-                android:text="Google Developer Group"
+                tools:text="Espacesis"
+                android:text="@{club.title}"
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="parent"
