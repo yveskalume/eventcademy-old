@@ -8,8 +8,8 @@ import com.yvkalume.util.annotation.IoDispatcher
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
 
-class GetAllClubUseCase(private val repository: ClubRepository, @IoDispatcher private val dispatcher: CoroutineDispatcher) : FlowUseCase<Unit, List<Club>>(dispatcher) {
-    override fun execute(parameters: Unit): Flow<Result<List<Club>>> {
-        return repository.getAllClubs()
+class GetOneClubByUidUseCase(private val repository: ClubRepository, @IoDispatcher private val dispatcher: CoroutineDispatcher) : FlowUseCase<String,Club>(dispatcher) {
+    override fun execute(parameters: String): Flow<Result<Club>> {
+        return repository.getOneByUid(parameters)
     }
 }
