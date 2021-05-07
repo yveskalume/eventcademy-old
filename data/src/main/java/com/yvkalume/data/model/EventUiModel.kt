@@ -14,5 +14,6 @@ data class EventUiModel (
     val link: String = "",
     val imageUrl: String = "",
     val date: Date? = null,
-    val createdAt: Date? = null
+    val createdAt: Date? = null,
+    val clubUid: String = ""
 ) : Parcelable

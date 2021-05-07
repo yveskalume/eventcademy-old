@@ -16,7 +16,8 @@ class EventUiMapper() : Mapper<Event,EventUiModel> {
             link = t.link,
             imageUrl = t.imageUrl,
             date = t.date,
-            createdAt = t.createdAt
+            createdAt = t.createdAt,
+            clubUid = t.clubUid
         )
     }
 }
