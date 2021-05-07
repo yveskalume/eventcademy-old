@@ -22,19 +22,19 @@
             app:argType="com.yvkalume.data.model.EventUiModel" />
     </fragment>
     <fragment
-        android:id="@+id/groupesFragment"
-        android:name="com.yvkalume.eventcademy.ui.fragment.groupes.GroupesFragment"
-        android:label="GroupesFragment" >
+        android:id="@+id/allClubsFragment"
+        android:name="com.yvkalume.eventcademy.ui.fragment.allclubs.AllClubsFragment"
+        android:label="AllClubsFragment">
         <action
-            android:id="@+id/action_groupesFragment_to_groupeDetailsFragment"
-            app:destination="@id/groupeDetailsFragment" />
+            android:id="@+id/to_clubDetailsFragment"
+            app:destination="@id/clubDetailsFragment" />
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.yvkalume.eventcademy.ui.fragment.profile.ProfileFragment"
         android:label="ProfileFragment" />
     <fragment
-        android:id="@+id/groupeDetailsFragment"
-        android:name="com.yvkalume.eventcademy.ui.fragment.groupedetails.GroupeDetailsFragment"
-        android:label="GroupeDetailsFragment" />
+        android:id="@+id/clubDetailsFragment"
+        android:name="com.yvkalume.eventcademy.ui.fragment.clubdetails.ClubDetailsFragment"
+        android:label="ClubDetailsFragment" />
 </navigation>

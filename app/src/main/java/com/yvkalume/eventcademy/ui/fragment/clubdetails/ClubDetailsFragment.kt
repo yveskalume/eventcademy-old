@@ -1,19 +1,14 @@
-package com.yvkalume.eventcademy.ui.fragment.groupedetails
+package com.yvkalume.eventcademy.ui.fragment.clubdetails
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.viewbinding.library.fragment.viewBinding
-import com.yvkalume.eventcademy.R
-import com.yvkalume.eventcademy.databinding.FragmentGroupeDetailsBinding
-import com.yvkalume.eventcademy.eventHorizontal
-import com.yvkalume.eventcademy.groupeDetail
-import com.yvkalume.eventcademy.header
+import com.yvkalume.eventcademy.*
+import com.yvkalume.eventcademy.databinding.FragmentClubDetailsBinding
 
-class GroupeDetailsFragment : Fragment(R.layout.fragment_groupe_details) {
-    private val binding by viewBinding<FragmentGroupeDetailsBinding>()
+class ClubDetailsFragment : Fragment(R.layout.fragment_club_details) {
+    private val binding by viewBinding<FragmentClubDetailsBinding>()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -22,7 +17,7 @@ class GroupeDetailsFragment : Fragment(R.layout.fragment_groupe_details) {
 
     private fun setUpListener() {
         binding.rV.withModels {
-            groupeDetail {
+            clubDetail {
                 id("detail")
             }
             header {
