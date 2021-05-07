@@ -12,7 +12,9 @@ import com.yvkalume.data.model.ClubUiModel
 import com.yvkalume.eventcademy.R
 import com.yvkalume.eventcademy.club
 import com.yvkalume.eventcademy.databinding.FragmentAllClubsBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class AllClubsFragment : Fragment(R.layout.fragment_all_clubs), MavericksView {
     private val binding by viewBinding<FragmentAllClubsBinding>()
     private val viewModel: AllClubsViewModel by fragmentViewModel()
