@@ -25,6 +25,7 @@ class ClubDetailsFragment : Fragment(R.layout.fragment_club_details) , Mavericks
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setUpListener()
+        binding.club = args.club
     }
 
     private fun setUpListener() {
@@ -35,7 +36,6 @@ class ClubDetailsFragment : Fragment(R.layout.fragment_club_details) , Mavericks
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding.club = args.club
         viewModel.getClubEvents(args.club.uid)
     }
 
@@ -50,6 +50,10 @@ class ClubDetailsFragment : Fragment(R.layout.fragment_club_details) , Mavericks
                     eventHorizontal {
                         id(event.uid)
                         event(event)
+                        clickListener { _ ->
+                            val direction = ClubDetailsFragmentDirections.toEventFragment(event)
+                            findNavController().navigate(direction)
+                        }
                     }
                 }
             }

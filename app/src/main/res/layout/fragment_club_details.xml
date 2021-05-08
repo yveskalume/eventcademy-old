@@ -28,9 +28,19 @@
                     android:layout_height="240dp"
                     android:scaleType="centerCrop"
                     tools:src="@drawable/img"
+                    setImageUrl="@{club.imageUrl}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
+
+                <com.google.android.material.appbar.MaterialToolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:menu="@menu/event_menu"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
 
                 <ImageButton
                     android:id="@+id/backBtn"
@@ -45,15 +55,6 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/imageView" />
 
-                <com.google.android.material.appbar.MaterialToolbar
-                    android:id="@+id/toolbar"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:menu="@menu/event_menu"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent" />
-
                 <TextView
                     android:id="@+id/title"
                     android:layout_width="match_parent"
@@ -63,6 +64,7 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="16dp"
                     android:gravity="center_vertical"
+                    android:text="@{club.title}"
                     tools:text="Google Developer Group"
                     android:textColor="@color/black"
                     android:textSize="20sp"
@@ -80,6 +82,7 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="16dp"
                     android:textSize="14sp"
+                    android:text="@{club.description}"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
