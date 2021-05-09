@@ -24,16 +24,16 @@
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="Agenda"
-                        android:textSize="18sp"
-                        android:layout_marginStart="8dp"
-                        android:textColor="@color/blue700"
-                        android:gravity="center"
-                        android:layout_marginEnd="20dp"
-                        android:layout_gravity="center"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Profile"
+                    android:textSize="18sp"
+                    android:layout_marginStart="8dp"
+                    android:textColor="@color/blue700"
+                    android:gravity="center"
+                    android:layout_marginEnd="20dp"
+                    android:layout_gravity="center"/>
             </FrameLayout>
         </com.google.android.material.appbar.MaterialToolbar>
 
@@ -51,17 +51,5 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/materialToolbar" />
-
-        <ProgressBar
-            android:id="@+id/progress"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:progressTint="@color/blue700"
-            android:indeterminateTint="@color/blue700"
-            android:indeterminate="true"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

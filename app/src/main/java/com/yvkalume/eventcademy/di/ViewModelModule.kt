@@ -4,8 +4,8 @@ import com.yvkalume.eventcademy.di.mavericks.AssistedViewModelFactory
 import com.yvkalume.eventcademy.di.mavericks.MavericksViewModelComponent
 import com.yvkalume.eventcademy.di.mavericks.ViewModelKey
 import com.yvkalume.eventcademy.ui.fragment.event.EventFragmentViewModel
+import com.yvkalume.eventcademy.ui.fragment.allclubs.AllClubsViewModel
 import com.yvkalume.eventcademy.ui.fragment.home.HomeViewModel
-import com.yvkalume.eventcademy.ui.fragment.home.HomeViewState
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -23,4 +23,9 @@ interface ViewModelModule {
     @IntoMap
     @ViewModelKey(EventFragmentViewModel::class)
     fun eventFragmentViewModelFactory(factory: EventFragmentViewModel.Factory) : AssistedViewModelFactory<*,*>
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(AllClubsViewModel::class)
+    fun allClubsViewModelFactory(factory: AllClubsViewModel.Factory) : AssistedViewModelFactory<*,*>
 }

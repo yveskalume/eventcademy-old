@@ -11,5 +11,6 @@ data class Event(
     val imageUrl: String = "",
     val offline: Boolean = true,
     val date: Date? = null,
-    val createdAt: Date? = null
+    val createdAt: Date? = null,
+    val clubUid: String = ""
 )

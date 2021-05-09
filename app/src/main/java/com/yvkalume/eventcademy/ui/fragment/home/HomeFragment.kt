@@ -40,7 +40,7 @@ class HomeFragment : Fragment(R.layout.fragment_home), MavericksView {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.userImage.setImageUrl(auth.currentUser?.photoUrl.toString())
+//        binding.userImage.setImageUrl(auth.currentUser?.photoUrl.toString())
     }
 
     private fun populateData(data: HomeData) {
