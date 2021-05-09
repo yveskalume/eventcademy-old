@@ -27,7 +27,7 @@
                     android:id="@+id/imageView"
                     android:layout_width="match_parent"
                     android:layout_height="240dp"
-                    android:scaleType="centerCrop"
+                    android:scaleType="fitCenter"
                     tools:src="@drawable/img"
                     setImageUrl="@{club.imageUrl}"
                     app:layout_constraintEnd_toEndOf="parent"
