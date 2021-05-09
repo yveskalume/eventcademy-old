@@ -108,6 +108,8 @@ dependencies {
     implementation Deps.Groupie.core
     implementation Deps.Groupie.viewBinding
 
+    implementation(Deps.WorkManager.kotlin)
+
     implementation platform(Deps.Firebase.bom)
     implementation(Deps.Firebase.firestore)
     implementation(Deps.Firebase.storage)

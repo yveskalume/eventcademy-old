@@ -107,6 +107,13 @@ object Deps {
         const val googlePlayServiceAuth = "com.google.android.gms:play-services-auth:19.0.0"
     }
 
+    object WorkManager {
+        private const val work_version = "2.5.0"
+
+        // Kotlin + coroutines
+        const val kotlin = "androidx.work:work-runtime-ktx:$work_version"
+    }
+
     object PdfTron {
         private const val version = "7.0.5"
         const val pdftron = "com.pdftron:pdftron:$version"
