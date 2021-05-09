@@ -70,7 +70,7 @@ class EventFragment : Fragment(R.layout.fragment_event), MavericksView {
     }
 
     private fun setUpNavigation() {
-        binding.toolbar.setNavigationOnClickListener {
+        binding.backBtn.setOnClickListener {
             findNavController().navigateUp()
         }
     }
