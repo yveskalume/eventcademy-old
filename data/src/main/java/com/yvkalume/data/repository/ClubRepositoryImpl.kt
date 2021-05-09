@@ -56,7 +56,7 @@ class ClubRepositoryImpl @Inject constructor (private val firestore: FirebaseFir
     @ExperimentalCoroutinesApi
     override fun getClubEvents(uid: String) = callbackFlow {
         firestore.collection(FireBasePath.events)
-                .whereEqualTo(Event::uid.name,uid)
+                .whereEqualTo(Event::clubUid.name,uid)
                 .addSnapshotListener { value, error ->
                     if (error != null && value == null) {
                         if (!isClosedForSend) {

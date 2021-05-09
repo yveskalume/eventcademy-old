@@ -15,15 +15,17 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp">
+        android:onClick="@{clickListener}"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp">
 
         <ImageView
             android:id="@+id/imageView3"
             android:layout_width="90dp"
             android:layout_height="70dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/img"
+            app:setImageUrl="@{event.imageUrl}"
+            tools:src="@drawable/img"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -33,7 +35,10 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
-            android:text="Openday espacesis"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:text="@{event.title}"
+            tools:text="Espacesis openday"
             android:textColor="@color/blue700"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -48,6 +53,7 @@
             android:layout_marginTop="2dp"
             android:drawablePadding="4dp"
             android:textSize="14sp"
+            app:humanDate="@{event.date}"
             app:layout_constraintStart_toEndOf="@+id/imageView3"
             app:layout_constraintTop_toBottomOf="@+id/materialTextView7"
             tools:text="01/04/2021 à 11:30" />
@@ -57,7 +63,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="2dp"
-            android:text="Esis A6"
+            android:text="@{event.lieu}"
+            tools:text="Esis A6"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imageView3"
             app:layout_constraintTop_toBottomOf="@+id/materialTextView8" />

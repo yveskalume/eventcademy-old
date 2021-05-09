@@ -40,5 +40,8 @@
         <argument
             android:name="club"
             app:argType="com.yvkalume.data.model.ClubUiModel" />
+        <action
+            android:id="@+id/to_eventFragment"
+            app:destination="@id/eventFragment" />
     </fragment>
 </navigation>

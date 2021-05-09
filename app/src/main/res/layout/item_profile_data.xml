@@ -19,7 +19,8 @@
             android:layout_height="100dp"
             android:layout_gravity="center"
             android:layout_marginTop="8dp"
-            android:src="@drawable/img"
+            tools:src="@drawable/img"
+            app:setImageUrl="@{user.profilUrl}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -34,6 +35,7 @@
             android:textColor="@color/blue700"
             android:textSize="18sp"
             android:textStyle="bold"
+            android:text="@{user.name}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/circleImageView6"
