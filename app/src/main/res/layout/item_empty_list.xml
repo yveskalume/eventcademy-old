@@ -15,6 +15,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="Aucun Evenement Pour l'instant"
+            android:textColor="@color/blue500"
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"

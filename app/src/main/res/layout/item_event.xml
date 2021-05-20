@@ -16,6 +16,7 @@
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:onClick="@{clickListener}"
+        app:cardBackgroundColor="@color/white"
         app:cardCornerRadius="8dp">
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -58,6 +59,8 @@
                 android:layout_marginTop="4dp"
                 android:layout_marginEnd="8dp"
                 android:drawableStart="@drawable/ic_calendar"
+                android:textColor="@color/secondaryVariantColor"
+                app:drawableTint="@color/secondaryVariantColor"
                 app:humanDate="@{event.date}"
                 tools:text="01/04/2021 à 11:30"
                 android:drawablePadding="4dp"
@@ -75,6 +78,8 @@
                 android:layout_marginEnd="8dp"
                 android:layout_marginBottom="8dp"
                 android:text="@{event.lieu}"
+                android:textColor="@color/secondaryVariantColor"
+                app:drawableTint="@color/secondaryVariantColor"
                 tools:text="Esis A6"
                 android:drawablePadding="4dp"
                 android:drawableStart="@drawable/ic_location"
