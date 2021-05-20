@@ -52,7 +52,6 @@ class SplashScreen : AppCompatActivity() {
         viewModel.userAdded.observe(this, Observer {
             val result = it.getContentIfNotHandled()
             if (result != null) {
-                Toast.makeText(baseContext,result.second,Toast.LENGTH_LONG).show()
                 if (result.first) {
                     val intent = Intent(baseContext,MainActivity::class.java)
                     startActivity(intent)
