@@ -28,7 +28,7 @@ class ClubRepositoryImpl @Inject constructor (private val firestore: FirebaseFir
 
                     value?.toObjects(Club::class.java)?.also {
                         if(!isClosedForSend)
-                            offer(Result.Success(it))
+                            offer(Result.Success(it.shuffled()))
                     }
                 }
         awaitClose()
