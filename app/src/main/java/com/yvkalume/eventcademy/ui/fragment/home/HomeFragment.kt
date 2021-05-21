@@ -51,8 +51,8 @@ class HomeFragment : Fragment(R.layout.fragment_home), MavericksView {
                 }
             }
             getFeaturedEvent(data.featuredEvent)
-            onlineEvents(data.onlineEvents)
             offlineEvents(data.offlineEvents)
+            onlineEvents(data.onlineEvents)
         }
     }
 
