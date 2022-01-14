@@ -1,25 +1,25 @@
 # EventCademy
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
-Une application qui référence les événements liés aux communautés techs : Espacesis, GDG, WTM,DSC,MLSA,etc
+An application that references events related to tech communities: Espacesis, GDG, WTM,DSC,MLSA,etc.
 
 ## Installation
 
-Créez un projet Firebase (https://console.firebase.google.com/) et importez le fichier google-service.json dans votre projet comme décrit dans la documentation officielle
+- create a file key.properties add to it the content of key.properties.example
+- Create a Firebase project (https://console.firebase.google.com/) and import the google-service.json file into your project as described in the official documentation.
 
 ## Comment contribuer
 
-- Forkez le repo sur votre github
-- Clonez votre repo forké
-- Ajoutez ou choisissez un "Issue" à [https://github.com/YvesKalume/eventcademy/issues](https://github.com/YvesKalume/eventcademy/issues)
-- Ne modifiez pas une fonctionnalité ou une fonction qui n'est pas lie à votre problème.
-- Effectuez vos modifications
-- Faites un commit
-- Commentez vos commits avec un message clair, par exemple : `git commit -m "[New][update][Fix] fonctionalité ou le numero associez au issue"`.
-- Poussez vos modifications sur votre repo  `git push your_remote your_branch`.
-- Faites un merge request vers le repo original
-- Si un conflit survient lorsque vous demandez à Git de fusionner votre code, essayez de le résoudre avec un nouveau commit, si le conflit persiste, veuillez contacter [@YvesKalume](https://github.com/YvesKalume/)
-
+- Fork the repo on your github
+- Clone your forked repo
+- Add or choose an "Issue" to [https://github.com/YvesKalume/eventcademy/issues](https://github.com/YvesKalume/eventcademy/issues)
+- Do not modify a feature or function that is not related to your problem.
+- Make your changes
+- Make a commit
+- Comment on your commits with a clear message, for example: `git commit -m "[New][update][Fix] feature or number associated with the issue"`.
+- Push your changes to your repo  `git push your_remote your_branch`.
+- Make a merge request to the original repo
+- If a conflict occurs when you ask Git to merge your code, try to resolve it with a new commit, if the conflict persists, please contact [@YvesKalume](https://github.com/YvesKalume/)
 ## Licence
 
        Copyright 2021 EventCademy
