@@ -19,20 +19,3 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
-
-#-keep public class com.yvkalume.data.model.EventUiModel
-
-#ViewBinding
--keep class * implements androidx.viewbinding.ViewBinding {
-    public static *** bind(android.view.View);
-    public static *** inflate(android.view.LayoutInflater);
-}
-
--keep class com.yvkalume.domain.entity** { *; }
--keep class com.yvkalume.data.model** { *; }
-
--keep class com.afollestad.materialdialogs.internal.progress.** { *; }
--keep class com.afollestad.materialdialogs.** { *; }
-
-# Retrolambda
--dontwarn java.lang.invoke.*

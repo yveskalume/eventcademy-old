@@ -1,22 +1,22 @@
 package com.yveskalume.buildsrc
 
 object App {
-    const val compileSdkVersion = 30
-    const val buildToolsVersion = "30.0.2"
+    const val compileSdkVersion = 31
+    const val buildToolsVersion = "_"
     const val minSdkVersion = 21
-    const val targetSdkVersion = 30
-    const val jvmTarget = "1.8"
+    const val targetSdkVersion = 31
+    const val jvmTarget = "_"
 }
 
 object Plugin {
-    const val gradle = "com.android.tools.build:gradle:4.1.1"
+    const val gradle = "com.android.tools.build:gradle:_"
     const val kotlin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Version.kotlin}"
-    const val navigationSafeArgs = "android.arch.navigation:navigation-safe-args-gradle-plugin:1.0.0"
+    const val navigationSafeArgs = "android.arch.navigation:navigation-safe-args-gradle-plugin:_"
 }
 
 object Version {
-    const val kotlin = "1.4.20"
-    const val hilt = "2.33-beta"
+    const val kotlin = "_"
+    const val hilt = "_"
 }
 
 object Module {
@@ -27,20 +27,20 @@ object Module {
 
 object Deps {
 
-    const val viewBinding = "com.github.yogacp:android-viewbinding:1.0.1"
-    const val roundedImageview = "com.makeramen:roundedimageview:2.3.0"
-    const val dotIndicator = "com.tbuonomo.andrui:viewpagerdotsindicator:4.1.2"
-    const val material = "com.google.android.material:material:1.3.0'"
-    const val pinview = "com.github.mukeshsolanki:android-otpview-pinview:2.1.2"
-    const val timber = "com.jakewharton.timber:timber:4.7.1"
-    const val formValidator = "com.github.ShabanKamell.FormValidator:core:2.1.0"
-    const val glide = "com.github.bumptech.glide:glide:4.11.0"
-    const val blurry = "jp.wasabeef:blurry:4.0.0"
-    const val blurBehind = "no.danielzeller.blurbehindlib:blurbehindlib:1.0.0"
-    const val imageSlider = "com.github.smarteist:autoimageslider:1.4.0"
-    const val lottie = "com.airbnb.android:lottie:3.5.0"
-    const val circleImageView = "de.hdodenhof:circleimageview:3.1.0"
-    const val materialDialog = "com.afollestad.material-dialogs:core:3.2.1"
+    const val viewBinding = "com.github.yogacp:android-viewbinding:_"
+    const val roundedImageview = "com.makeramen:roundedimageview:_"
+    const val dotIndicator = "com.tbuonomo.andrui:viewpagerdotsindicator:_"
+    const val material = "com.google.android.material:material:_'"
+    const val pinview = "com.github.mukeshsolanki:android-otpview-pinview:_"
+    const val timber = "com.jakewharton.timber:timber:_"
+    const val formValidator = "com.github.ShabanKamell.FormValidator:core:_"
+    const val glide = "com.github.bumptech.glide:glide:_"
+    const val blurry = "jp.wasabeef:blurry:_"
+    const val blurBehind = "no.danielzeller.blurbehindlib:blurbehindlib:_"
+    const val imageSlider = "com.github.smarteist:autoimageslider:_"
+    const val lottie = "com.airbnb.android:lottie:_"
+    const val circleImageView = "de.hdodenhof:circleimageview:_"
+    const val materialDialog = "com.afollestad.material-dialogs:core:_"
 
     object Kotlin {
         const val stdlib = "org.jetbrains.kotlin:kotlin-stdlib:${Version.kotlin}"
@@ -54,96 +54,96 @@ object Deps {
     }
 
     object GooglePlayService {
-        private const val version = "1.8.1"
-        const val core = "com.google.android.play:core-ktx:$version"
+        private const val version = "_"
+        const val core = "com.google.android.play:core-ktx:_"
     }
 
     object Groupie {
-        private const val version = "2.9.0"
-        const val core = "com.xwray:groupie:$version"
-        const val viewBinding = "com.xwray:groupie-viewbinding:$version"
+        private const val version = "_"
+        const val core = "com.xwray:groupie:_"
+        const val viewBinding = "com.xwray:groupie-viewbinding:_"
     }
 
 
     object Mavericks {
-        const val mvrx = "com.airbnb.android:mvrx:2.0.0-beta1"
+        const val mvrx = "com.airbnb.android:mvrx:_"
     }
 
     object Retrofit {
-        private const val retrofitVersion = "2.9.0"
-        const val coroutinesAdapter = "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:0.9.2"
-        const val retrofit = "com.squareup.retrofit2:retrofit:$retrofitVersion"
-        const val gson = "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+        private const val retrofitVersion = "_"
+        const val coroutinesAdapter = "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:_"
+        const val retrofit = "com.squareup.retrofit2:retrofit:_"
+        const val gson = "com.squareup.retrofit2:converter-gson:_"
     }
 
     object Koin {
-        private const val koin_version = "2.1.6"
-        const val android = "org.koin:koin-android:$koin_version"
-        const val androidxScope = "org.koin:koin-androidx-scope:$koin_version"
-        const val viewmodel = "org.koin:koin-androidx-viewmodel:$koin_version"
+        private const val koin_version = "_"
+        const val android = "org.koin:koin-android:_"
+        const val androidxScope = "org.koin:koin-androidx-scope:_"
+        const val viewmodel = "org.koin:koin-androidx-viewmodel:_"
     }
 
     object Coroutines {
-        private const val coroutinesVersion = "1.3.9"
-        const val core = "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion"
-        const val android = "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion"
-        const val playService = "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:$coroutinesVersion"
+        private const val coroutinesVersion = "_"
+        const val core = "org.jetbrains.kotlinx:kotlinx-coroutines-core:_"
+        const val android = "org.jetbrains.kotlinx:kotlinx-coroutines-android:_"
+        const val playService = "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:_"
     }
 
     object Epoxy {
-        private const val epoxyVersion = "4.3.1"
-        val epoxy = "com.airbnb.android:epoxy:$epoxyVersion"
-        val dataBinding = "com.airbnb.android:epoxy-databinding:$epoxyVersion"
-        val processor = "com.airbnb.android:epoxy-processor:$epoxyVersion"
+        private const val epoxyVersion = "_"
+        val epoxy = "com.airbnb.android:epoxy:_"
+        val dataBinding = "com.airbnb.android:epoxy-databinding:_"
+        val processor = "com.airbnb.android:epoxy-processor:_"
     }
 
     object Firebase {
-        const val bom = "com.google.firebase:firebase-bom:27.0.0"
+        const val bom = "com.google.firebase:firebase-bom:_"
         const val firestore = "com.google.firebase:firebase-firestore-ktx"
         const val storage = "com.google.firebase:firebase-storage"
         const val auth = "com.google.firebase:firebase-auth-ktx"
-        const val ui = "com.firebaseui:firebase-ui-auth:6.4.0"
+        const val ui = "com.firebaseui:firebase-ui-auth:_"
         const val fcm = "com.google.firebase:firebase-messaging-ktx"
-        const val googlePlayServiceAuth = "com.google.android.gms:play-services-auth:19.0.0"
+        const val googlePlayServiceAuth = "com.google.android.gms:play-services-auth:_"
     }
 
     object WorkManager {
-        private const val work_version = "2.5.0"
+        private const val work_version = "_"
 
         // Kotlin + coroutines
-        const val kotlin = "androidx.work:work-runtime-ktx:$work_version"
+        const val kotlin = "androidx.work:work-runtime-ktx:_"
     }
 
     object PdfTron {
-        private const val version = "7.0.5"
-        const val pdftron = "com.pdftron:pdftron:$version"
-        const val tools = "com.pdftron:tools:$version"
+        private const val version = "_"
+        const val pdftron = "com.pdftron:pdftron:_"
+        const val tools = "com.pdftron:tools:_"
     }
 
     object AndroidX {
-        private const val nav_version = "2.3.1"
+        private const val nav_version = "_"
 
-        const val appcompat = "androidx.appcompat:appcompat:1.2.0"
-        const val core = "androidx.core:core-ktx:1.3.2"
-        const val legacy = "androidx.legacy:legacy-support-v4:1.0.0"
-        const val constraintLayout = "androidx.constraintlayout:constraintlayout:2.0.4"
-        const val viewpager = "androidx.viewpager2:viewpager2:1.0.0"
-        const val startup = "androidx.startup:startup-runtime:1.0.0-beta01"
+        const val appcompat = "androidx.appcompat:appcompat:_"
+        const val core = "androidx.core:core-ktx:_"
+        const val legacy = "androidx.legacy:legacy-support-v4:_"
+        const val constraintLayout = "androidx.constraintlayout:constraintlayout:_"
+        const val viewpager = "androidx.viewpager2:viewpager2:_"
+        const val startup = "androidx.startup:startup-runtime:_"
 
         object Navigation {
-            private const val version = "2.3.4"
+            private const val version = "_"
 
-            const val fragment = "androidx.navigation:navigation-fragment-ktx:$version"
-            const val ui = "androidx.navigation:navigation-ui-ktx:$version"
-            const val test = "androidx.navigation:navigation-testing:$version"
+            const val fragment = "androidx.navigation:navigation-fragment-ktx:_"
+            const val ui = "androidx.navigation:navigation-ui-ktx:_"
+            const val test = "androidx.navigation:navigation-testing:_"
         }
 
         object Test {
-            const val junit = "junit:junit:4.12"
-            const val ext = "androidx.test.ext:junit:1.1.2"
+            const val junit = "junit:junit:_"
+            const val ext = "androidx.test.ext:junit:_"
             object Espresso {
-                private const val version = "3.3.0"
-                const val core = "androidx.test.espresso:espresso-core:$version"
+                private const val version = "_"
+                const val core = "androidx.test.espresso:espresso-core:_"
             }
         }
     }
