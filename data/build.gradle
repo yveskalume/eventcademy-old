@@ -42,6 +42,8 @@ dependencies {
     androidTestImplementation AndroidX.test.espresso.core
 
     implementation KotlinX.coroutines.android
+    implementation(KotlinX.coroutines.core)
+    implementation(KotlinX.coroutines.playServices)
 
     implementation platform(Firebase.bom)
     implementation("com.google.firebase:firebase-firestore-ktx")
