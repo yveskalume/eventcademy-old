@@ -17,8 +17,18 @@ jobs:
           java-version: "11"
           distribution: 'adopt'
 
+      - name: Validate Gradle wrapper
+        uses: gradle/wrapper-validation-action@e6e38bacfdf1a337459f332974bb2327a31aaf4b
+
       - name: Run Test
         run: ./gradlew test --stacktrace
 
       - name: Build Project
         run : ./gradlew build --stacktrace
+
+      - name: send telegram message on push
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.TELEGRAM_TO }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          message: ${{ job.status }}
