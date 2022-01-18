@@ -33,4 +33,10 @@ jobs:
           to: ${{ secrets.TELEGRAM_TO }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
           message: |
-            The workflow <b>${{ github.workflow }}</b> triggered by ${{ github.event_name }} on ${{ github.ref }} is ${{ job.status }}
+            workflow : ${{ github.workflow }}
+
+            triggered by event : ${{ github.event_name }}
+
+            branch : ${{ github.ref }}
+
+            status : ${{ job.status }}
