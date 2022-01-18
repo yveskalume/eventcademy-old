@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    compileSdk 30
+    compileSdk 31
 
     defaultConfig {
         minSdk 22
@@ -32,13 +32,8 @@ android {
 
 dependencies {
 
-    implementation Kotlin.stdlib
     implementation AndroidX.core.ktx
-    implementation AndroidX.appCompat
-    implementation Google.android.material
     testImplementation Testing.junit4
-    androidTestImplementation AndroidX.test.ext.junit
-    androidTestImplementation AndroidX.test.espresso.core
 
     implementation(Google.dagger.hilt.android)
     kapt(Google.dagger.hilt.compiler)
