@@ -26,10 +26,11 @@ jobs:
       - name: Build Project
         run : ./gradlew build --stacktrace
 
-      - name: send telegram message on push
+      - name: Notify on telegram
+        if: always()
         uses: appleboy/telegram-action@master
         with:
           to: ${{ secrets.TELEGRAM_TO }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
           message: |
-            The workflow ${{ github.workflow }} is ${{ job.status }}
+            The workflow ${{ github.workflow }} triggered by ${{ github.event.name }} is ${{ job.status }}

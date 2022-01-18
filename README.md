@@ -1,6 +1,6 @@
 # EventCademy
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
-![example workflow](https://github.com/YvesKalume/eventcademy/actions/workflows/build.yml/badge.svg)
+![status workflow](https://github.com/YvesKalume/eventcademy/actions/workflows/build.yml/badge.svg)
 
 An application that references events related to tech communities: Espacesis, GDG, WTM,DSC,MLSA,etc.
 
