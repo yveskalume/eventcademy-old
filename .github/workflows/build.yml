@@ -31,4 +31,4 @@ jobs:
         with:
           to: ${{ YvesKalume }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
-          message: ${{ job.status }}
+          message: {{ github.workflow }} ${{ job.status }}
