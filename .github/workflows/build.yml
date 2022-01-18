@@ -33,4 +33,5 @@ jobs:
           to: ${{ secrets.TELEGRAM_TO }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
           message: |
-            The workflow **${{ github.workflow }}** triggered by **${{ github.event.name }}** is **${{ job.status }}**
+            The workflow ${{ github.workflow }} triggered by ${{ github.event.name }} is ${{ job.status }}
+            ${{ toJson(steps) }}
