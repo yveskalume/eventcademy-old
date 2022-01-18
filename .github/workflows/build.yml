@@ -26,9 +26,9 @@ jobs:
       - name: Build Project
         run : ./gradlew build --stacktrace
 
-      - name: send telegram message on push
+      - name: send telegram message
         uses: appleboy/telegram-action@master
         with:
-          to: ${{ secrets.TELEGRAM_TO }}
+          to: ${{ YvesKalume }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
           message: ${{ job.status }}
