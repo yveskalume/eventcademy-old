@@ -33,7 +33,7 @@ jobs:
           to: ${{ secrets.TELEGRAM_TO }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
           message: |
-            workflow : 👨‍💻  ${{ github.workflow }}
-            triggered by event : 🧍 ${{ github.event_name }}
-            branch : 🌿 ${{ github.ref }}
-            status : 📈 ${{ job.status }}
+            👨‍💻 workflow : ${{ github.workflow }}
+            🧍 triggered by event : ${{ github.event_name }}
+            🌿 branch : ${{ github.ref }}
+            📈 status : ${{ job.status }}
