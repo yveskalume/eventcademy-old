@@ -6,6 +6,7 @@ data class User(
     val uid: String = "",
     val name: String = "",
     val email: String="",
-    val profilUrl: String="",
+    val profileUrl: String="",
+    val isValid: Boolean = true,
     val createdAt: Date? = null
 )
