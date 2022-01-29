@@ -10,8 +10,8 @@ import kotlinx.coroutines.MainCoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
-class GetAllEventUseCase @Inject constructor (private val repository: EventRepository, @IoDispatcher private val dispatcher: CoroutineDispatcher) : FlowUseCase<Unit, List<Event>>(dispatcher) {
+class GetComingEventUseCase @Inject constructor (private val repository: EventRepository, @IoDispatcher private val dispatcher: CoroutineDispatcher) : FlowUseCase<Unit, List<Event>>(dispatcher) {
     override fun execute(parameters: Unit): Flow<Result<List<Event>>> {
-        return repository.getAll()
+        return repository.getComingEvents()
     }
 }

@@ -1,6 +1,5 @@
 package com.yvkalume.domain.di
 
-import com.yvkalume.domain.repository.ClubRepository
 import com.yvkalume.domain.repository.EventRepository
 import com.yvkalume.domain.repository.UserRepository
 import com.yvkalume.domain.usecase.club.GetAllClubUseCase
@@ -23,8 +22,8 @@ import kotlinx.coroutines.CoroutineDispatcher
 object UseCaseModule {
 
     @Provides
-    fun provideGetAllEventUseCase(repository: EventRepository,@IoDispatcher dispatcher: CoroutineDispatcher) : GetAllEventUseCase {
-        return GetAllEventUseCase(repository,dispatcher)
+    fun provideGetAllEventUseCase(repository: EventRepository,@IoDispatcher dispatcher: CoroutineDispatcher) : GetComingEventUseCase {
+        return GetComingEventUseCase(repository,dispatcher)
     }
 
     @Provides
