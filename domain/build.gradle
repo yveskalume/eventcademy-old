@@ -12,6 +12,7 @@ android {
         targetSdk 31
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunnerArgument("runnerBuilder", "de.mannodermaus.junit5.AndroidJUnit5Builder")
         consumerProguardFiles "consumer-rules.pro"
     }
 
@@ -48,4 +49,13 @@ dependencies {
 
     implementation(Google.dagger.hilt.android)
     kapt(Google.dagger.hilt.compiler)
+
+    testImplementation Testing.junit.jupiter.api
+    testRuntimeOnly Testing.junit.jupiter.engine
+
+    androidTestImplementation(AndroidX.test.runner)
+    androidTestImplementation(Testing.junit.jupiter.api)
+
+    androidTestImplementation("de.mannodermaus.junit5:android-test-core:_")
+    androidTestRuntimeOnly("de.mannodermaus.junit5:android-test-runner:_")
 }
