@@ -11,6 +11,6 @@ import javax.inject.Inject
 
 class GetOfflineEventsUseCase @Inject constructor (private val repository: EventRepository, @IoDispatcher private val dispatcher: CoroutineDispatcher,) : FlowUseCase<Unit, List<Event>>(dispatcher) {
     override fun execute(parameters: Unit): Flow<Result<List<Event>>> {
-        return repository.getOffline()
+        TODO()
     }
 }

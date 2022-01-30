@@ -12,6 +12,6 @@ import javax.inject.Inject
 
 class GetNextEventUseCase@Inject constructor (private val repository: EventRepository, @IoDispatcher private val dispatcher: CoroutineDispatcher) : FlowUseCase<Unit,Event?>(dispatcher) {
     override fun execute(parameters: Unit): Flow<Result<Event?>> {
-        return  repository.getNext()
+        TODO()
     }
 }
