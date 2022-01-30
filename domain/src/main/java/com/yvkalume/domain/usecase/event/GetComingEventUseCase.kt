@@ -8,10 +8,11 @@ import com.yvkalume.util.annotation.IoDispatcher
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.MainCoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
 class GetComingEventUseCase @Inject constructor (private val repository: EventRepository, @IoDispatcher private val dispatcher: CoroutineDispatcher) : FlowUseCase<Unit, List<Event>>(dispatcher) {
     override fun execute(parameters: Unit): Flow<Result<List<Event>>> {
-        return repository.getComingEvents()
+        TODO()
     }
 }

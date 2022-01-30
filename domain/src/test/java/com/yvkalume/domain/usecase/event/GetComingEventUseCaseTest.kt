@@ -18,19 +18,13 @@ internal class GetComingEventUseCaseTest {
 
     @get:Rule
     var coroutineRule = MainCoroutineRule()
-    lateinit var testDispatcher : CoroutineDispatcher
-
-    @BeforeAll
-    fun setUp() {
-        testDispatcher = coroutineRule.testDispatcher
-    }
 
 
 
     @Test
     @DisplayName("Given have events When Get Coming Event, Then Get Result.Succes")
     fun getComingEventSuccess() = coroutineRule.runBlockingTest {
-        val useCase = GetComingEventUseCase(successfulEventRepository,testDispatcher)
+        val useCase = GetComingEventUseCase(successfulEventRepository,coroutineRule.testDispatcher)
         val result = useCase(Unit)
         assertEquals(result,Result.Success(EventTestData.all))
     }
@@ -38,7 +32,7 @@ internal class GetComingEventUseCaseTest {
     @Test
     @DisplayName("Given Error on server When Get Coming Event, Then Get Result.Error")
     fun getComingEventFailure() = coroutineRule.runBlockingTest {
-        val useCase = GetComingEventUseCase(failureEventRepository,testDispatcher)
+        val useCase = GetComingEventUseCase(failureEventRepository,coroutineRule.testDispatcher)
         val result = useCase(Unit)
         assertEquals(result,Result.Error(Exception("Error")))
     }

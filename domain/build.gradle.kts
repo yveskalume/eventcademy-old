@@ -35,6 +35,7 @@ android {
 dependencies {
 
     implementation(project(":util"))
+    implementation(project(":test-shared"))
 
     implementation(Kotlin.stdlib)
     implementation(AndroidX.core.ktx)
@@ -45,6 +46,7 @@ dependencies {
     implementation(KotlinX.coroutines.core)
     implementation(KotlinX.coroutines.android)
     implementation(KotlinX.coroutines.playServices)
+    testImplementation(KotlinX.coroutines.test)
 
     implementation(Google.dagger.hilt.android)
     kapt(Google.dagger.hilt.compiler)
