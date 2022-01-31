@@ -19,9 +19,7 @@ abstract class CoroutineUseCase<in P, R>(private val coroutineDispatcher: Corout
             // In production code, this is usually the Default dispatcher (background thread)
             // In tests, this becomes a TestCoroutineDispatcher
             withContext(coroutineDispatcher) {
-                execute(parameters).let {
-                    Result.Success(it)
-                }
+                execute(parameters)
             }
         } catch (e: Exception) {
 //            Timber.d(e)
@@ -33,5 +31,5 @@ abstract class CoroutineUseCase<in P, R>(private val coroutineDispatcher: Corout
      * Override this to set the code to be executed.
      */
     @Throws(RuntimeException::class)
-    protected abstract suspend fun execute(parameters: P): R
+    protected abstract suspend fun execute(parameters: P): Result<R>
 }
