@@ -21,6 +21,9 @@ internal class SignInWithGoogleUseCaseTest {
         val useCase = SignInWithGoogleUseCase(successfulUserRepository, coroutineRule.testDispatcher)
         val result = useCase("")
         assertTrue(result is Result.Success)
+
+        val data = (result as Result.Success).data
+        assertEquals(true,data)
     }
 
     @Test
@@ -28,6 +31,10 @@ internal class SignInWithGoogleUseCaseTest {
     fun signInWithGoogleFail() = coroutineRule.runBlockingTest {
         val useCase = SignInWithGoogleUseCase(failureUserRepository, coroutineRule.testDispatcher)
         val result = useCase("")
-        assertEquals(result, Result.Error(Exception("Error")))
+
+        assertTrue(result is Result.Error)
+
+        val exception = (result as Result.Error).exception
+        assertEquals(exception.message,Exception("Error").message)
     }
 }

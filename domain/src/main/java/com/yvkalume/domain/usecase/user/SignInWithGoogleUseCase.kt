@@ -7,9 +7,11 @@ import com.yvkalume.util.annotation.IoDispatcher
 import kotlinx.coroutines.CoroutineDispatcher
 import javax.inject.Inject
 
-class SignInWithGoogleUseCase @Inject constructor(private val repository: UserRepository, @IoDispatcher dispatcher: CoroutineDispatcher) : CoroutineUseCase<String,Boolean>(dispatcher) {
-    override suspend fun execute(parameters: String): Result<Boolean> {
-        TODO("Not yet implemented")
+class SignInWithGoogleUseCase @Inject constructor(
+    private val repository: UserRepository,
+    @IoDispatcher dispatcher: CoroutineDispatcher
+) : CoroutineUseCase<String, Boolean>(dispatcher) {
+    override suspend fun execute(params: String): Boolean {
+        return repository.signInWithGoogle(idToken = params)
     }
-
 }

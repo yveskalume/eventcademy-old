@@ -8,12 +8,18 @@ import com.yvkalume.util.annotation.IoDispatcher
 import kotlinx.coroutines.CoroutineDispatcher
 import javax.inject.Inject
 
-class SignInWithEmailAndPasswordUseCase @Inject constructor(private val repository: UserRepository, @IoDispatcher private val dispatcher: CoroutineDispatcher) : CoroutineUseCase<SignInWithEmailParams, Boolean>(dispatcher) {
-    override suspend fun execute(parameters: SignInWithEmailParams): Result<Boolean> {
-        TODO("Not yet implemented")
+class SignInWithEmailAndPasswordUseCase @Inject constructor(
+    private val repository: UserRepository,
+    @IoDispatcher private val dispatcher: CoroutineDispatcher
+) : CoroutineUseCase<SignInWithEmailParams, Boolean>(dispatcher) {
+    override suspend fun execute(params: SignInWithEmailParams): Boolean {
+        return repository.signInWithEmailAndPassword(
+            email = params.email,
+            password = params.password
+        )
     }
 
-    data class SignInWithEmailParams(val email: String,val password: String)
+    data class SignInWithEmailParams(val email: String, val password: String)
 }
 
 

@@ -20,16 +20,28 @@ internal class SignUpWithEmailAndPasswordUseCaseTest {
     @Test
     @DisplayName("Given there is no error, When user signup With Email and Password, Then get Result.Success")
     fun signInWithEmailSuccess() = coroutineRule.runBlockingTest {
-        val useCase = SignInWithEmailAndPasswordUseCase(successfulUserRepository,coroutineRule.testDispatcher)
-        val result = useCase(SignInWithEmailParams("",""))
+        val useCase = SignInWithEmailAndPasswordUseCase(
+            successfulUserRepository,
+            coroutineRule.testDispatcher
+        )
+        val result = useCase(SignInWithEmailParams("", ""))
         assertTrue(result is Result.Success)
+
+        val data = (result as Result.Success).data
+        assertEquals(true, data)
+
     }
 
     @Test
     @DisplayName("Given there is an error, When user signup With Email and Password, Then get Result.Error")
     fun signInWithEmailFail() = coroutineRule.runBlockingTest {
-        val useCase = SignInWithEmailAndPasswordUseCase(failureUserRepository,coroutineRule.testDispatcher)
-        val result = useCase(SignInWithEmailParams("",""))
-        assertEquals(result,Result.Error(Exception("Error")))
+        val useCase =
+            SignInWithEmailAndPasswordUseCase(failureUserRepository, coroutineRule.testDispatcher)
+        val result = useCase(SignInWithEmailParams("", ""))
+
+        assertTrue(result is Result.Error)
+
+        val exception = (result as Result.Error).exception
+        assertEquals(exception.message, Exception("Error").message)
     }
 }
