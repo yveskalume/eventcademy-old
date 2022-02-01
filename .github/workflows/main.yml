@@ -6,22 +6,22 @@ on :
     types:
       - completed
 
-  jobs:
-    notify:
-      runs-on: ubuntu-latest
-      steps:
-        - uses: actions/checkout@v2
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
 
-        - name: Notify on telegram
-          if: always()
-          uses: appleboy/telegram-action@master
-          with:
-            to: ${{ secrets.TELEGRAM_TO }}
-            token: ${{ secrets.TELEGRAM_TOKEN }}
-            message: |
-              👨‍💻 workflow : ${{ github.workflow }}
-              🧍 triggered by event : ${{ github.event_name }}
-              🌿 branch : ${{ github.ref }}
-              📈 status : ${{ job.status }}
+      - name: Notify on telegram
+        if: always()
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.TELEGRAM_TO }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          message: |
+            👨‍💻 workflow : ${{ github.workflow }}
+            🧍 triggered by event : ${{ github.event_name }}
+            🌿 branch : ${{ github.ref }}
+            📈 status : ${{ job.status }}
 
-              See the action result here 👉 : https://github.com/YvesKalume/eventcademy/runs/${{ github.run_id }}
+            See the action result here 👉 : https://github.com/YvesKalume/eventcademy/runs/${{ github.run_id }}
