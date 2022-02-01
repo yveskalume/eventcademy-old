@@ -7,9 +7,10 @@ val successfulUserRepository = object : UserRepository {
         return true
     }
 
-    override suspend fun signInWithEmailAndPassword(idToken: String) : Boolean  {
+    override suspend fun signInWithEmailAndPassword(email: String, password: String): Boolean {
         return true
     }
+
 
 }
 
@@ -18,7 +19,7 @@ val failureUserRepository = object : UserRepository {
         throw Exception("Error")
     }
 
-    override suspend fun signInWithEmailAndPassword(idToken: String) : Boolean  {
+    override suspend fun signInWithEmailAndPassword(email: String, password: String): Boolean {
         throw Exception("Error")
     }
 
