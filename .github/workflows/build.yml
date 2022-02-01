@@ -7,6 +7,7 @@ on:
     branches: [develop , master]
 
 jobs:
+
   build:
     runs-on: ubuntu-latest
     steps:
@@ -20,5 +21,32 @@ jobs:
       - name: Validate Gradle wrapper
         uses: gradle/wrapper-validation-action@e6e38bacfdf1a337459f332974bb2327a31aaf4b
 
+      - name: Run Test
+        run: ./gradlew test --stacktrace
+
+      - name: Publish Unit Test Results
+        uses: EnricoMi/publish-unit-test-result-action@v1.27
+        if: always()
+        with:
+          files: test-results/rapport.xml
+
       - name: Build Project
         run : ./gradlew build --stacktrace
+
+
+  notify:
+    runs-on:
+    steps:
+      - name: Notify on telegram
+        if: always()
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.TELEGRAM_TO }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          message: |
+            👨‍💻 workflow : ${{ github.workflow }}
+            🧍 triggered by event : ${{ github.event_name }}
+            🌿 branch : ${{ github.ref }}
+            📈 status : ${{ job.status }}
+
+            See the action result here 👉 : https://github.com/YvesKalume/eventcademy/runs/${{ github.run_id }}
