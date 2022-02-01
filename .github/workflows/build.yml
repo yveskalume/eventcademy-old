@@ -35,7 +35,7 @@ jobs:
 
 
   notify:
-    runs-on:
+    runs-on: ubuntu-latest
     steps:
       - name: Notify on telegram
         if: always()
