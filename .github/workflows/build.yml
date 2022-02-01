@@ -33,10 +33,6 @@ jobs:
       - name: Build Project
         run : ./gradlew build --stacktrace
 
-
-  notify:
-    runs-on: ubuntu-latest
-    steps:
       - name: Notify on telegram
         if: always()
         uses: appleboy/telegram-action@master
