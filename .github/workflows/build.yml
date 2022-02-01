@@ -1,4 +1,4 @@
-name : CI Build
+name : App CI
 
 on:
   push:
@@ -49,4 +49,4 @@ jobs:
             🌿 branch : ${{ github.ref }}
             📈 status : ${{ job.status }}
 
-            See the action result here 👉 : https://github.com/YvesKalume/eventcademy/runs/${{ github.run_id }}
+            See the action result here 👉 : https://github.com/YvesKalume/eventcademy/actions/runs/${{ github.run_id }}
