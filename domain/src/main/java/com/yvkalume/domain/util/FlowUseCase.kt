@@ -5,16 +5,20 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flowOn
 import com.yvkalume.util.Result
+import kotlinx.coroutines.flow.flow
 
 /**
- * Executes business logic in its execute method and keep posting updates to the result as
- * [Result<R>].
- * Handling an exception (emit [Result.Error] to the result) is the subclasses's responsibility.
+ * Executes business logic in its execute method and keep posting updates to the result.
+ * [Flow<Result<R>>].
  */
 abstract class FlowUseCase<in P, R>(private val coroutineDispatcher: CoroutineDispatcher) {
-    operator fun invoke(parameters: P): Flow<Result<R>> = execute(parameters)
-        .catch { e -> emit(Result.Error(Exception(e))) }
-        .flowOn(coroutineDispatcher)
+    operator fun invoke(parameters: P): Flow<Result<R>> {
+        return flow {
+            emit(execute(parameters))
+        }
+            .catch { e -> emit(Result.Error(Exception(e))) }
+            .flowOn(coroutineDispatcher)
+    }
 
-    protected abstract fun execute(parameters: P): Flow<Result<R>>
+    protected abstract fun execute(parameters: P): Result<R>
 }
