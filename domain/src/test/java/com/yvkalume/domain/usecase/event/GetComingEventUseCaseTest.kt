@@ -7,6 +7,7 @@ import com.yvkalume.test.MainCoroutineRule
 import com.yvkalume.test.runBlockingTest
 import com.yvkalume.util.Result
 import kotlinx.coroutines.CoroutineDispatcher
+import org.junit.Ignore
 import org.junit.Rule
 import org.junit.Test
 import org.junit.jupiter.api.Assertions
@@ -15,7 +16,7 @@ import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.DisplayName
 
-@Disabled
+@Ignore
 internal class GetComingEventUseCaseTest {
 
     @get:Rule

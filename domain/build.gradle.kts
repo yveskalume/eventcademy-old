@@ -5,6 +5,10 @@ plugins {
     id("dagger.hilt.android.plugin")
 }
 
+tasks.withType<Test> {
+    useJUnitPlatform()
+}
+
 android {
     compileSdk = 32
 

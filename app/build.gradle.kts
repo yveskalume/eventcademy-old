@@ -53,6 +53,7 @@ android {
 
 dependencies {
 
+    implementation(project(":data"))
     implementation(AndroidX.core.ktx)
     implementation(AndroidX.appCompat)
     implementation(Google.android.material)
@@ -66,6 +67,8 @@ dependencies {
     implementation(Google.dagger.hilt.android)
     kapt(Google.dagger.hilt.compiler)
 
+    implementation("com.airbnb.android:mavericks:2.6.0")
+
     androidTestImplementation(AndroidX.test.ext.junit)
     androidTestImplementation(AndroidX.test.espresso.core)
     androidTestImplementation(AndroidX.compose.ui.testJunit4)
@@ -76,6 +79,10 @@ dependencies {
 
     androidTestImplementation(AndroidX.test.runner)
     androidTestImplementation(Testing.junit.jupiter.api)
+
+    testImplementation("io.mockk:mockk:1.12.2")
+    testImplementation("io.mockk:mockk-agent-jvm:1.12.2")
+
 
     androidTestImplementation("de.mannodermaus.junit5:android-test-core:_")
     androidTestRuntimeOnly("de.mannodermaus.junit5:android-test-runner:_")
