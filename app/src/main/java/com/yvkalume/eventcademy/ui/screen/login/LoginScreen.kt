@@ -22,11 +22,12 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import com.yvkalume.eventcademy.R
 import com.yvkalume.eventcademy.ui.screen.login.components.LoginButton
 
 @Composable
-fun LoginScreen() {
+fun LoginScreen(navController: NavHostController) {
     Box(modifier = Modifier.fillMaxSize()) {
         Image(
             painter = painterResource(id = R.drawable.splash_img),
@@ -100,5 +101,5 @@ fun LoginScreen() {
 @Preview
 @Composable
 fun LoginButtonPreview() {
-    LoginScreen()
+    LoginScreen(navController)
 }
