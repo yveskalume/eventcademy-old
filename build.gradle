@@ -9,7 +9,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath Android.tools.build.gradlePlugin
+        classpath "com.android.tools.build:gradle:7.1.0"
         classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:_'
 
         classpath Google.playServicesGradlePlugin

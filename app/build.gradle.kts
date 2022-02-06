@@ -64,10 +64,12 @@ dependencies {
     implementation(AndroidX.activity.compose)
     testImplementation(Testing.junit4)
 
+    implementation(AndroidX.navigation.compose)
+
     implementation(Google.dagger.hilt.android)
     kapt(Google.dagger.hilt.compiler)
 
-    implementation("com.airbnb.android:mavericks:2.6.0")
+    implementation("com.airbnb.android:mavericks:_")
 
     androidTestImplementation(AndroidX.test.ext.junit)
     androidTestImplementation(AndroidX.test.espresso.core)
@@ -80,8 +82,8 @@ dependencies {
     androidTestImplementation(AndroidX.test.runner)
     androidTestImplementation(Testing.junit.jupiter.api)
 
-    testImplementation("io.mockk:mockk:1.12.2")
-    testImplementation("io.mockk:mockk-agent-jvm:1.12.2")
+    testImplementation(Testing.mockK)
+    testImplementation("io.mockk:mockk-agent-jvm:_")
 
 
     androidTestImplementation("de.mannodermaus.junit5:android-test-core:_")
