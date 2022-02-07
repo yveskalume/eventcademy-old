@@ -2,6 +2,7 @@ plugins {
     id("com.android.application")
     id("kotlin-android")
     id("kotlin-kapt")
+    id("com.google.gms.google-services")
     id("dagger.hilt.android.plugin")
     id("de.mannodermaus.android-junit5")
 }
@@ -65,7 +66,14 @@ dependencies {
     testImplementation(Testing.junit4)
 
     implementation(AndroidX.navigation.compose)
-    implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
+    implementation(AndroidX.hilt.navigationCompose)
+
+    implementation(platform(Firebase.bom))
+//    implementation("com.google.firebase:firebase-analytics-ktx")
+    implementation("com.google.firebase:firebase-firestore-ktx")
+    implementation("com.google.firebase:firebase-storage-ktx")
+    implementation("com.google.firebase:firebase-auth-ktx")
+    implementation(Google.android.playServices.auth)
 
     implementation(Google.dagger.hilt.android)
     kapt(Google.dagger.hilt.compiler)

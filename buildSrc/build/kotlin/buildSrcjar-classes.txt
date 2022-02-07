@@ -1,1 +1,1 @@
-/home/yv/projects/android/eventcademy/buildSrc/build/classes/kotlin/main/com/yveskalume/buildsrc/App.class:/home/yv/projects/android/eventcademy/buildSrc/build/classes/kotlin/main/com/yveskalume/buildsrc/Module.class
+/home/yv/projects/android/eventcademy/buildSrc/build/classes/kotlin/main/Libs.class:/home/yv/projects/android/eventcademy/buildSrc/build/classes/kotlin/main/com/yveskalume/buildsrc/App.class:/home/yv/projects/android/eventcademy/buildSrc/build/classes/kotlin/main/com/yveskalume/buildsrc/Module.class

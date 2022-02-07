@@ -11,6 +11,13 @@ dependencyResolutionManagement {
     }
 }
 
+refreshVersions {
+    rejectVersionIf {
+        candidate.stabilityLevel.isLessStableThan(current.stabilityLevel)
+    }
+    enableBuildSrcLibs()
+}
+
 rootProject.name = "EventCademy"
 include(":app")
 include(":util")
