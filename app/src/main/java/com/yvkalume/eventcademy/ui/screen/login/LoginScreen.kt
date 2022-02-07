@@ -14,6 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Color.Companion.Black
+import androidx.compose.ui.graphics.Color.Companion.Red
 import androidx.compose.ui.graphics.Color.Companion.White
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
@@ -23,7 +24,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.yvkalume.eventcademy.R
+import com.yvkalume.eventcademy.app.navigation.Screen
 import com.yvkalume.eventcademy.ui.screen.login.components.LoginButton
 
 @Composable
@@ -35,16 +38,18 @@ fun LoginScreen(navController: NavHostController) {
             contentScale = ContentScale.Crop,
             modifier = Modifier.fillMaxSize()
         )
-        Surface(modifier = Modifier.fillMaxSize().background(
-            brush = Brush.verticalGradient(
-                colors = listOf(
-                    Color(0x22FFFFFF),
-                    MaterialTheme.colors.primary
-                ),
-                startY = 300.0f,
-                endY = 1000f
-            )
-        ), content = {})
+        Box(modifier = Modifier
+            .fillMaxSize()
+            .background(
+                brush = Brush.verticalGradient(
+                    colors = listOf(
+                        Color(0x22FFFFFF),
+                        Color(0xE40C0C0C)
+                    ),
+                    startY = 100.0f,
+                    endY = 2100f
+                )
+            ), content = {})
 
         Column(
             modifier = Modifier
@@ -64,7 +69,7 @@ fun LoginScreen(navController: NavHostController) {
             )
             Spacer(modifier = Modifier.height(4.dp))
             Text(
-                text = "Decouvrez et participez aux meilleurs évènement academiques et culturels",
+                text = "Decouvrez et participez aux meilleurs évènements academiques et meetups",
                 style = MaterialTheme.typography.body2.copy(
                     fontSize = 16.sp,
                     fontWeight = FontWeight.Light,
@@ -74,11 +79,11 @@ fun LoginScreen(navController: NavHostController) {
             )
             Spacer(modifier = Modifier.height(16.dp))
             LoginButton(
-                onClick = { },
+                onClick = { navController.navigate(Screen.MainNavHost.route) },
                 borderStroke = BorderStroke(1.dp, color = White),
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(60.dp)
+                    .height(48.dp)
                     .padding(horizontal = 24.dp)
             ) {
                 Icon(
@@ -86,7 +91,7 @@ fun LoginScreen(navController: NavHostController) {
                     tint = Color.Unspecified,
                     contentDescription = null
                 )
-                Spacer(modifier = Modifier.width(4.dp))
+                Spacer(modifier = Modifier.width(8.dp))
                 Text(
                     text = "Se connecter avec Google",
                     color = Black,
@@ -100,6 +105,6 @@ fun LoginScreen(navController: NavHostController) {
 
 @Preview
 @Composable
-fun LoginButtonPreview() {
-    LoginScreen(navController)
+fun PreviewLogin() {
+    LoginScreen(navController = rememberNavController())
 }

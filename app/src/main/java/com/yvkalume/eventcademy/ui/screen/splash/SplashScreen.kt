@@ -11,17 +11,15 @@ import com.yvkalume.eventcademy.ui.screen.splash.business.SplashViewModel
 import kotlinx.coroutines.delay
 
 @Composable
-fun SplashScreen(navController: NavHostController, viewModel: SplashViewModel = hiltViewModel()) {
+fun SplashScreen(navController: NavHostController) {
 
-    val isAuth by viewModel.isAuth.collectAsState()
-
-    LaunchedEffect(isAuth) {
-        delay(2000)
-        if (isAuth) {
-            navController.navigate(Screen.Home.route)
-        } else {
+    LaunchedEffect(Unit) {
+        delay(1500)
+//        if (isAuth) {
+//            navController.navigate(Screen.Home.route)
+//        } else {
             navController.navigate(Screen.Login.route)
-        }
+//        }
     }
 
 }
