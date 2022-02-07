@@ -19,7 +19,7 @@ fun RootNavGraph(navController: NavHostController) {
         }
 
         composable(route = Screen.MainNavHost.route) {
-            MainNavGraph(navController = navController)
+            MainNavGraph()
         }
     }
 }
