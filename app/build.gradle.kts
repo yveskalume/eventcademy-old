@@ -64,6 +64,7 @@ dependencies {
     implementation(AndroidX.lifecycle.runtimeKtx)
     implementation(AndroidX.activity.compose)
     testImplementation(Testing.junit4)
+    implementation(AndroidX.constraintLayout.compose)
 
     implementation(AndroidX.navigation.compose)
     implementation(AndroidX.hilt.navigationCompose)

@@ -30,7 +30,7 @@ fun EventVerticalItem(modifier: Modifier = Modifier) {
                 .size(174.dp, 147.dp)
                 .clip(RoundedCornerShape(16.dp))
         )
-        Text(text = "Oct 12,2021", maxLines = 1)
+        Text(text = "Oct 12,2021", maxLines = 1, fontSize = 12.sp)
         Text(
             text = "Tour of the Alps",
             maxLines = 1,

@@ -1,6 +1,7 @@
 package com.yvkalume.eventcademy.ui.screen.home.components
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Text
@@ -17,10 +18,10 @@ import androidx.compose.ui.unit.sp
 import com.yvkalume.eventcademy.R
 
 @Composable
-fun EventHorizontalItem() {
+fun EventHorizontalItem(onClick : () -> Unit) {
     Row(modifier = Modifier
         .fillMaxWidth()
-        .height(120.dp), horizontalArrangement = Arrangement.spacedBy(2.dp)) {
+        .height(120.dp).clickable(onClick = onClick), horizontalArrangement = Arrangement.spacedBy(2.dp)) {
         Image(
             painter = painterResource(id = R.drawable.splash_img),
             contentDescription = null,
@@ -36,7 +37,7 @@ fun EventHorizontalItem() {
                 .fillMaxHeight(),
             verticalArrangement = Arrangement.spacedBy(3.dp)
         ) {
-            Text(text = "Oct 12,2021", maxLines = 1)
+            Text(text = "Oct 12,2021", maxLines = 1, fontSize = 12.sp)
             Text(
                 text = "Tour of the Alps",
                 maxLines = 1,
