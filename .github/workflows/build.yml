@@ -50,7 +50,8 @@ jobs:
           token: ${{ secrets.TELEGRAM_TOKEN }}
           message: |
             👨‍💻 workflow : ${{ github.workflow }}
-            🧍 triggered by event : ${{ github.event_name }}
+            🎬 event : ${{ github.event_name }}
+            🧍 actor : ${{ github.actor }}
             🌿 branch : ${{ github.ref }}
             📈 status : ${{ job.status }}
 
