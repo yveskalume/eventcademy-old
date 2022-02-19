@@ -40,7 +40,8 @@ jobs:
         uses: EnricoMi/publish-unit-test-result-action@v1.27
         if: always()
         with:
-          files: app/build/test-results/*.xml
+          files: |
+            */test-results/*.xml
 
       - name: Notify on telegram
         if: always()
