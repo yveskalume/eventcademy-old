@@ -25,3 +25,9 @@ buildscript {
 tasks.register("clean", Delete::class) {
     delete(rootProject.buildDir)
 }
+
+tasks.withType<Test> {
+    reports {
+        junitXml.isEnabled = true
+    }
+}
