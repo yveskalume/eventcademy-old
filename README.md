@@ -1,4 +1,4 @@
-# EventCademy
+# EventCademy (work-in-progress 👷🔧️👷‍♀️⛏)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 ![status workflow](https://github.com/YvesKalume/eventcademy/actions/workflows/build.yml/badge.svg)
 
@@ -9,7 +9,7 @@ An application that references events related to tech communities: Espacesis, GD
 - create a file key.properties add to it the content of key.properties.example
 - Create a Firebase project (https://console.firebase.google.com/) and import the google-service.json file into your project as described in the official documentation.
 
-## Comment contribuer
+## Contribute
 
 - Fork the repo on your github
 - Clone your forked repo
