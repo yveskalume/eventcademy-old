@@ -9,4 +9,3 @@ key.properties
 .externalNativeBuild
 .cxx
 local.properties
-/buildSrc/build/
