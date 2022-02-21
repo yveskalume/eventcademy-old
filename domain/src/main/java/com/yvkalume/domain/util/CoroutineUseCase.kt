@@ -1,9 +1,8 @@
 package com.yvkalume.domain.util
 
+import com.yvkalume.util.Result
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
-import com.yvkalume.util.Result
-import kotlinx.coroutines.Dispatchers
 
 abstract class CoroutineUseCase<in P, R>(private val coroutineDispatcher: CoroutineDispatcher) {
 

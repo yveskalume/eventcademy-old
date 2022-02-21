@@ -55,6 +55,7 @@ android {
 dependencies {
 
     implementation(project(":data"))
+    implementation(project(":util"))
     implementation(AndroidX.core.ktx)
     implementation(AndroidX.appCompat)
     implementation(Google.android.material)
