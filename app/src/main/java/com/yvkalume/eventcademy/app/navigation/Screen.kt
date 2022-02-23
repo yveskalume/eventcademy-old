@@ -1,9 +1,19 @@
 package com.yvkalume.eventcademy.app.navigation
 
-sealed class Screen(val route: String) {
-    object MainNavHost : Screen("main-navhost")
-    object Splash : Screen("splash")
-    object Login : Screen("login")
-    object Home : Screen("home")
-    object EventDetails : Screen("event-details")
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.rounded.DateRange
+import androidx.compose.ui.graphics.vector.ImageVector
+
+sealed class Screen(val route: String, val label: String = "", val icon: ImageVector? = null) {
+    object MainNavHost : Screen(route = "main-navhost")
+    object Splash : Screen(route = "splash")
+    object Login : Screen(route = "login")
+    object Home : Screen(route = "home", label = "Accueil", icon = Icons.Default.Home)
+    object Agenda : Screen(route = "Agenda", label = "Agenda", icon = Icons.Rounded.DateRange)
+    object EventDetails : Screen(route = "event-details")
+}
+
+fun getBottomNavItems(): List<Screen> {
+    return listOf(Screen.Home, Screen.Agenda)
 }
