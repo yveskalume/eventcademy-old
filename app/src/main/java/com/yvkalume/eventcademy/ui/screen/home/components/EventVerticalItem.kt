@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -30,12 +31,12 @@ fun EventVerticalItem(modifier: Modifier = Modifier) {
                 .size(174.dp, 147.dp)
                 .clip(RoundedCornerShape(16.dp))
         )
-        Text(text = "Oct 12,2021", maxLines = 1, fontSize = 12.sp)
         Text(
             text = "Tour of the Alps",
             maxLines = 1,
             overflow = TextOverflow.Ellipsis,
-            style = TextStyle(fontWeight = FontWeight.SemiBold, fontSize = 18.sp)
+            style = MaterialTheme.typography.subtitle1
         )
+        Text(text = "Oct 12,2021", maxLines = 1, fontSize = 12.sp)
     }
 }

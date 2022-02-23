@@ -15,10 +15,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.yvkalume.eventcademy.app.navigation.Screen
-import com.yvkalume.eventcademy.ui.screen.home.components.EventHorizontalItem
-import com.yvkalume.eventcademy.ui.screen.home.components.EventVerticalItem
-import com.yvkalume.eventcademy.ui.screen.home.components.PopularEventHeader
-import com.yvkalume.eventcademy.ui.screen.home.components.UpcomingEventHeader
+import com.yvkalume.eventcademy.ui.screen.home.components.*
 import com.yvkalume.eventcademy.ui.sharedcomponents.SearchTextField
 
 @Composable
@@ -32,15 +29,7 @@ fun HomeScreen(navController: NavHostController) {
         verticalArrangement = Arrangement.spacedBy(12.dp)
     ) {
         item {
-            TopAppBar(
-                backgroundColor = MaterialTheme.colors.background,
-                actions = {
-                          Icon(imageVector = Icons.Default.Refresh, contentDescription = null)
-                },
-                title = {
-                    SearchTextField(value = searchText, onValueChange = { searchText = it })
-                }
-            )
+            HomeTopBar(modifier = Modifier.fillMaxWidth(),onClick = {})
         }
         item {
             UpcomingEventHeader()

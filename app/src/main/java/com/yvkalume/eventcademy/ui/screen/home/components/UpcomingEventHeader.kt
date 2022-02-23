@@ -14,7 +14,7 @@ import androidx.compose.ui.unit.sp
 fun UpcomingEventHeader() {
     Text(
         text = "A venir",
-        style = TextStyle(fontSize = 22.sp, fontWeight = FontWeight.SemiBold),
+        style = TextStyle(fontSize = 20.sp, fontWeight = FontWeight.Bold),
         modifier = Modifier.wrapContentSize()
     )
 }

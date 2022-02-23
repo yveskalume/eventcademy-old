@@ -8,5 +8,5 @@ import androidx.compose.ui.unit.sp
 
 @Composable
 fun PopularEventHeader() {
-    Text(text = "Populaires", style = TextStyle(fontSize = 22.sp, fontWeight = FontWeight.SemiBold))
+    Text(text = "Populaires", style = TextStyle(fontSize = 20.sp, fontWeight = FontWeight.Bold))
 }
