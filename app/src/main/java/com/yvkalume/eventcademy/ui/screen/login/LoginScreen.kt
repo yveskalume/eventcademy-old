@@ -27,10 +27,12 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.yvkalume.eventcademy.R
 import com.yvkalume.eventcademy.app.navigation.Screen
+import com.yvkalume.eventcademy.ui.screen.login.business.LoginViewModel
 import com.yvkalume.eventcademy.ui.screen.login.components.LoginButton
 
 @Composable
 fun LoginScreen(navController: NavHostController) {
+
     Box(modifier = Modifier.fillMaxSize()) {
         Image(
             painter = painterResource(id = R.drawable.splash_img),
@@ -101,10 +103,4 @@ fun LoginScreen(navController: NavHostController) {
             Spacer(modifier = Modifier.height(8.dp))
         }
     }
-}
-
-@Preview
-@Composable
-fun PreviewLogin() {
-    LoginScreen(navController = rememberNavController())
 }

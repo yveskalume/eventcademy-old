@@ -81,6 +81,7 @@ dependencies {
     kapt(Google.dagger.hilt.compiler)
 
     implementation("com.airbnb.android:mavericks:_")
+    implementation("com.airbnb.android:mavericks-compose:_")
 
     androidTestImplementation(AndroidX.test.ext.junit)
     androidTestImplementation(AndroidX.test.espresso.core)
