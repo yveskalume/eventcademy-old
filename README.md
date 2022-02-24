@@ -4,23 +4,20 @@
 
 An application that references events related to tech communities: Espacesis, GDG, WTM,DSC,MLSA,etc.
 
-## Installation
+## Tech stack & Open-source libraries
 
-- create a file key.properties add to it the content of key.properties.example
-- Create a Firebase project (https://console.firebase.google.com/) and import the google-service.json file into your project as described in the official documentation.
+- 100% writen in [Kotlin](https://developer.android.com/kotlin)
+- [Firebase sdk](https://firebase.google.com/)
+- [Hilt](https://developer.android.com/training/dependency-injection/hilt-android) - Dependency injection
+- Jetpack
+    - [Compose](https://developer.android.com/jetpack/compose) - A modern toolkit for building native Android UI.
+    - [Coroutines Flow](https://developer.android.com/kotlin/flow) - notify domain layer data to views.
+- [Maveriks](https://airbnb.io/mavericks/#/) - Mavericks is an Android MVI framework that is both easy to learn yet powerful enough for the most complex flows.
+- [Junit](https://junit.org/junit5/)
+- [MockK](https://mockk.io/)
+- [Timber](https://github.com/JakeWharton/timber) - logging tool
+- [Refreshversion](https://jmfayard.github.io/refreshVersions/) -  helps Gradle users with the tedious manual work usually involved in adding and updating dependencies and their versions.
 
-## Contribute
-
-- Fork the repo on your github
-- Clone your forked repo
-- Add or choose an "Issue" to [https://github.com/YvesKalume/eventcademy/issues](https://github.com/YvesKalume/eventcademy/issues)
-- Do not modify a feature or function that is not related to your problem.
-- Make your changes
-- Make a commit
-- Comment on your commits with a clear message, for example: `git commit -m "[New][update][Fix] feature or number associated with the issue"`.
-- Push your changes to your repo  `git push your_remote your_branch`.
-- Make a merge request to the original repo
-- If a conflict occurs when you ask Git to merge your code, try to resolve it with a new commit, if the conflict persists, please contact [@YvesKalume](https://github.com/YvesKalume/)
 ## Licence
 
        Copyright 2021 EventCademy
