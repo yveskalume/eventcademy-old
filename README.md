@@ -4,6 +4,8 @@
 
 An application that references events related to tech communities: Espacesis, GDG, WTM,DSC,MLSA,etc.
 
+## For full documentation, check out the [wiki page](https://github.com/YvesKalume/eventcademy/wiki)
+
 ## Tech stack & Open-source libraries
 
 - 100% writen in [Kotlin](https://developer.android.com/kotlin)
