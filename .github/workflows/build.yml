@@ -55,5 +55,6 @@ jobs:
             🧍 actor : ${{ github.actor }}
             🌿 branch : ${{ github.ref }}
             📈 status : ${{ job.status }}
+            💬 message : ${{ github.event.head_commit.message }}
 
             See the action result here 👉 : https://github.com/YvesKalume/eventcademy/actions/runs/${{ github.run_id }}
