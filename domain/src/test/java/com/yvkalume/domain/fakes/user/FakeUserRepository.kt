@@ -1,10 +1,16 @@
 package com.yvkalume.domain.fakes.user
 
+import com.yvkalume.domain.dto.CustomFirebaseUser
+import com.yvkalume.domain.entity.User
 import com.yvkalume.domain.repository.UserRepository
+import java.util.*
 
 val successfulUserRepository = object : UserRepository {
-    override suspend fun signInWithGoogle(idToken: String) : Boolean {
-        return true
+    override suspend fun signInWithGoogle(idToken: String): CustomFirebaseUser {
+        return CustomFirebaseUser(
+            uid = "uid", email = "yves@gmail.com", name = "Yves Kalume", profileUrl = "https://profile/image.png", isValid = true,
+            Date(System.currentTimeMillis())
+        )
     }
 
     override suspend fun signInWithEmailAndPassword(email: String, password: String): Boolean {
@@ -17,13 +23,17 @@ val successfulUserRepository = object : UserRepository {
         password: String
     ): Boolean {
         return true
+    }
+
+    override suspend fun saveUserInDatabase(user: User) {
+
     }
 
 
 }
 
 val failureUserRepository = object : UserRepository {
-    override suspend fun signInWithGoogle(idToken: String) : Boolean  {
+    override suspend fun signInWithGoogle(idToken: String): CustomFirebaseUser {
         throw Exception("Error")
     }
 
@@ -36,6 +46,10 @@ val failureUserRepository = object : UserRepository {
         name: String,
         password: String
     ): Boolean {
+        throw Exception("Error")
+    }
+
+    override suspend fun saveUserInDatabase(user: User) {
         throw Exception("Error")
     }
 
