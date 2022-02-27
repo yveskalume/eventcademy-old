@@ -7,4 +7,12 @@ object FireBasePath {
     fun getAttendeesCollection(eventUid: String) : String {
         return "${this.events}/$eventUid/attendees"
     }
+
+    fun getEventDocument(docUid: String) : String {
+        return "${this.events}/$docUid"
+    }
+
+    fun getUserDocument(docUid: String) : String {
+        return "${this.users}/$docUid"
+    }
 }
