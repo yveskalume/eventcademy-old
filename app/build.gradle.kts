@@ -5,6 +5,7 @@ plugins {
     id("com.google.gms.google-services")
     id("dagger.hilt.android.plugin")
     id("de.mannodermaus.android-junit5")
+    id("com.google.android.libraries.mapsplatform.secrets-gradle-plugin")
 }
 
 android {
@@ -50,6 +51,14 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
+}
+
+// for secret keys
+secrets {
+    // Optionally specify a different file name containing your secrets.
+    // The plugin defaults to "local.properties"
+    propertiesFileName = "secrets.properties"
+    defaultPropertiesFileName = "secrets.defaults.properties"
 }
 
 dependencies {

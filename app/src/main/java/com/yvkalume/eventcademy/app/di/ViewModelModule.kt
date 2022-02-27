@@ -16,6 +16,4 @@ interface ViewModelModule {
     @IntoMap
     @ViewModelKey(LoginViewModel::class)
     fun homeViewModelFactory(factory: LoginViewModel.Factory) : AssistedViewModelFactory<*, *>
-
-
 }

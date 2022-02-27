@@ -13,7 +13,7 @@ buildscript {
         classpath(Google.dagger.hilt.android.gradlePlugin)
 
         classpath(Google.playServicesGradlePlugin)
-
+        classpath("com.google.android.libraries.mapsplatform.secrets-gradle-plugin:secrets-gradle-plugin:_")
         classpath("de.mannodermaus.gradle.plugins:android-junit5:_")
 
 
