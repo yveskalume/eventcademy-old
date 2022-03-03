@@ -1,7 +1,7 @@
 package com.yvkalume.data.util
 
 object FireBasePath {
-    const val events = "events"
+    const val events = "test-events"
     const val users = "users"
     const val clubs = "clubs"
     fun getAttendeesCollection(eventUid: String) : String {

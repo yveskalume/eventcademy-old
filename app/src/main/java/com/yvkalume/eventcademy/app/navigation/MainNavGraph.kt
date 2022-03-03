@@ -14,6 +14,7 @@ import androidx.navigation.compose.rememberNavController
 import com.yvkalume.eventcademy.ui.screen.agenda.AgendaScreen
 import com.yvkalume.eventcademy.ui.screen.eventdetail.EventDetailScreen
 import com.yvkalume.eventcademy.ui.screen.home.HomeScreen
+import com.yvkalume.eventcademy.ui.screen.notification.NotificationScreen
 
 @Composable
 fun MainNavGraph() {
@@ -53,6 +54,10 @@ fun MainNavGraph() {
                 }
                 composable(route = Screen.Agenda.route) {
                     AgendaScreen(navController = navController)
+                }
+
+                composable(route = Screen.Notification.route) {
+                    NotificationScreen(navController = navController)
                 }
             }
         }

@@ -1,5 +1,6 @@
 package com.yvkalume.domain.usecase.event
 
+import android.util.Log
 import com.yvkalume.domain.entity.Event
 import com.yvkalume.domain.repository.EventRepository
 import com.yvkalume.domain.util.FlowUseCase
@@ -13,6 +14,7 @@ class GetComingEventUseCase @Inject constructor(
     @IoDispatcher private val dispatcher: CoroutineDispatcher
 ) : FlowUseCase<Unit, List<Event>>(dispatcher) {
     override fun execute(params: Unit): Flow<List<Event>> {
-        TODO("Not yet implemented")
+        Log.e(this::class.simpleName,"execute called")
+        return repository.getComingEvents()
     }
 }

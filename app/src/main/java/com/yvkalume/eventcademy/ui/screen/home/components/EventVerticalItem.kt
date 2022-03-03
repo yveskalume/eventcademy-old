@@ -18,10 +18,11 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.yvkalume.domain.entity.Event
 import com.yvkalume.eventcademy.R
 
 @Composable
-fun EventVerticalItem(modifier: Modifier = Modifier) {
+fun EventVerticalItem(event: Event,modifier: Modifier = Modifier) {
     Column(modifier = modifier) {
         Image(
             painter = painterResource(id = R.drawable.splash_img),
