@@ -9,7 +9,7 @@ import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
 
 class GetOneEventByUidUseCase(private val repository: EventRepository, @IoDispatcher private val dispatcher: CoroutineDispatcher ) : FlowUseCase<String, Event>(dispatcher) {
-    override fun execute(params: String): Flow<Event> {
+    override fun execute(parameters: String): Flow<Result<Event>> {
         TODO("Not yet implemented")
     }
 

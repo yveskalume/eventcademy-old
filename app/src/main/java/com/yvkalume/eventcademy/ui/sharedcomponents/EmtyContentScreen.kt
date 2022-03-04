@@ -16,9 +16,16 @@
 
 package com.yvkalume.eventcademy.ui.sharedcomponents
 
-import android.content.Context
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
 
-fun Toast(context: Context, message: String, length: Int = android.widget.Toast.LENGTH_SHORT) {
-    android.widget.Toast.makeText(context,message,length).show()
+@Composable
+fun EmptyContentScreen() {
+    Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+        Text(text = "Pas de contenu")
+    }
 }
