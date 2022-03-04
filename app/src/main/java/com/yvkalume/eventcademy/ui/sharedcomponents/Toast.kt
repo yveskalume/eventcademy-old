@@ -19,7 +19,6 @@ package com.yvkalume.eventcademy.ui.sharedcomponents
 import android.content.Context
 import androidx.compose.runtime.Composable
 
-@Composable
 fun Toast(context: Context, message: String, length: Int = android.widget.Toast.LENGTH_SHORT) {
     android.widget.Toast.makeText(context,message,length).show()
 }

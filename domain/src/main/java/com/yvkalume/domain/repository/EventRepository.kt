@@ -6,11 +6,11 @@ import com.yvkalume.util.Result
 import kotlinx.coroutines.flow.Flow
 
 interface EventRepository {
-    fun getComingEvents() : Flow<List<Event>>
-    fun getPastEvents() : Flow<List<Event>>
-    fun getOneByUid(uid: String) : Flow<Event>
-    fun getOnline() : Flow<List<Event>>
-    fun getOffline() : Flow<List<Event>>
-    fun getNext() : Flow<Event?>
-    fun getAttendees(eventUid: String) : Flow<List<User>>
+    fun getComingEvents() : Flow<Result<List<Event>>>
+    fun getPastEvents() : Flow<Result<List<Event>>>
+    fun getOneByUid(uid: String) : Flow<Result<Event>>
+    fun getOnline() : Flow<Result<List<Event>>>
+    fun getOffline() : Flow<Result<List<Event>>>
+    fun getNext() : Flow<Result<Event?>>
+    fun getAttendees(eventUid: String) : Flow<Result<List<User>>>
 }

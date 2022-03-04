@@ -18,10 +18,11 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.yvkalume.domain.entity.Event
 import com.yvkalume.eventcademy.R
 
 @Composable
-fun EventHorizontalItem(onClick: () -> Unit) {
+fun EventHorizontalItem(event: Event,onClick: () -> Unit) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -43,17 +44,18 @@ fun EventHorizontalItem(onClick: () -> Unit) {
                 .fillMaxHeight(),
             verticalArrangement = Arrangement.spacedBy(3.dp)
         ) {
-            Text(text = "Oct 12,2021", maxLines = 1, fontSize = 12.sp)
+            Text(text = event.startDate.toString(), maxLines = 1, fontSize = 12.sp)
             Text(
-                text = "Tour of the Alps",
+                text = event.title,
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis,
                 style = MaterialTheme.typography.subtitle1
             )
             Text(
-                text = "Biggest Event in dhaka,join to see the excitment of the new car guy",
+                text = event.description,
                 style = MaterialTheme.typography.caption,
-                maxLines = 2
+                maxLines = 2,
+                overflow = TextOverflow.Ellipsis
             )
             Spacer(modifier = Modifier.height(1.dp))
             Row(verticalAlignment = Alignment.CenterVertically,horizontalArrangement = Arrangement.spacedBy(3.dp)

@@ -11,7 +11,8 @@ import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 class GetOnlineEventsUseCase @Inject constructor (private val repository: EventRepository, @IoDispatcher private val dispatcher: CoroutineDispatcher,) : FlowUseCase<Unit,List<Event>>(dispatcher) {
-    override fun execute(params: Unit): Flow<List<Event>> {
+    override fun execute(parameters: Unit): Flow<Result<List<Event>>> {
         TODO("Not yet implemented")
     }
+
 }

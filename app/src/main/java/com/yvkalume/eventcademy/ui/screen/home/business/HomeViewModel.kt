@@ -16,6 +16,7 @@
 
 package com.yvkalume.eventcademy.ui.screen.home.business
 
+import android.util.Log
 import com.airbnb.mvrx.MavericksViewModel
 import com.airbnb.mvrx.MavericksViewModelFactory
 import com.yvkalume.domain.usecase.event.GetComingEventUseCase
@@ -25,6 +26,7 @@ import com.yvkalume.util.data
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch

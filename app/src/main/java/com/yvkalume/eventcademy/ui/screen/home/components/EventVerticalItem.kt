@@ -33,11 +33,11 @@ fun EventVerticalItem(event: Event,modifier: Modifier = Modifier) {
                 .clip(RoundedCornerShape(16.dp))
         )
         Text(
-            text = "Tour of the Alps",
+            text = event.title,
             maxLines = 1,
             overflow = TextOverflow.Ellipsis,
             style = MaterialTheme.typography.subtitle1
         )
-        Text(text = "Oct 12,2021", maxLines = 1, fontSize = 12.sp)
+        Text(text = event.startDate.toString(), maxLines = 1, fontSize = 12.sp)
     }
 }
