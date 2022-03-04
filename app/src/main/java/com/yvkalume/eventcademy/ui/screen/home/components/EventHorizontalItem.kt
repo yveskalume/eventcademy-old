@@ -20,6 +20,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.yvkalume.domain.entity.Event
 import com.yvkalume.eventcademy.R
+import com.yvkalume.util.toHumanDate
 
 @Composable
 fun EventHorizontalItem(event: Event,onClick: () -> Unit) {
@@ -44,7 +45,7 @@ fun EventHorizontalItem(event: Event,onClick: () -> Unit) {
                 .fillMaxHeight(),
             verticalArrangement = Arrangement.spacedBy(3.dp)
         ) {
-            Text(text = event.startDate.toString(), maxLines = 1, fontSize = 12.sp)
+            Text(text = event.startDate?.toHumanDate()!!, maxLines = 1, fontSize = 12.sp)
             Text(
                 text = event.title,
                 maxLines = 1,

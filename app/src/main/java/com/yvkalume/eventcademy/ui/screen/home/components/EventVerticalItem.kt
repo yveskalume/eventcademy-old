@@ -20,6 +20,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.yvkalume.domain.entity.Event
 import com.yvkalume.eventcademy.R
+import com.yvkalume.util.toHumanDate
 
 @Composable
 fun EventVerticalItem(event: Event,modifier: Modifier = Modifier) {
@@ -38,6 +39,6 @@ fun EventVerticalItem(event: Event,modifier: Modifier = Modifier) {
             overflow = TextOverflow.Ellipsis,
             style = MaterialTheme.typography.subtitle1
         )
-        Text(text = event.startDate.toString(), maxLines = 1, fontSize = 12.sp)
+        Text(text = event.startDate?.toHumanDate()!!, maxLines = 1, fontSize = 12.sp)
     }
 }
