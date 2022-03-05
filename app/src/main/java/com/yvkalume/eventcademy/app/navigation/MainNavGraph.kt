@@ -48,8 +48,8 @@ fun MainNavGraph() {
                     HomeScreen(navController = navController)
                 }
 
-                composable(route = Screen.EventDetails.route) {
-                    EventDetailScreen(navController = navController)
+                composable(route = "${Screen.EventDetails.route}/{uid}") {
+                    EventDetailScreen(eventUid = it.arguments?.getString("uid").toString(), navController = navController)
                 }
                 composable(route = Screen.Agenda.route) {
                     AgendaScreen(navController = navController)

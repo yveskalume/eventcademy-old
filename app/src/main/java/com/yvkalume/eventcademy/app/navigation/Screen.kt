@@ -15,6 +15,11 @@ sealed class Screen(val route: String, val label: String = "", val icon: ImageVe
     object EventDetails : Screen(route = "event-details")
 }
 
+fun Screen.withArgument(arg: String): String {
+    return "${route}/$arg"
+}
+
 fun getBottomNavItems(): List<Screen> {
     return listOf(Screen.Home, Screen.Agenda)
 }
+

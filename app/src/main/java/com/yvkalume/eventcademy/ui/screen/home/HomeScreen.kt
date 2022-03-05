@@ -22,6 +22,8 @@ import com.airbnb.mvrx.compose.collectAsState
 import com.airbnb.mvrx.compose.mavericksViewModel
 import com.yvkalume.domain.entity.Event
 import com.yvkalume.eventcademy.app.navigation.Screen
+import com.yvkalume.eventcademy.app.navigation.navigateSafely
+import com.yvkalume.eventcademy.app.navigation.withArgument
 import com.yvkalume.eventcademy.ui.screen.home.business.HomeData
 import com.yvkalume.eventcademy.ui.screen.home.business.HomeViewModel
 import com.yvkalume.eventcademy.ui.screen.home.business.HomeViewState
@@ -52,16 +54,15 @@ fun HomeScreen(navController: NavHostController, viewModel: HomeViewModel = mave
 
             when (it) {
                 is Uninitialized -> {
-                    Log.e("HomeScreen", "Uni")
                 }
                 is Loading -> {
-                    Log.e("HomeScreen", "Loading")
                 }
                 is Success -> {
-                    Log.e("HomeScreen", it.invoke().toString())
                     HomeContent(
                         data = it.invoke()
-                    ) { navController.navigate(Screen.EventDetails.route) }
+                    ) { eventUid ->
+                        navController.navigateSafely(Screen.EventDetails.withArgument(eventUid))
+                    }
                 }
                 is Fail -> {
                     Toast(context = context, message = "Connexion impossible")
@@ -76,7 +77,7 @@ fun HomeScreen(navController: NavHostController, viewModel: HomeViewModel = mave
 
 private fun LazyListScope.HomeContent(
     data: HomeData,
-    onEventItemClicked: () -> Unit
+    onEventItemClicked: (String) -> Unit
 ) {
 
     if (data.upComingEvents.isEmpty()) {
@@ -101,7 +102,7 @@ private fun LazyListScope.HomeContent(
                     event = data.upComingEvents[0],
                     modifier = Modifier
                         .weight(1f)
-                        .clickable(onClick = onEventItemClicked)
+                        .clickable(onClick = { onEventItemClicked(data.upComingEvents[0].uid) })
                 )
             }
 
@@ -110,7 +111,7 @@ private fun LazyListScope.HomeContent(
                     event = data.upComingEvents[1],
                     modifier = Modifier
                         .weight(1f)
-                        .clickable(onClick = onEventItemClicked),
+                        .clickable(onClick = { onEventItemClicked(data.upComingEvents[1].uid) }),
                 )
             }
         }
@@ -121,6 +122,6 @@ private fun LazyListScope.HomeContent(
     }
 
     items(data.upComingEvents) { event ->
-        EventHorizontalItem(event = event,onClick = onEventItemClicked)
+        EventHorizontalItem(event = event,onClick = { onEventItemClicked(event.uid) })
     }
 }

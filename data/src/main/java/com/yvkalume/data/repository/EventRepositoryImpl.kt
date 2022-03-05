@@ -35,8 +35,16 @@ class EventRepositoryImpl @Inject constructor(
         TODO("Not yet implemented")
     }
 
-    override fun getOneByUid(uid: String): Flow<Result<Event>> {
-        TODO("Not yet implemented")
+    override fun getOneByUid(uid: String) = callbackFlow {
+        firestore.document(FireBasePath.getEventDocument(uid)).addSnapshotListener { value, error ->
+            if (error != null || value == null) {
+                trySend(Result.Error(Exception(error?.message.toString())))
+            }
+            value?.toObject(Event::class.java)?.let {
+                trySend(Result.Success(it))
+            }
+        }
+        awaitClose()
     }
 
     override fun getOnline(): Flow<Result<List<Event>>> {
