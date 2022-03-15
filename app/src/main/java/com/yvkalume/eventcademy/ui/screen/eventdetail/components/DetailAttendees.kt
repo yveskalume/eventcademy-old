@@ -27,7 +27,7 @@ fun DetailAttendees(onSeeMoreClick: () -> Unit) {
     LazyRow(
         modifier = Modifier
             .fillMaxWidth()
-            .wrapContentHeight(),
+            .height(100.dp),
         horizontalArrangement = Arrangement.spacedBy(8.dp),
         contentPadding = PaddingValues(horizontal = 24.dp, vertical = 8.dp)
     ) {

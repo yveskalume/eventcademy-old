@@ -4,6 +4,7 @@ import androidx.compose.animation.Crossfade
 import androidx.compose.foundation.gestures.Orientation
 import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -30,14 +31,19 @@ fun EventDetailScreen(
     navController: NavHostController,
     viewModel: EventDetailsViewModel = mavericksViewModel()
 ) {
+    val scrollState = rememberScrollState()
     val state by viewModel.collectAsState(EventDetailsViewState::data)
 
     LaunchedEffect(viewModel) {
         viewModel.getEventDetails(eventUid = eventUid)
     }
 
-    Crossfade(targetState = state, modifier = Modifier.fillMaxSize()) {
-        when(it) {
+    Crossfade(
+        targetState = state,
+        modifier = Modifier.scrollable(state = scrollState, orientation = Orientation.Vertical)
+
+    ) {
+        when (it) {
             is Uninitialized -> {}
             is Loading -> {}
             is Success -> {
@@ -54,42 +60,50 @@ fun EventDetailScreen(
 @Composable
 private fun EventDetailsContent(data: EventDetailsData) {
     val scrollState = rememberScrollState()
-    Column(
+    LazyColumn(
         modifier = Modifier
             .fillMaxSize()
-            .scrollable(state = scrollState, orientation = Orientation.Vertical)
     ) {
-        ConstraintLayout(
-            modifier = Modifier
-                .fillMaxWidth()
-                .wrapContentHeight()
-        ) {
-            val (card, image) = createRefs()
+        item {
+            ConstraintLayout(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .wrapContentHeight()
+                    .scrollable(state = scrollState,orientation = Orientation.Vertical)
+            ) {
+                val (card, image) = createRefs()
 
-            DetailImage(modifier = Modifier.constrainAs(image) {
-                top.linkTo(parent.top)
-                start.linkTo(parent.start)
-                end.linkTo(parent.end)
-            })
-            DetailCard(event = data.event,modifier = Modifier
-                .height(80.dp)
-                .constrainAs(card) {
-                    top.linkTo(image.bottom)
-                    bottom.linkTo(image.bottom)
-                    start.linkTo(parent.start, 24.dp)
-                    end.linkTo(parent.end, 24.dp)
-                    width = Dimension.fillToConstraints
+                DetailImage(modifier = Modifier.constrainAs(image) {
+                    top.linkTo(parent.top)
+                    start.linkTo(parent.start)
+                    end.linkTo(parent.end)
                 })
+                DetailCard(event = data.event, modifier = Modifier
+                    .height(80.dp)
+                    .constrainAs(card) {
+                        top.linkTo(image.bottom)
+                        bottom.linkTo(image.bottom)
+                        start.linkTo(parent.start, 24.dp)
+                        end.linkTo(parent.end, 24.dp)
+                        width = Dimension.fillToConstraints
+                    })
+            }
         }
-        Column(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(horizontal = 24.dp, vertical = 16.dp)
-        ) {
-            DetailText(description = data.event.description)
-            Spacer(modifier = Modifier.height(16.dp))
-            DetailHost()
+
+        item {
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 24.dp, vertical = 16.dp)
+            ) {
+                DetailText(description = data.event.description)
+                Spacer(modifier = Modifier.height(16.dp))
+                DetailHost()
+            }
         }
-        DetailAttendees(onSeeMoreClick = {})
+
+        item {
+            DetailAttendees(onSeeMoreClick = {})
+        }
     }
 }
