@@ -14,12 +14,17 @@
  * limitations under the License.
  */
 
-package com.yvkalume.eventcademy.ui.screen.eventdetail.business
+package com.yvkalume.domain.entity
 
-import com.yvkalume.domain.entity.Attendee
-import com.yvkalume.domain.entity.Event
-
-data class EventDetailsData(
-    val event: Event,
-    val attendees: List<Attendee>,
+data class Attendee(
+    val uid: String = "",
+    val userUid: String = "",
+    val eventUid: String = "",
+    val userProfile: String ="",
+    val userName: String ="",
+    val eventTitle: String = ""
 )
+
+fun Attendee.getGeneratedUid(): String {
+    return "$userUid-$eventUid"
+}

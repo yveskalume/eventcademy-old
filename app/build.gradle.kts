@@ -109,4 +109,5 @@ dependencies {
 
     androidTestImplementation("de.mannodermaus.junit5:android-test-core:_")
     androidTestRuntimeOnly("de.mannodermaus.junit5:android-test-runner:_")
+    implementation(COIL.compose)
 }

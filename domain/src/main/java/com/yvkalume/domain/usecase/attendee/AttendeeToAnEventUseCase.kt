@@ -14,12 +14,20 @@
  * limitations under the License.
  */
 
-package com.yvkalume.eventcademy.ui.screen.eventdetail.business
+package com.yvkalume.domain.usecase.attendee
 
 import com.yvkalume.domain.entity.Attendee
-import com.yvkalume.domain.entity.Event
+import com.yvkalume.domain.repository.AttendeeRepository
+import com.yvkalume.domain.util.CoroutineUseCase
+import com.yvkalume.util.annotation.IoDispatcher
+import kotlinx.coroutines.CoroutineDispatcher
+import javax.inject.Inject
 
-data class EventDetailsData(
-    val event: Event,
-    val attendees: List<Attendee>,
-)
+class AttendeeToAnEventUseCase @Inject constructor(
+    @IoDispatcher private val dispatcher: CoroutineDispatcher,
+    private val repository: AttendeeRepository
+) : CoroutineUseCase<Attendee, Unit>(dispatcher) {
+    override suspend fun execute(params: Attendee) {
+        return repository.attendeeToAnEvent(params)
+    }
+}

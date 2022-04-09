@@ -15,5 +15,5 @@ import com.yvkalume.eventcademy.ui.sharedcomponents.UserSquareAvatar
 fun DetailHost() {
     Text(text = "Organisateur", fontWeight = FontWeight.Bold)
     Spacer(modifier = Modifier.height(8.dp))
-    UserSquareAvatar(painter = painterResource(id = R.drawable.splash_img), size = 60.dp)
+    UserSquareAvatar(imageUrl = "", size = 60.dp)
 }

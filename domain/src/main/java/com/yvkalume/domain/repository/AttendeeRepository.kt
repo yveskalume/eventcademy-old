@@ -14,12 +14,14 @@
  * limitations under the License.
  */
 
-package com.yvkalume.eventcademy.ui.screen.eventdetail.business
+package com.yvkalume.domain.repository
 
 import com.yvkalume.domain.entity.Attendee
-import com.yvkalume.domain.entity.Event
+import com.yvkalume.util.Result
+import kotlinx.coroutines.flow.Flow
 
-data class EventDetailsData(
-    val event: Event,
-    val attendees: List<Attendee>,
-)
+interface AttendeeRepository {
+    fun attendeeToAnEvent(attendee: Attendee)
+    fun checkIfIsAttending(docUid: String) : Flow<Result<Boolean>>
+    fun getAttendeesByEventUid(eventUid: String) : Flow<Result<List<Attendee>>>
+}

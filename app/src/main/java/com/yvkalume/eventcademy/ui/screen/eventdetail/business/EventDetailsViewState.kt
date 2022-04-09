@@ -21,5 +21,6 @@ import com.airbnb.mvrx.MavericksState
 import com.airbnb.mvrx.Uninitialized
 
 data class EventDetailsViewState(
-    val data : Async<EventDetailsData> = Uninitialized
+    val data : Async<EventDetailsData> = Uninitialized,
+    val isAttending: Async<Boolean> = Uninitialized
 ) : MavericksState

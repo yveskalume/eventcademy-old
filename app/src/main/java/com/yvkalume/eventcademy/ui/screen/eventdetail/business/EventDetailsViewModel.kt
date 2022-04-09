@@ -18,28 +18,69 @@ package com.yvkalume.eventcademy.ui.screen.eventdetail.business
 
 import com.airbnb.mvrx.MavericksViewModel
 import com.airbnb.mvrx.MavericksViewModelFactory
+import com.google.firebase.auth.FirebaseAuth
+import com.yvkalume.domain.entity.Attendee
+import com.yvkalume.domain.entity.Event
+import com.yvkalume.domain.usecase.attendee.AttendeeToAnEventUseCase
+import com.yvkalume.domain.usecase.attendee.CheckIfIsAttendingUseCase
+import com.yvkalume.domain.usecase.attendee.CheckIfIsAttendingUseCase.CheckIfIsAttendingParams
+import com.yvkalume.domain.usecase.attendee.GetAttendeesByEventUidUseCase
 import com.yvkalume.domain.usecase.event.GetOneEventByUidUseCase
 import com.yvkalume.eventcademy.app.di.mavericks.AssistedViewModelFactory
 import com.yvkalume.eventcademy.app.di.mavericks.hiltMavericksViewModelFactory
 import com.yvkalume.util.data
+import com.yvkalume.util.orFalse
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.launch
 
 class EventDetailsViewModel @AssistedInject constructor(
     @Assisted state: EventDetailsViewState,
-    private val getOneEventByUidUseCase: GetOneEventByUidUseCase
+    private val getOneEventByUidUseCase: GetOneEventByUidUseCase,
+    private val attendeeToAnEventUseCase: AttendeeToAnEventUseCase,
+    private val checkIfIsAttendingUseCase: CheckIfIsAttendingUseCase,
+    private val getAttendeesByEventUidUseCase: GetAttendeesByEventUidUseCase,
+    private val firebaseAuth: FirebaseAuth
 ) : MavericksViewModel<EventDetailsViewState>(state) {
 
-    fun getEventDetails(eventUid: String) {
+    private val user by lazy {
+        firebaseAuth.currentUser
+    }
+
+    fun getEventDetails(eventUid: String) = viewModelScope.launch {
         val eventFlow = getOneEventByUidUseCase(eventUid).map { it.data!! }
-        combine(eventFlow, eventFlow) { event, _ ->
-            EventDetailsData(event)
+        val attendeesFlow = getAttendeesByEventUidUseCase(eventUid).map { it.data!! }
+        combine(eventFlow, attendeesFlow) { event, attendees ->
+            EventDetailsData(event = event, attendees = attendees)
         }.execute {
             copy(data = it)
         }
+
+    }
+
+    fun checkIfUserIsAttending(eventUid: String) = viewModelScope.launch {
+       checkIfIsAttendingUseCase(
+            CheckIfIsAttendingParams(
+                eventUid = eventUid,
+                userUid = user?.uid.toString()
+            )
+        ).map { it.data!! }.execute {
+            copy(isAttending = it)
+        }
+    }
+
+    fun attendeeToAnEvent(event: Event) = viewModelScope.launch {
+        val attendee = Attendee(
+            userUid = user?.uid.toString(),
+            userName = user?.displayName.toString(),
+            userProfile = user?.photoUrl.toString(),
+            eventUid = event.uid,
+            eventTitle = event.title
+        )
+        attendeeToAnEventUseCase(attendee)
     }
 
     @AssistedFactory

@@ -15,14 +15,17 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.yvkalume.domain.entity.Event
+import com.yvkalume.util.DateUtil
+import com.yvkalume.util.humanMonth
+import com.yvkalume.util.humanMonthDay
 
 @Composable
-fun DetailCard(event: Event,modifier: Modifier) {
+fun DetailCard(event: Event, modifier: Modifier) {
     Card(modifier = modifier, elevation = 4.dp, shape = RoundedCornerShape(16.dp)) {
         Row(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(8.dp),
+                .padding(12.dp),
             horizontalArrangement = Arrangement.Start,
             verticalAlignment = Alignment.CenterVertically
         ) {
@@ -37,8 +40,11 @@ fun DetailCard(event: Event,modifier: Modifier) {
                     verticalArrangement = Arrangement.Center,
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
-                    Text(text = "Jul")
-                    Text(text = event.startDate?.day.toString(), fontSize = 18.sp)
+                    Text(
+                        text = event.startDate?.humanMonth.toString(), overflow =
+                        TextOverflow.Clip
+                    )
+                    Text(text = event.startDate?.humanMonthDay.toString(), fontSize = 18.sp)
                 }
             }
             Spacer(modifier = Modifier.width(16.dp))
@@ -49,15 +55,16 @@ fun DetailCard(event: Event,modifier: Modifier) {
             ) {
                 Text(text = event.title, fontWeight = FontWeight.Bold)
                 Text(
-                    text = "Ven - De 08:30 à 09:30",
+                    text = DateUtil.fromTo(event.startDate, event.endDate),
                     fontSize = 12.sp
                 )
 
                 Text(
                     text = event.location,
                     fontSize = 12.sp,
-                    maxLines = 1,
-                    overflow = TextOverflow.Ellipsis
+                    maxLines = 2,
+                    overflow = TextOverflow.Ellipsis,
+                    modifier = Modifier.padding(bottom = 4.dp)
                 )
             }
         }

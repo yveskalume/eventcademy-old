@@ -58,9 +58,9 @@ class EventRepositoryImpl @Inject constructor(
         }
     }
 
+    // FIXME: Remove this
     override fun getAttendees(eventUid: String): Flow<Result<List<User>>> {
-        val query = firestore.collection(FireBasePath.getAttendeesCollection(eventUid))
-        return query.collectAsFlow()
+        TODO("Not yet implemented")
     }
 
 
