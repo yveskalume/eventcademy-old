@@ -1,10 +1,10 @@
-name : App CI
+name: App CI
 
 on:
   push:
-    branches: [develop, master]
+    branches: [ develop, master ]
   pull_request:
-    branches: [develop , master]
+    branches: [ develop , master ]
 
 permissions:
   checks: write
@@ -31,7 +31,7 @@ jobs:
         run: echo $GOOGLE_SERVICES_JSON > app/google-services.json
 
       - name: Build Project
-        run : ./gradlew build --stacktrace
+        run: ./gradlew build --stacktrace
 
       - name: Run Test
         run: ./gradlew test --stacktrace
@@ -58,3 +58,30 @@ jobs:
             💬 message : ${{ github.event.head_commit.message }}
 
             See the action result here 👉 : https://github.com/YvesKalume/eventcademy/actions/runs/${{ github.run_id }}
+
+  deploy:
+    name: Deploy apk
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+      - name: Setup JDK
+        uses: actions/setup-java@v1
+        with:
+          java-version: 11
+      - name: Build APK
+        run: ./gradlew assembleDebug --stacktrace
+      - name: Decode google-services.json
+        env:
+          GOOGLE_SERVICES_JSON: ${{ secrets.GOOGLE_SERVICES_JSON }}
+        run: echo $GOOGLE_SERVICES_JSON > app/google-services.json
+      - name: Publish on Firebase App Distribution
+        uses: wzieba/Firebase-Distribution-Github-Action@v1.3.2
+        with:
+          appId: ${{ secrets.APP_ID }}
+          serviceCredentialsFile: app/google-services.json
+          groups: testers
+          file: app/build/outputs/apk/debug/app-debug.apk
+          debug: true
