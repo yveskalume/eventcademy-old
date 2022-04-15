@@ -82,11 +82,20 @@ jobs:
         with:
           name: eventcademy-debug
           path: app/build/outputs/apk/debug/app-debug.apk
-      - name: Publish on Firebase App Distribution
-        uses: wzieba/Firebase-Distribution-Github-Action@v1.3.2
+
+      - name: Send the apk on telegram
+        uses: appleboy/telegram-action@master
         with:
-          appId: ${{ secrets.APP_ID }}
-          serviceCredentialsFile: app/google-services.json
-          groups: testers
-          file: app/build/outputs/apk/debug/app-debug.apk
-          debug: true
+          to: ${{ secrets.TELEGRAM_TO }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          document: app/build/outputs/apk/debug/app-debug.apk
+
+
+#      - name: Publish on Firebase App Distribution
+#        uses: wzieba/Firebase-Distribution-Github-Action@v1.3.2
+#        with:
+#          appId: ${{ secrets.APP_ID }}
+#          serviceCredentialsFile: app/google-services.json
+#          groups: testers
+#          file: app/build/outputs/apk/debug/app-debug.apk
+#          debug: true
