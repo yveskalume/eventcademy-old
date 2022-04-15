@@ -67,11 +67,10 @@ fun EventDetailScreen(
             is Success -> {
                 EventDetailsContent(
                     data = it.invoke(),
-                    isAttending = isAttending,
+                    isAttending = isAttendingState.invoke().orFalse,
                     attendLoading = isAttendingState is Loading,
                     onAttendButtonClick = {
                         viewModel.attendeeToAnEvent(event = it.invoke().event)
-                        viewModel.checkIfUserIsAttending(eventUid = it.invoke().event.uid)
                     })
             }
             is Fail -> {

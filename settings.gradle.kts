@@ -12,10 +12,10 @@ dependencyResolutionManagement {
 }
 
 refreshVersions {
+//    enableBuildSrcLibs()
     rejectVersionIf {
         candidate.stabilityLevel.isLessStableThan(current.stabilityLevel)
     }
-    enableBuildSrcLibs()
 }
 
 rootProject.name = "EventCademy"

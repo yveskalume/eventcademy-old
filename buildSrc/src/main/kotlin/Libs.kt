@@ -13,7 +13,7 @@ import kotlin.String
  */
 object Libs {
 
-    const val gradle_plugin : String = "com.android.tools.build:gradle:_"
+    const val gradle_plugin : String = "com.android.tools.build:gradle:7.1.3"
 
     const val activity_compose: String = "androidx.activity:activity-compose:_"
 
