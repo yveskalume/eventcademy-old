@@ -22,6 +22,6 @@ import kotlinx.coroutines.flow.Flow
 
 interface AttendeeRepository {
     fun attendeeToAnEvent(attendee: Attendee)
-    fun checkIfIsAttending(docUid: String) : Flow<Result<Boolean>>
+    suspend fun checkIfIsAttending(docUid: String) : Boolean
     fun getAttendeesByEventUid(eventUid: String) : Flow<Result<List<Attendee>>>
 }

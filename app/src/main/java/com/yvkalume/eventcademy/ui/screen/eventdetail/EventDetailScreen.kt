@@ -31,7 +31,6 @@ import com.yvkalume.eventcademy.ui.screen.eventdetail.business.EventDetailsViewM
 import com.yvkalume.eventcademy.ui.screen.eventdetail.business.EventDetailsViewState
 import com.yvkalume.eventcademy.ui.screen.eventdetail.components.*
 import com.yvkalume.eventcademy.ui.sharedcomponents.Toast
-import com.yvkalume.util.orFalse
 
 @Composable
 fun EventDetailScreen(
@@ -42,7 +41,8 @@ fun EventDetailScreen(
     val context = LocalContext.current
     val scrollState = rememberScrollState()
     val eventData by viewModel.collectAsState(EventDetailsViewState::data)
-    val isAttendingState by viewModel.collectAsState(EventDetailsViewState::isAttending)
+    val attendState by viewModel.collectAsState(EventDetailsViewState::isAttending)
+    val attendLoading by viewModel.collectAsState(EventDetailsViewState::attendLoading)
     var isAttending by remember { mutableStateOf(false) }
 
     LaunchedEffect(viewModel) {
@@ -50,10 +50,9 @@ fun EventDetailScreen(
         viewModel.checkIfUserIsAttending(eventUid = eventUid)
     }
 
-    LaunchedEffect(isAttendingState) {
-        if(isAttendingState is Success) {
-            isAttending = isAttendingState.invoke().orFalse
-        }
+    LaunchedEffect(attendState) {
+        isAttending = attendState
+        Toast(context,"$isAttending")
     }
 
     Crossfade(
@@ -67,8 +66,8 @@ fun EventDetailScreen(
             is Success -> {
                 EventDetailsContent(
                     data = it.invoke(),
-                    isAttending = isAttendingState.invoke().orFalse,
-                    attendLoading = isAttendingState is Loading,
+                    isAttending = isAttending,
+                    attendLoading = attendLoading is Loading,
                     onAttendButtonClick = {
                         viewModel.attendeeToAnEvent(event = it.invoke().event)
                     })
@@ -139,25 +138,27 @@ private fun EventDetailsContent(
             }
         }
         item {
-            Button(
-                onClick = onAttendButtonClick,
-                enabled = !isAttending,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(48.dp)
-                    .padding(horizontal = 16.dp),
-                shape = RoundedCornerShape(8.dp),
-                contentPadding = PaddingValues(horizontal = 16.dp, vertical = 8.dp),
-            ) {
-                Text(text = "J'y vais !", style = MaterialTheme.typography.button)
-//                AnimatedVisibility(visible = attendLoading) {
-//                    CircularProgressIndicator(
-//                        modifier = Modifier
-//                            .size(20.dp)
-//                            .padding(start = 2.dp),
-//                        color = MaterialTheme.colors.background
-//                    )
-//                }
+            Crossfade(targetState = isAttending) {
+                Button(
+                    onClick = onAttendButtonClick,
+                    enabled = !it,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(48.dp)
+                        .padding(horizontal = 16.dp),
+                    shape = RoundedCornerShape(8.dp),
+                    contentPadding = PaddingValues(horizontal = 16.dp, vertical = 8.dp),
+                ) {
+                    Text(text = "J'y vais !", style = MaterialTheme.typography.button)
+                    AnimatedVisibility(visible = attendLoading) {
+                        CircularProgressIndicator(
+                            modifier = Modifier
+                                .size(20.dp)
+                                .padding(start = 2.dp),
+                            color = MaterialTheme.colors.background
+                        )
+                    }
+                }
             }
 
             Spacer(modifier = Modifier.height(8.dp))

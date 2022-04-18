@@ -18,6 +18,7 @@ package com.yvkalume.domain.usecase.attendee
 
 import com.yvkalume.domain.repository.AttendeeRepository
 import com.yvkalume.domain.usecase.attendee.CheckIfIsAttendingUseCase.CheckIfIsAttendingParams
+import com.yvkalume.domain.util.CoroutineUseCase
 import com.yvkalume.domain.util.FlowUseCase
 import com.yvkalume.util.Result
 import com.yvkalume.util.annotation.IoDispatcher
@@ -28,12 +29,11 @@ import javax.inject.Inject
 class CheckIfIsAttendingUseCase @Inject constructor(
     private val repository: AttendeeRepository,
     @IoDispatcher private val dispatcher: CoroutineDispatcher,
-) : FlowUseCase<CheckIfIsAttendingParams, Boolean>(dispatcher) {
-
-
-    override fun execute(parameters: CheckIfIsAttendingParams): Flow<Result<Boolean>> {
-        return repository.checkIfIsAttending("${parameters.userUid}-${parameters.eventUid}")
-    }
+) : CoroutineUseCase<CheckIfIsAttendingParams, Boolean>(dispatcher) {
 
     data class CheckIfIsAttendingParams(val eventUid: String, val userUid: String)
+
+    override suspend fun execute(params: CheckIfIsAttendingParams): Boolean {
+        return repository.checkIfIsAttending("${params.userUid}-${params.eventUid}")
+    }
 }

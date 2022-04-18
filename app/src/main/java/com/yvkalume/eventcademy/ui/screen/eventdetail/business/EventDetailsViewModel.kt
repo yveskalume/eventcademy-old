@@ -29,7 +29,6 @@ import com.yvkalume.domain.usecase.event.GetOneEventByUidUseCase
 import com.yvkalume.eventcademy.app.di.mavericks.AssistedViewModelFactory
 import com.yvkalume.eventcademy.app.di.mavericks.hiltMavericksViewModelFactory
 import com.yvkalume.util.data
-import com.yvkalume.util.orFalse
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject
@@ -61,26 +60,32 @@ class EventDetailsViewModel @AssistedInject constructor(
 
     }
 
-    fun checkIfUserIsAttending(eventUid: String) = viewModelScope.launch {
-       checkIfIsAttendingUseCase(
-            CheckIfIsAttendingParams(
-                eventUid = eventUid,
-                userUid = user?.uid.toString()
-            )
-        ).map { it.data!! }.execute {
-            copy(isAttending = it)
+    fun checkIfUserIsAttending(eventUid: String) {
+        viewModelScope.launch {
+            val isAttending = checkIfIsAttendingUseCase(
+                CheckIfIsAttendingParams(
+                    eventUid = eventUid,
+                    userUid = user?.uid.toString()
+                )
+            ).data!!
+            setState { copy(isAttending = isAttending) }
         }
     }
 
     fun attendeeToAnEvent(event: Event) = viewModelScope.launch {
-        val attendee = Attendee(
-            userUid = user?.uid.toString(),
-            userName = user?.displayName.toString(),
-            userProfile = user?.photoUrl.toString(),
-            eventUid = event.uid,
-            eventTitle = event.title
-        )
-        attendeeToAnEventUseCase(attendee)
+        suspend {
+            val attendee = Attendee(
+                userUid = user?.uid.toString(),
+                userName = user?.displayName.toString(),
+                userProfile = user?.photoUrl.toString(),
+                eventUid = event.uid,
+                eventTitle = event.title
+            )
+            attendeeToAnEventUseCase(attendee).data!!
+        }.execute {
+            copy(attendLoading = it)
+        }
+        checkIfUserIsAttending(eventUid = event.uid)
     }
 
     @AssistedFactory
