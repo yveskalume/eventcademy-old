@@ -43,9 +43,9 @@ class AttendeeRepositoryImpl @Inject constructor(
         ).set(attendee.copy(uid = attendee.getGeneratedUid()))
     }
 
-    override fun checkIfIsAttending(docUid: String) = flow {
+    override suspend fun checkIfIsAttending(docUid: String): Boolean {
         val doc = firestore.document(firebasePath.getAttendeeDocument(docUid)).get().await()
-        emit(Result.Success(doc.exists()))
+        return doc.exists() && doc != null
     }
 
 
